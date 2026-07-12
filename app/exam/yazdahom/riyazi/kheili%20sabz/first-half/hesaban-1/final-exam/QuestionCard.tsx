@@ -1,81 +1,88 @@
-import React, { useState } from 'react';
+"use client";
 
-// تعریف تایپ برای props کامپوننت
+import React from 'react';
+import { useFormContext, useWatch } from 'react-hook-form';
+import { InlineMath } from 'react-katex';
+
+export interface Question {
+  id: number;
+  text: string;
+  options: string[];
+}
+
 interface QuestionCardProps {
-    question: {
-        id: number;
-        text: string;
-        options: {
-            A: string;
-            B: string;
-            C: string;
-            D: string;
-        };
-        correctAnswer: string;
-        explanation: string;
-    };
-    index: number;
-    selectedOption?: string;
-    onOptionSelect: (questionId: number, optionValue: string) => void;
+  q: Question;
 }
 
-// تعریف تایپ برای لیبل‌ها
-interface OptionLabels {
-    A: string;
-    B: string;
-    C: string;
-    D: string;
-}
+const QuestionCard: React.FC<QuestionCardProps> = ({ q }) => {
+  const { register, control } = useFormContext();
+  const values = useWatch({ control });
 
-function QuestionCard({ question, index, selectedOption, onOptionSelect }: QuestionCardProps) {
-    const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  return (
+    // حذف border-b از اینجا چون خط افقی را درون کارت می‌گذاریم
+    <div className="w-full py-6 group border-b-[1.5px] border-gray-200 last:border-b-0">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 flex flex-col w-full gap-0">
+        
+        {/* ------------------ بخش سوال ------------------ */}
+        <div className="w-full">
+           {/* شماره و متن سوال در یک خط (راست‌چین) */}
+           <div className="flex justify-end items-center gap-3 w-full mb-4">
+              <span className="text-[#1e3a8a] font-extrabold text-xl">{q.id}.</span>
+              <div className="text-[#1e293b] text-xl font-bold leading-9 text-right">
+                 <InlineMath math={q.text} />
+              </div>
+           </div>
 
-    const getOptionLabel = (optionKey: string): string => {
-        const labels: OptionLabels = {
-            A: 'گزینه ۱',
-            B: 'گزینه ۲',
-            C: 'گزینه ۳',
-            D: 'گزینه ۴'
-        };
-        return labels[optionKey as keyof OptionLabels] || optionKey;
-    };
-
-    return (
-        <div className={`question-card ${selectedOption ? 'answered' : ''}`}>
-            <div className="question-header" onClick={() => setIsExpanded(!isExpanded)}>
-                <div className="question-number">
-                    <span className="number-badge">سوال {index}</span>
-                    {selectedOption && (
-                        <span className="answered-badge">✓ پاسخ داده شده</span>
-                    )}
-                </div>
-                <div className="question-toggle">
-                    {isExpanded ? '▲' : '▼'}
-                </div>
-            </div>
-            
-            <div className={`question-content ${isExpanded ? 'expanded' : ''}`}>
-                <h3 className="question-text">{question.text}</h3>
-                
-                <div className="options-list">
-                    {Object.entries(question.options).map(([key, value]) => (
-                        <label key={key} className={`option-item ${selectedOption === key ? 'selected' : ''}`}>
-                            <input
-                                type="radio"
-                                name={`question-${question.id}`}
-                                value={key}
-                                checked={selectedOption === key}
-                                onChange={() => onOptionSelect(question.id, key)}
-                                className="option-radio"
-                            />
-                            <span className="option-letter">{getOptionLabel(key)}</span>
-                            <span className="option-text">{value as string}</span>
-                        </label>
-                    ))}
-                </div>
-            </div>
+           {/* خط افقی جداکننده دقیقاً زیر سوال */}
+           <div className="w-full h-[2px] bg-gray-200 mb-4"></div>
         </div>
-    );
-}
+
+        {/* ------------------ بخش گزینه‌ها ------------------ */}
+        <div className="w-full pr-6 sm:pr-10">
+           
+           {/* عنوان "گزینه‌های پاسخ:" */}
+           <div className="flex justify-end w-full mb-3">
+              <span className="text-gray-500 text-xs sm:text-sm font-bold">گزینه‌های پاسخ:</span>
+           </div>
+
+           {/* لیست دو ستونه گزینه‌ها */}
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6 w-full">
+              {q.options.map((option, optIndex) => {
+                const optionLabel = String.fromCharCode(65 + optIndex); // A, B, C, D
+                const fieldName = `q_${q.id}`;
+                const isSelected = values?.[fieldName] === optionLabel;
+                
+                return (
+                  <label 
+                    key={optIndex} 
+                    className={`flex items-center gap-4 p-2 rounded-lg cursor-pointer transition-colors w-full hover:bg-gray-50 ${isSelected ? 'bg-gray-50' : ''}`}
+                  >
+                    <input 
+                      type="radio" 
+                      name={fieldName} 
+                      value={optionLabel}
+                      {...register(fieldName)}
+                      className="hidden" 
+                    />
+                    
+                    {/* دایره انتخاب */}
+                    <div className={`w-5 h-5 min-w-[20px] rounded-full border-[2px] flex items-center justify-center transition-all bg-white ${isSelected ? 'border-[#1e3a8a]' : 'border-gray-400'}`}>
+                       {isSelected && <div className="w-2.5 h-2.5 bg-[#1e3a8a] rounded-full"></div>}
+                    </div>
+                    
+                    {/* متن گزینه */}
+                    <div className="flex items-center gap-1 text-[17px] sm:text-lg text-gray-800 text-right w-full">
+                      <span className="text-gray-400 font-bold min-w-[20px] text-right">{optionLabel}.</span>
+                      <span className="break-words font-medium"><InlineMath math={option} /></span>
+                    </div>
+                  </label>
+                );
+              })}
+           </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default QuestionCard;

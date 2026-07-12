@@ -29,57 +29,89 @@ export default function Hesaban1ChaptersPage() {
   const chapters: Chapter[] = [
     {
       id: 1,
-      name: 'فصل اول: دایره',
+      name: 'فصل اول: جبر و معادله',
       icon: '📐',
       color: '#9C27B0',
       examSlug: 'chapter1-exam',
-      examName: 'آزمون جامع فصل اول: دایره',
+      examName: 'آزمون جامع فصل اول: جبر و معادله',
       examQuestionCount: 30,
       lessons: [
-        { id: 1, name: 'درس اول: مفاهیم اولیه و زاویه‌ها در دایره', description: 'حل معادله درجه دوم، دلتا، ریشه‌ها', questionCount: 15, slug: 'lesson1' },
-        { id: 2, name: 'درس دوم: رابطه‌های طولی در دایره', description: 'رسم سهمی، رأس، عرض از مبدأ', questionCount: 12, slug: 'lesson2' },
-        { id: 3, name: 'درس سوم: چند ضلعی‌های محاطی و محیطی', description: 'تعیین علامت عبارات جبری، نامعادله', questionCount: 10, slug: 'lesson3' },
+        { id: 1, name: 'درس اول: معادله درجه دوم', description: 'حل معادله درجه دوم، دلتا، ریشه‌ها', questionCount: 15, slug: 'lesson1' },
+        { id: 2, name: 'درس دوم: تعیین علامت', description: 'تعیین علامت عبارات جبری، نامعادله', questionCount: 12, slug: 'lesson2' },
+        { id: 3, name: 'درس سوم: نامعادلات گویا و گنگ', description: 'حل نامعادلات گویا و گنگ', questionCount: 10, slug: 'lesson3' },
+        { id: 4, name: 'درس چهارم: قدر مطلق', description: 'ویژگی‌های قدر مطلق و حل معادلات', questionCount: 10, slug: 'lesson4' },
+        { id: 5, name: 'درس پنجم: هندسه تحلیلی', description: 'مختصات، فاصله، معادله خط', questionCount: 10, slug: 'lesson5' },
       ]
     },
     {
       id: 2,
-      name: 'فصل دوم: تبدیل‌های هندسی و کاربردها ',
+      name: 'فصل دوم: تابع',
       icon: '📊',
       color: '#2196F3',
       examSlug: 'chapter2-exam',
-      examName: 'آزمون جامع فصل دوم: تبدیل‌های هندسی و کاربردها ',
+      examName: 'آزمون جامع فصل دوم: تابع',
       examQuestionCount: 28,
       lessons: [
-        { id: 4, name: 'درس اول: تبدیل‌های هندسی', description: 'تعریف تابع، دامنه و برد', questionCount: 10, slug: 'lesson4' },
-        { id: 5, name: 'درس دوم: کاربرد تبدیل‌ها', description: 'نمودار توابع خطی و درجه دوم', questionCount: 12, slug: 'lesson5' },
+        { id: 6, name: 'درس اول: آشنایی با تابع', description: 'تعریف تابع، دامنه و برد', questionCount: 10, slug: 'lesson6' },
+        { id: 7, name: 'درس دوم: انواع توابع', description: 'نمودار توابع خطی و درجه دوم', questionCount: 12, slug: 'lesson7' },
+        { id: 8, name: 'درس سوم: وارون تابع', description: 'نقاط بحرانی، اکسترمم', questionCount: 8, slug: 'lesson8' },
+        { id: 9, name: 'درس چهارم: اعمال روی توابع', description: 'ترکیب توابع، جمع و ضرب', questionCount: 8, slug: 'lesson9' },
       ]
     },
     {
       id: 3,
-      name: 'فصل سوم: روابط طولی در مثلث',
+      name: 'فصل سوم: توابع نمایی و لگاریتمی',
       icon: '📈',
       color: '#FF9800',
       examSlug: 'chapter3-exam',
-      examName: 'آزمون جامع فصل سوم: روابط طولی در مثلث',
+      examName: 'آزمون جامع فصل سوم: توابع نمایی و لگاریتمی',
       examQuestionCount: 32,
       lessons: [
-        { id: 7, name: 'درس اول: قضیه سینوس‌ها', description: 'ویژگی‌ها و نمودار تابع نمایی', questionCount: 12, slug: 'lesson7' },
-        { id: 8, name: 'درس دوم: قضیه کسینوس‌ها', description: 'تعریف لگاریتم، خواص لگاریتم', questionCount: 15, slug: 'lesson8' },
-        { id: 9, name: 'درس سوم: قضیه نیمسازهای زوایای داخلی و محاسبه طول نیمسازها', description: 'حل معادلات نمایی و لگاریتمی', questionCount: 10, slug: 'lesson9' },
-        { id: 10, name: 'درس چهارم: قضیه هرون', description: 'حل معادلات نمایی و لگاریتمی', questionCount: 10, slug: 'lesson9' },
+        { id: 10, name: 'درس اول: تابع نمایی', description: 'ویژگی‌ها و نمودار تابع نمایی', questionCount: 12, slug: 'lesson10' },
+        { id: 11, name: 'درس دوم: تابع لگاریتمی', description: 'تعریف لگاریتم، خواص لگاریتم', questionCount: 15, slug: 'lesson11' },
+        { id: 12, name: 'درس سوم: معادلات نمایی و لگاریتمی', description: 'حل معادلات نمایی و لگاریتمی', questionCount: 10, slug: 'lesson12' },
       ]
     },
     {
       id: 4,
-      name: '🎯 آزمون جامع کل کتاب هندسه (2) ',
+      name: 'فصل چهارم: مثلثات',
+      icon: '🔺',
+      color: '#4CAF50',
+      examSlug: 'chapter4-exam',
+      examName: 'آزمون جامع فصل چهارم: مثلثات',
+      examQuestionCount: 28,
+      lessons: [
+        { id: 13, name: 'درس اول: رادیان و دایره مثلثاتی', description: 'نسبت‌های مثلثاتی، دایره واحد', questionCount: 12, slug: 'lesson13' },
+        { id: 14, name: 'درس دوم: نسبت‌های مثلثاتی زاویه‌ها', description: 'نسبت‌های مثلثاتی برخی زاویه‌ها', questionCount: 10, slug: 'lesson14' },
+        { id: 15, name: 'درس سوم: توابع مثلثاتی', description: 'حل معادلات مثلثاتی', questionCount: 8, slug: 'lesson15' },
+        { id: 16, name: 'درس چهارم: روابط مثلثاتی', description: 'روابط مجموع و تفاضل زاویه‌ها', questionCount: 8, slug: 'lesson16' },
+      ]
+    },
+    {
+      id: 5,
+      name: 'فصل پنجم: حد و پیوستگی',
+      icon: '∫',
+      color: '#F44336',
+      examSlug: 'chapter5-exam',
+      examName: 'آزمون جامع فصل پنجم: حد و پیوستگی',
+      examQuestionCount: 35,
+      lessons: [
+        { id: 17, name: 'درس اول: مفهوم حد', description: 'حد توابع، حد یک طرفه', questionCount: 15, slug: 'lesson17' },
+        { id: 18, name: 'درس دوم: قضایای حد', description: 'محاسبه حد با استفاده از قضایا', questionCount: 12, slug: 'lesson18' },
+        { id: 19, name: 'درس سوم: حد توابع مثلثاتی', description: 'حد توابع مثلثاتی و سینوس', questionCount: 10, slug: 'lesson19' },
+        { id: 20, name: 'درس چهارم: پیوستگی', description: 'شرط پیوستگی، نقاط ناپیوستگی', questionCount: 10, slug: 'lesson20' },
+      ]
+    },
+    {
+      id: 6,
+      name: '🎯 آزمون جامع کل کتاب حسابان (1)',
       icon: '🏆',
       color: '#FF6B6B',
       examSlug: 'final-exam',
-      examName: 'آزمون جامع کل کتاب هندسه (2) ',
+      examName: 'آزمون جامع کل کتاب حسابان (1)',
       examQuestionCount: 50,
       lessons: [
-        // تمام دروس کتاب (۲۱ درس) به صورت کامل
-        { id: 22, name: '📚 کل دروس کتاب  هندسه (2) ', description: 'شامل تمام مباحث: جبر و معادله، تابع، نمایی و لگاریتمی، مثلثات، حد و پیوستگی', questionCount: 50, slug: 'final-exam' },
+        { id: 21, name: '📚 کل دروس کتاب حسابان (1)', description: 'شامل تمام مباحث: جبر و معادله، تابع، نمایی و لگاریتمی، مثلثات، حد و پیوستگی', questionCount: 50, slug: 'final-exam' },
       ]
     }
   ];
@@ -102,7 +134,7 @@ export default function Hesaban1ChaptersPage() {
         <Link href="/exam/yazdahom/riyazi/kheili%20sabz/first-half" style={styles.backButtonLink}>
           ← بازگشت به لیست دروس
         </Link>
-        <h1 style={styles.title}>📚 هندسه 2 - انتخاب فصل و درس</h1>
+        <h1 style={styles.title}>📚 حسابان (1) - انتخاب فصل و درس</h1>
         <p style={styles.subtitle}>برای شروع، روی هر فصل کلیک کنید و سپس درس یا آزمون جامع مورد نظر را انتخاب نمایید</p>
       </div>
 
@@ -123,7 +155,6 @@ export default function Hesaban1ChaptersPage() {
 
             {openChapter === chapter.id && (
               <div style={styles.lessonsContainer}>
-                {/* آزمون جامع فصل */}
                 <div
                   style={styles.chapterExamCard}
                   onClick={() => handleChapterExamClick(chapter.examSlug)}
@@ -171,32 +202,7 @@ export default function Hesaban1ChaptersPage() {
         <p>💡 نکته: برای شروع آزمون هر درس یا آزمون جامع فصل، روی آن کلیک کنید.</p>
         <p>📊 پس از اتمام هر آزمون، درصد شما به همراه پاسخنامه تشریحی نمایش داده می‌شود.</p>
         <p>🏆 آزمون‌های جامع شامل سوالات ترکیبی از تمام دروس آن فصل می‌باشند.</p>
-        <p>🎯 آزمون جامع کل کتاب شامل ۵۰ سوال از تمام مباحث حسابان (۱) می‌باشد.</p>
       </div>
-
-      <style>{`
-        .lesson-card:hover {
-          transform: translateX(5px);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        .lesson-card:hover .lesson-button {
-          background-color: #10b981;
-        }
-        .chapter-exam-card:hover {
-          transform: translateX(5px);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        .chapter-exam-card:hover .exam-button {
-          background-color: #10b981;
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .lessons-container {
-          animation: fadeIn 0.3s ease-out;
-        }
-      `}</style>
     </div>
   );
 }
@@ -205,6 +211,9 @@ const styles: { [key: string]: React.CSSProperties } = {
   container: {
     minHeight: '100vh',
     padding: '2rem',
+    backgroundColor: '#f0f2f5',
+    fontFamily: "'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    direction: 'rtl',
   },
   header: {
     textAlign: 'center',
@@ -212,9 +221,8 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   backButtonLink: {
     display: 'inline-block',
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    color: 'black',
-    border: 'none',
+    backgroundColor: '#4a5568',
+    color: 'white',
     padding: '0.5rem 1rem',
     borderRadius: '0.5rem',
     cursor: 'pointer',
@@ -224,11 +232,11 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   title: {
     fontSize: '2rem',
-    color: 'black',
+    color: '#1a202c',
     margin: '0.5rem 0',
   },
   subtitle: {
-    color: 'rgba(255,255,255,0.9)',
+    color: '#4a5568',
     fontSize: '1rem',
   },
   chaptersContainer: {
@@ -239,9 +247,10 @@ const styles: { [key: string]: React.CSSProperties } = {
     gap: '1rem',
   },
   chapterWrapper: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: 'white',
     borderRadius: '1rem',
     overflow: 'hidden',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
   },
   chapterButton: {
     width: '100%',
@@ -272,7 +281,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: 'flex',
     flexDirection: 'column',
     gap: '0.8rem',
-    backgroundColor: 'rgba(255,255,255,0.95)',
+    backgroundColor: '#f8fafc',
   },
   chapterExamCard: {
     display: 'flex',
@@ -283,7 +292,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: '0.75rem',
     cursor: 'pointer',
     transition: 'all 0.2s',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
     border: '1px solid #81c784',
   },
   chapterExamIcon: {
@@ -302,7 +311,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     position: 'relative',
   },
   dividerText: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f8fafc',
     padding: '0.2rem 1rem',
     borderRadius: '1rem',
     fontSize: '0.75rem',
@@ -317,7 +326,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: '0.75rem',
     cursor: 'pointer',
     transition: 'all 0.2s',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.06)',
   },
   lessonIcon: {
     fontSize: '1.8rem',
@@ -378,14 +387,15 @@ const styles: { [key: string]: React.CSSProperties } = {
     transition: 'all 0.2s',
   },
   infoBox: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: '#ebf8ff',
     borderRadius: '1rem',
-    padding: '1rem',
+    padding: '1.5rem',
     marginTop: '2rem',
     maxWidth: '600px',
     marginLeft: 'auto',
     marginRight: 'auto',
     textAlign: 'center',
-    color: 'black',
+    color: '#2b6cb0',
+    border: '1px solid #bee3f8',
   },
 };

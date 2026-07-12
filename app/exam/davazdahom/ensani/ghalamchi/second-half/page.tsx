@@ -15,7 +15,7 @@ interface Lesson {
 export default function FirstHalfLessonsPage() {
   const params = useParams();
   const router = useRouter();
-  const grade = params.grade as string;      // 'yazdahom'
+  const grade = params.grade as string;      // 'davazdahom'
   const field = params.field as string;      // 'ensani'
   const exam = params.exam as string;        // 'ghalamchi'
   const semester = params.semester as string; // 'first-half'
@@ -59,47 +59,47 @@ export default function FirstHalfLessonsPage() {
     return semesterMap[semesterPath] || semesterPath;
   };
 
-  // ======================== لیست دروس نیم‌سال اول یازدهم انسانی ========================
+  // ======================== لیست دروس نیم‌سال اول دوازدهم انسانی ========================
   const lessons: Lesson[] = [
-    { id: 1, name: 'فارسی (2)', icon: '📖', color: '#9C27B0', description: 'متون نظم و نثر، آرایه‌های ادبی، تاریخ ادبیات', questionCount: 10 },
-    { id: 2, name: 'دین و زندگی (2)', icon: '🕌', color: '#4CAF50', description: 'معارف اسلامی، اخلاق، احکام شرعی', questionCount: 10 },
-    { id: 3, name: 'زبان انگلیسی (2)', icon: '🇬🇧', color: '#F44336', description: 'دستور زبان، واژگان، مهارت‌های خواندن', questionCount: 8 },
-    { id: 4, name: 'عربی (2)', icon: '🕌', color: '#2196F3', description: 'ترجمه و تعریب، قواعد عربی، صرف و نحو', questionCount: 8 },
-    { id: 5, name: 'ریاضی و آمار (2)', icon: '📊', color: '#00BCD4', description: 'آمار، احتمال، تابع و معادلات', questionCount: 8 },
-    { id: 6, name: 'اقتصاد', icon: '💰', color: '#FF9800', description: 'مفاهیم اقتصادی، تولید، توزیع و مصرف', questionCount: 8 },
-    { id: 7, name: 'تاریخ (2)', icon: '📜', color: '#795548', description: 'تاریخ اسلام و ایران، تحولات سیاسی و اجتماعی', questionCount: 8 },
-    { id: 8, name: 'جغرافیا (2)', icon: '🌍', color: '#00BCD4', description: 'جغرافیای ایران، اقلیم، جمعیت و فعالیت‌ها', questionCount: 8 },
-    { id: 9, name: 'جامعه‌شناسی (2)', icon: '👥', color: '#E91E63', description: 'جامعه‌شناسی، نهادهای اجتماعی، فرهنگ', questionCount: 8 },
-    { id: 10, name: 'منطق', icon: '🧠', color: '#3F51B5', description: 'مبانی منطق، قیاس، استدلال و مغالطات', questionCount: 8 },
-    { id: 11, name: 'علوم و فنون ادبی (2)', icon: '✍️', color: '#8BC34A', description: 'سبک‌شناسی، عروض، قافیه، بدیع', questionCount: 8 },
-    { id: 12, name: 'انسان و محیط زیست', icon: '🌿', color: '#607D8B', description: 'تعامل انسان با محیط، توسعه پایدار', questionCount: 8 },
-    { id: 13, name: 'تعلیمات ادیان الهی و اخلاق (2)', icon: '🕊️', color: '#9C27B0', description: 'ویژهٔ اقلیت‌های دینی', questionCount: 8 },
+    { id: 1, name: 'فارسی (3)', icon: '📖', color: '#9C27B0', description: 'متن‌های ادبی، آرایه‌ها، دستور زبان', questionCount: 10 },
+    { id: 2, name: 'دین و زندگی (3)', icon: '🕌', color: '#4CAF50', description: 'آموزه‌های دینی، اخلاق، احکام', questionCount: 10 },
+    { id: 3, name: 'زبان انگلیسی (3)', icon: '🇬🇧', color: '#F44336', description: 'گرامر، واژگان، درک مطلب', questionCount: 8 },
+    { id: 4, name: 'عربی، زبان قرآن (3)', icon: '🕌', color: '#2196F3', description: 'ترجمه، قواعد، تحلیل صرفی', questionCount: 8 },
+    { id: 5, name: 'ریاضی و آمار (3)', icon: '📊', color: '#00BCD4', description: 'آمار توصیفی، احتمال، نمودارها', questionCount: 8 },
+    { id: 6, name: 'تاریخ (3)', icon: '📜', color: '#795548', description: 'تاریخ معاصر ایران و جهان', questionCount: 8 },
+    { id: 7, name: 'جغرافیا (3)', icon: '🌍', color: '#00BCD4', description: 'جغرافیای طبیعی و انسانی', questionCount: 8 },
+    { id: 8, name: 'جامعه‌شناسی (3)', icon: '👥', color: '#E91E63', description: 'نظریه‌های جامعه‌شناسی، کنش اجتماعی', questionCount: 8 },
+    { id: 9, name: 'فلسفه (2)', icon: '🧠', color: '#3F51B5', description: 'مبانی فلسفه، منطق، معرفت‌شناسی', questionCount: 8 },
+    { id: 10, name: 'روانشناسی', icon: '🧘', color: '#009688', description: 'رفتار و فرایندهای روانی', questionCount: 8 },
+    { id: 11, name: 'علوم و فنون ادبی (3)', icon: '✍️', color: '#8BC34A', description: 'تاریخ ادبیات، سبک‌شناسی، عروض', questionCount: 8 },
+    { id: 12, name: 'سلامت و بهداشت', icon: '🌿', color: '#607D8B', description: 'تعامل انسان و طبیعت، بحران‌های زیست‌محیطی', questionCount: 8 },
+    { id: 13, name: 'تحلیل فرهنگی', icon: '🕊️', color: '#9C27B0', description: 'ویژهٔ اقلیت‌های دینی', questionCount: 8 },
   ];
 
   // نگاشت نام درس به slug انگلیسی (برای ساخت URL صحیح و جلوگیری از Unicode)
   const getLessonSlug = (lessonName: string): string => {
     const trimmed = lessonName.trim();
     const slugMap: Record<string, string> = {
-      'فارسی (2)': 'farsi-2-ensani',
-      'دین و زندگی (2)': 'din-va-zendegi-2-ensani',
-      'زبان انگلیسی (2)': 'english-2-ensani',
-      'عربی (2)': 'arabi-2-ensani',
-      'ریاضی و آمار (2)': 'riyazi-va-amar-2-ensani',
-      'اقتصاد': 'eghtesad-ensani',
-      'تاریخ (2)': 'tarikh-2-ensani',
-      'جغرافیا (2)': 'joghrafia-2-ensani',
-      'جامعه‌شناسی (2)': 'jamee-shenasi-2-ensani',
-      'منطق': 'mantegh-ensani',
-      'علوم و فنون ادبی (2)': 'oloom-va-fonoon-2-ensani',
-      'انسان و محیط زیست': 'ensan-va-mohit-zist-ensani',
-      'مدیریت خانواده و سبک زندگی': 'modiriatkhanevadeh-va-sabkzendegi-ensani',
+      'فارسی (3)': 'farsi-3-ensani',
+      'دین و زندگی (3)': 'din-va-zendegi-3-ensani',
+      'زبان انگلیسی (3)': 'english-3-ensani',
+      'عربی، زبان قرآن (3)': 'arabi-3-ensani',
+      'ریاضی و آمار (3)': 'riyazi-va-amar-3-ensani',
+      'تاریخ (3)': 'tarikh-3-ensani',
+      'جغرافیا (3)': 'joghrafia-3-ensani',
+      'جامعه‌شناسی (3)': 'jamee-shenasi-3-ensani',
+      'فلسفه (2)': 'falsafe-2-ensani',
+      'روانشناسی': 'ravanshenasi-ensani',
+      'علوم و فنون ادبی (3)': 'oloom-va-fonoon-3-ensani',
+      'سلامت و بهداشت': 'salamat-va-behdasht-ensani',
+      'تحلیل فرهنگی': 'tshlil-farhangi-ensani',
     };
     return slugMap[trimmed] || trimmed.replace(/ /g, '-').toLowerCase();
   };
 
   const handleLessonClick = (lessonName: string) => {
     const lessonSlug = getLessonSlug(lessonName);
-    router.push(`/exam/yazdahom/ensani/ghalamchi/first-half/${lessonSlug}`);
+    router.push(`/exam/davazdahom/ensani/ghalamchi/first-half/${lessonSlug}`);
   };
 
   return (
