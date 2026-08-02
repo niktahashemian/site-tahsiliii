@@ -27,7 +27,7 @@ import Footer from './component/footer/page';
 
 export const metadata: Metadata = {
   title: 'سایت آزمون های جامعه پرتو امید',
-  description: 'پایه‌های تحصیلی دهم، یازدهم و دوازدهم',
+  description: 'آزمون های جامعه پرتو امید',
 };
 
 export default function RootLayout({

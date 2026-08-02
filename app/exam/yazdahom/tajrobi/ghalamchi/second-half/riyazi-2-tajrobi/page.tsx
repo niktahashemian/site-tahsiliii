@@ -261,11 +261,11 @@ export default function RiyaziVaAmar2ChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/yazdahom/ensani/ghalamchi/first-half/riyazi-va-amar-2/lesson/${lessonSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/ghalamchi/second-half/riyazi-2-tajrobi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/yazdahom/ensani/ghalamchi/first-half/riyazi-va-amar-2/chapter-exam/${examSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/ghalamchi/second-half/riyazi-2-tajrobi/chapter-exam/${examSlug}`);
   };
 
   return (

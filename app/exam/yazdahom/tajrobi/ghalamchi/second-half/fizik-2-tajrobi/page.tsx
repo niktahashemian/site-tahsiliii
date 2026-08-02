@@ -261,11 +261,11 @@ export default function Fizik2ChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/fizik-2-tajrobi/lesson/${lessonSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/ghalamchi/second-half/fizik-2-tajrobi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/fizik-2-tajrobi/chapter-exam/${examSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/ghalamchi/second-half/fizik-2-tajrobi/chapter-exam/${examSlug}`);
   };
 
   return (

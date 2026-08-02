@@ -261,11 +261,11 @@ export default function ZaminShenasiChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/zamin-shenasi-tajrobi/lesson/${lessonSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/ghalamchi/second-half/zamin-shenasi-tajrobi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/zamin-shenasi-tajrobi/chapter-exam/${examSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/ghalamchi/second-half/zamin-shenasi-tajrobi/chapter-exam/${examSlug}`);
   };
 
   return (

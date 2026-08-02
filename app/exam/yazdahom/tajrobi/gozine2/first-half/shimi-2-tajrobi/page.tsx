@@ -261,11 +261,11 @@ export default function Shimi2ChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/shimi-2-tajrobi/lesson/${lessonSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/gozine2/first-half/shimi-2-tajrobi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/shimi-2-tajrobi/chapter-exam/${examSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/gozine2/first-half/shimi-2-tajrobi/chapter-exam/${examSlug}`);
   };
 
   return (

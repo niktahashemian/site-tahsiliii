@@ -261,11 +261,11 @@ export default function ZaminShenasiChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/zamin-shenasi-tajrobi/lesson/${lessonSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/kheili%20sabz/first-half/zamin-shenasi-tajrobi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/zamin-shenasi-tajrobi/chapter-exam/${examSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/kheili%20sabz/first-half/zamin-shenasi-tajrobi/chapter-exam/${examSlug}`);
   };
 
   return (
@@ -277,7 +277,7 @@ export default function ZaminShenasiChaptersPage() {
         
         {/* دکمه بازگشت - در وسط */}
         <div style={styles.backWrapper}>
-          <Link href="/exam/yazdahom/tajrobi/kheilisabz/first-half" className="back-link">
+          <Link href="/exam/yazdahom/tajrobi/kheili%20sabz/first-half" className="back-link">
             ← بازگشت به لیست دروس
           </Link>
         </div>

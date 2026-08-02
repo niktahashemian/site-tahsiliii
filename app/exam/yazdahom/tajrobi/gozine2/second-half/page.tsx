@@ -155,7 +155,7 @@ export default function LessonsPage() {
   // ======================== هندلر کلیک روی درس ========================
   const handleLessonClick = (lessonName: string) => {
     const lessonSlug = getLessonSlug(lessonName);
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/second-half/${lessonSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/gozine2/second-half/${lessonSlug}`);
   };
 
   return (

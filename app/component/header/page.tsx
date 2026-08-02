@@ -21,7 +21,7 @@ const Header = () => {
                         <li className="ras-menu-item ras-home-item">
                             <Link href="/">
                                 <Image
-                                    src="/img/photo-output.jpeg"
+                                    src="/img/parto.PNG"
                                     className="ras-logo-image"
                                     alt="پرتو امید"
                                     width={120}

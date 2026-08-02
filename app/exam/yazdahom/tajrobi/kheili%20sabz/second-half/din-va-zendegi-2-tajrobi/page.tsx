@@ -261,11 +261,11 @@ export default function DinVaZendegi2ChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/din-va-zendegi-2-tajrobi/lesson/${lessonSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/kheili%20sabz/second-half/din-va-zendegi-2-tajrobi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/din-va-zendegi-2-tajrobi/chapter-exam/${examSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/kheili%20sabz/second-half/din-va-zendegi-2-tajrobi/chapter-exam/${examSlug}`);
   };
 
   return (
@@ -277,7 +277,7 @@ export default function DinVaZendegi2ChaptersPage() {
         
         {/* دکمه بازگشت - در وسط */}
         <div style={styles.backWrapper}>
-          <Link href="/exam/yazdahom/tajrobi/ghalamchi/second-half" className="back-link">
+          <Link href="/exam/yazdahom/tajrobi/kheili%20sabz/second-half" className="back-link">
             ← بازگشت به لیست دروس
           </Link>
         </div>

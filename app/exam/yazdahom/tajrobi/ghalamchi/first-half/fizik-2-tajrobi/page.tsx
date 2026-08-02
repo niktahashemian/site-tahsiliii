@@ -1,9 +1,7 @@
 'use client';
-import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-// تعریف تایپ برای درس
 interface Lesson {
   id: number;
   name: string;
@@ -12,7 +10,6 @@ interface Lesson {
   slug: string;
 }
 
-// تعریف تایپ برای فصل
 interface Chapter {
   id: number;
   name: string;
@@ -28,230 +25,59 @@ export default function Fizik2ChaptersPage() {
   const router = useRouter();
   const [openChapter, setOpenChapter] = useState<number | null>(null);
 
-  // ======================== ساختار فصل‌ها و درس‌های کتاب فیزیک (2) یازدهم تجربی - نیم‌سال اول ========================
   const chapters: Chapter[] = [
     {
       id: 1,
-      name: 'فصل اول: الکتریسیته ساکن',
+      name: 'فصل اول: الکتریسیته ساکن پیشرفته',
       icon: '⚡',
-      color: '#F44336',
+      color: '#9C27B0',
       examSlug: 'chapter1-exam',
-      examName: 'آزمون جامع فصل اول: الکتریسیته ساکن',
+      examName: 'آزمون جامع فصل اول: الکتریسیته ساکن پیشرفته',
       examQuestionCount: 25,
       lessons: [
-        { 
-          id: 1, 
-          name: 'درس اول: بار الکتریکی و قانون کولن', 
-          description: 'بار الکتریکی، انواع بار، قانون کولن، نیروی الکتریکی', 
-          questionCount: 12, 
-          slug: 'lesson1' 
-        },
-        { 
-          id: 2, 
-          name: 'درس دوم: میدان الکتریکی', 
-          description: 'مفهوم میدان الکتریکی، خطوط میدان، میدان الکتریکی حاصل از بار نقطه‌ای', 
-          questionCount: 10, 
-          slug: 'lesson2' 
-        },
-        { 
-          id: 3, 
-          name: 'درس سوم: پتانسیل الکتریکی', 
-          description: 'پتانسیل الکتریکی، اختلاف پتانسیل، انرژی پتانسیل الکتریکی', 
-          questionCount: 10, 
-          slug: 'lesson3' 
-        },
+        { id: 1, name: 'درس ۱-۱: بار الکتریکی و قانون کولن پیشرفته', description: 'برهمکنش بارها، اصل جمع نیروها، میدان الکتریکی حاصل از چند بار', questionCount: 14, slug: 'lesson1' },
+        { id: 2, name: 'درس ۱-۲: پتانسیل الکتریکی و انرژی', description: 'پتانسیل ناشی از چند بار، انرژی پتانسیل الکتریکی، رابطه پتانسیل و میدان', questionCount: 12, slug: 'lesson2' },
+        { id: 3, name: 'درس ۱-۳: خازن‌ها و مدارهای RC', description: 'خازن و ظرفیت، انرژی ذخیره شده در خازن، مدارهای RC و شارژ و دشارژ', questionCount: 10, slug: 'lesson3' },
       ]
     },
     {
       id: 2,
-      name: 'فصل دوم: جریان الکتریکی و مدارهای DC',
+      name: 'فصل دوم: جریان الکتریکی و مدارهای DC پیشرفته',
       icon: '🔌',
       color: '#2196F3',
       examSlug: 'chapter2-exam',
-      examName: 'آزمون جامع فصل دوم: جریان الکتریکی و مدارهای DC',
-      examQuestionCount: 28,
+      examName: 'آزمون جامع فصل دوم: جریان الکتریکی و مدارهای DC پیشرفته',
+      examQuestionCount: 25,
       lessons: [
-        { 
-          id: 4, 
-          name: 'درس اول: جریان الکتریکی و مقاومت', 
-          description: 'جریان الکتریکی، مقاومت الکتریکی، قانون اهم', 
-          questionCount: 12, 
-          slug: 'lesson4' 
-        },
-        { 
-          id: 5, 
-          name: 'درس دوم: مدارهای سری و موازی', 
-          description: 'مدار سری، مدار موازی، مدارهای ترکیبی', 
-          questionCount: 10, 
-          slug: 'lesson5' 
-        },
-        { 
-          id: 6, 
-          name: 'درس سوم: توان و انرژی الکتریکی', 
-          description: 'توان الکتریکی، انرژی الکتریکی، کاربردها', 
-          questionCount: 10, 
-          slug: 'lesson6' 
-        },
-        { 
-          id: 7, 
-          name: 'درس چهارم: مدارهای پیچیده', 
-          description: 'قواعد کیرشهف، تحلیل مدارهای پیچیده', 
-          questionCount: 8, 
-          slug: 'lesson7' 
-        },
+        { id: 4, name: 'درس ۲-۱: قوانین کیرشهف', description: 'قانون جریان کیرشهف (KCL)، قانون ولتاژ کیرشهف (KVL)، تحلیل مدارها', questionCount: 12, slug: 'lesson4' },
+        { id: 5, name: 'درس ۲-۲: مدارهای معادل', description: 'تبدیل ستاره-مثلث، مدارهای معادل تونن و نورتون، ماکزیمم توان', questionCount: 10, slug: 'lesson5' },
+        { id: 6, name: 'درس ۲-۳: مدارهای پیچیده و پل وتستون', description: 'تحلیل مدارهای پیچیده، پل وتستون، کاربردها و محاسبات', questionCount: 8, slug: 'lesson6' },
       ]
     },
     {
       id: 3,
-      name: 'فصل سوم: مغناطیس',
+      name: 'فصل سوم: مغناطیس پیشرفته و القا',
       icon: '🧲',
-      color: '#4CAF50',
+      color: '#F44336',
       examSlug: 'chapter3-exam',
-      examName: 'آزمون جامع فصل سوم: مغناطیس',
+      examName: 'آزمون جامع فصل سوم: مغناطیس پیشرفته و القا',
       examQuestionCount: 25,
       lessons: [
-        { 
-          id: 8, 
-          name: 'درس اول: آهنربا و میدان مغناطیسی', 
-          description: 'آهنرباهای دائمی، میدان مغناطیسی، خطوط میدان', 
-          questionCount: 12, 
-          slug: 'lesson8' 
-        },
-        { 
-          id: 9, 
-          name: 'درس دوم: نیروی مغناطیسی بر بار متحرک', 
-          description: 'نیروی لورنتس، حرکت بار در میدان مغناطیسی', 
-          questionCount: 10, 
-          slug: 'lesson9' 
-        },
-        { 
-          id: 10, 
-          name: 'درس سوم: القای الکترومغناطیسی', 
-          description: 'قانون فارادی، قانون لنز، جریان القایی', 
-          questionCount: 10, 
-          slug: 'lesson10' 
-        },
+        { id: 7, name: 'درس ۳-۱: میدان مغناطیسی جریان‌ها', description: 'میدان مغناطیسی ناشی از جریان در سیم مستقیم، حلقه و سیم‌لوله', questionCount: 12, slug: 'lesson7' },
+        { id: 8, name: 'درس ۳-۲: نیروی مغناطیسی روی رساناها', description: 'نیروی وارد بر سیم حامل جریان، گشتاور روی حلقه، موتور الکتریکی', questionCount: 10, slug: 'lesson8' },
+        { id: 9, name: 'درس ۳-۳: القای الکترومغناطیسی پیشرفته', description: 'قانون فارادی، قانون لنز، نیروی محرکه القایی، کاربردهای القا', questionCount: 10, slug: 'lesson9' },
       ]
     },
     {
       id: 4,
-      name: 'فصل چهارم: موج و نور',
-      icon: '🌊',
-      color: '#FF9800',
-      examSlug: 'chapter4-exam',
-      examName: 'آزمون جامع فصل چهارم: موج و نور',
-      examQuestionCount: 30,
-      lessons: [
-        { 
-          id: 11, 
-          name: 'درس اول: امواج مکانیکی', 
-          description: 'انواع موج، ویژگی‌های موج، سرعت موج', 
-          questionCount: 12, 
-          slug: 'lesson11' 
-        },
-        { 
-          id: 12, 
-          name: 'درس دوم: امواج الکترومغناطیسی', 
-          description: 'طیف الکترومغناطیسی، نور مرئی، مادون قرمز و فرابنفش', 
-          questionCount: 10, 
-          slug: 'lesson12' 
-        },
-        { 
-          id: 13, 
-          name: 'درس سوم: بازتاب و شکست نور', 
-          description: 'قوانین بازتاب، قوانین شکست، ضریب شکست', 
-          questionCount: 10, 
-          slug: 'lesson13' 
-        },
-        { 
-          id: 14, 
-          name: 'درس چهارم: تداخل و پراش نور', 
-          description: 'تداخل، پراش، آزمایش یانگ', 
-          questionCount: 10, 
-          slug: 'lesson14' 
-        },
-      ]
-    },
-    {
-      id: 5,
-      name: 'فصل پنجم: فیزیک اتمی و هسته‌ای',
-      icon: '⚛️',
-      color: '#9C27B0',
-      examSlug: 'chapter5-exam',
-      examName: 'آزمون جامع فصل پنجم: فیزیک اتمی و هسته‌ای',
-      examQuestionCount: 25,
-      lessons: [
-        { 
-          id: 15, 
-          name: 'درس اول: ساختار اتم', 
-          description: 'مدل‌های اتمی، طیف‌های اتمی، مدل بور', 
-          questionCount: 12, 
-          slug: 'lesson15' 
-        },
-        { 
-          id: 16, 
-          name: 'درس دوم: واپاشی هسته‌ای', 
-          description: 'پرتوهای هسته‌ای، واپاشی آلفا، بتا و گاما', 
-          questionCount: 10, 
-          slug: 'lesson16' 
-        },
-        { 
-          id: 17, 
-          name: 'درس سوم: کاربردهای انرژی هسته‌ای', 
-          description: 'شکافت هسته‌ای، هم‌جوشی هسته‌ای، نیروگاه هسته‌ای', 
-          questionCount: 10, 
-          slug: 'lesson17' 
-        },
-      ]
-    },
-    {
-      id: 6,
-      name: 'فصل ششم: ترمودینامیک',
-      icon: '🔥',
-      color: '#00BCD4',
-      examSlug: 'chapter6-exam',
-      examName: 'آزمون جامع فصل ششم: ترمودینامیک',
-      examQuestionCount: 28,
-      lessons: [
-        { 
-          id: 18, 
-          name: 'درس اول: دما و گرما', 
-          description: 'دما، گرما، ظرفیت گرمایی، گرمای ویژه', 
-          questionCount: 12, 
-          slug: 'lesson18' 
-        },
-        { 
-          id: 19, 
-          name: 'درس دوم: قوانین ترمودینامیک', 
-          description: 'قانون اول ترمودینامیک، قانون دوم ترمودینامیک', 
-          questionCount: 10, 
-          slug: 'lesson19' 
-        },
-        { 
-          id: 20, 
-          name: 'درس سوم: ماشین‌های گرمایی', 
-          description: 'موتورهای گرمایی، بازده، چرخه کارنو', 
-          questionCount: 10, 
-          slug: 'lesson20' 
-        },
-      ]
-    },
-    {
-      id: 7,
-      name: '🎯 آزمون جامع کل کتاب فیزیک (2)',
+      name: '🏆 آزمون جامع کل کتاب فیزیک (۲) - نیم‌سال اول',
       icon: '🏆',
       color: '#FF6B6B',
       examSlug: 'final-exam',
-      examName: 'آزمون جامع کل کتاب فیزیک (2)',
+      examName: 'آزمون جامع کل کتاب فیزیک (۲) نیم‌سال اول -',
       examQuestionCount: 50,
       lessons: [
-        { 
-          id: 21, 
-          name: '📚 کل دروس کتاب فیزیک (2)', 
-          description: 'شامل تمام مباحث: الکتریسیته، مغناطیس، موج و نور، فیزیک اتمی و ترمودینامیک', 
-          questionCount: 50, 
-          slug: 'final-exam' 
-        },
+        { id: 10, name: '📚 کل دروس کتاب فیزیک (۲) - نیم‌سال اول', description: 'شامل تمام مباحث: الکتریسیته ساکن پیشرفته، جریان الکتریکی و مدارهای DC پیشرفته، مغناطیس پیشرفته و القا', questionCount: 50, slug: 'final-exam' },
       ]
     }
   ];
@@ -261,90 +87,110 @@ export default function Fizik2ChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/fizik-2-tajrobi/lesson/${lessonSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/fizik-2-tajrobi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/fizik-2-tajrobi/chapter-exam/${examSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/ghalamchi/first-half/fizik-2-tajrobi/${examSlug}`);
   };
 
   return (
-    <div style={styles.container}>
-      {/* هدر */}
-      <div style={styles.header}>
-        <h1 style={styles.title}>📚 فیزیک (2) - انتخاب فصل و درس</h1>
-        <p style={styles.subtitle}>برای شروع، روی هر فصل کلیک کنید و سپس درس یا آزمون جامع مورد نظر را انتخاب نمایید</p>
-        
-        {/* دکمه بازگشت - در وسط */}
-        <div style={styles.backWrapper}>
-          <Link href="/exam/yazdahom/tajrobi/ghalamchi/first-half" className="back-link">
-            ← بازگشت به لیست دروس
-          </Link>
-        </div>
+    <div style={{ minHeight: '100vh', padding: '2rem', backgroundColor: '#f0f4f8' }}>
+      <div style={{ textAlign: 'center', marginBottom: '2rem', padding: '2rem', borderRadius: '1rem' }}>
+        <button 
+          onClick={() => router.push('/exam/yazdahom/tajrobi/ghalamchi/first-half')} 
+          style={{ backgroundColor: 'rgba(0,0,0,0.1)', color: '#333', border: 'none', padding: '0.5rem 1.5rem', borderRadius: '0.5rem', cursor: 'pointer', fontSize: '0.9rem', marginBottom: '1rem' }}
+        >
+          ← بازگشت به لیست دروس
+        </button>
+        <h1 style={{ fontSize: '2.5rem', color: '#1a237e', margin: '0.5rem 0', fontWeight: 'bold' }}>⚛️ فیزیک (۲) پایه یازدهم تجربی</h1>
+        <p style={{ color: '#555', fontSize: '1rem' }}>برای شروع، روی هر فصل کلیک کنید و سپس درس یا آزمون جامع مورد نظر را انتخاب نمایید</p>
       </div>
 
-      {/* فصل‌ها */}
-      <div style={styles.chaptersContainer}>
+      <div style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         {chapters.map((chapter) => (
-          <div key={chapter.id} style={styles.chapterWrapper}>
-            {/* دکمه فصل */}
+          <div key={chapter.id} style={{ backgroundColor: 'white', borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
             <button
               onClick={() => handleChapterClick(chapter.id)}
               style={{
-                ...styles.chapterButton,
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '1.2rem 1.5rem',
+                border: 'none',
                 backgroundColor: openChapter === chapter.id ? chapter.color : '#4a5568',
+                color: 'white',
+                fontSize: '1.1rem',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
               }}
             >
-              <span style={styles.chapterIcon}>{chapter.icon}</span>
-              <span style={styles.chapterName}>{chapter.name}</span>
-              <span style={styles.chapterArrow}>{openChapter === chapter.id ? '▲' : '▼'}</span>
+              <span style={{ fontSize: '1.5rem' }}>{chapter.icon}</span>
+              <span style={{ flex: 1, textAlign: 'right', marginRight: '1rem' }}>{chapter.name}</span>
+              <span style={{ fontSize: '0.9rem' }}>{openChapter === chapter.id ? '▲' : '▼'}</span>
             </button>
 
-            {/* درس‌ها و آزمون جامع فصل (فقط در صورت باز بودن نمایش داده می‌شود) */}
             {openChapter === chapter.id && (
-              <div style={styles.lessonsContainer}>
-                {/* آزمون جامع فصل */}
+              <div style={{ padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.8rem', backgroundColor: '#f8f9fa' }}>
                 <div
-                  style={styles.chapterExamCard}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '1rem',
+                    backgroundColor: '#e8f5e9',
+                    borderRadius: '0.75rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                    border: '2px solid #81c784'
+                  }}
                   onClick={() => handleChapterExamClick(chapter.examSlug)}
                 >
-                  <div style={styles.chapterExamIcon}>🎯</div>
-                  <div style={styles.lessonInfo}>
-                    <h3 style={styles.chapterExamTitle}>{chapter.examName}</h3>
-                    <p style={styles.lessonDescription}>آزمون جامع تمام دروس این فصل</p>
-                    <div style={styles.lessonStats}>
-                      <span style={styles.questionCount}>📝 {chapter.examQuestionCount} سوال</span>
-                      <span style={styles.durationBadge}>⏱️ {Math.floor(chapter.examQuestionCount * 1.5)} دقیقه</span>
+                  <div style={{ fontSize: '2rem', marginRight: '1rem' }}>🎯</div>
+                  <div style={{ flex: 1 }}>
+                    <h3 style={{ margin: 0, fontSize: '1rem', fontWeight: 'bold', color: '#2e7d32' }}>{chapter.examName}</h3>
+                    <p style={{ margin: '0.25rem 0', fontSize: '0.8rem', color: '#666' }}>آزمون جامع تمام دروس این فصل</p>
+                    <div style={{ marginTop: '0.25rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                      <span style={{ backgroundColor: '#f0f0f0', padding: '0.2rem 0.6rem', borderRadius: '1rem', fontSize: '0.7rem', color: '#555' }}>📝 {chapter.examQuestionCount} سوال</span>
+                      <span style={{ backgroundColor: '#e3f2fd', padding: '0.2rem 0.6rem', borderRadius: '1rem', fontSize: '0.7rem', color: '#1565c0' }}>⏱️ {Math.floor(chapter.examQuestionCount * 1.5)} دقیقه</span>
                     </div>
                   </div>
-                  <div style={styles.examButton}>
-                    شروع آزمون جامع →
-                  </div>
+                  <div style={{ backgroundColor: '#4caf50', color: 'white', padding: '0.4rem 1rem', borderRadius: '2rem', fontSize: '0.75rem', fontWeight: 'bold', whiteSpace: 'nowrap', transition: 'all 0.2s' }}>شروع آزمون جامع →</div>
                 </div>
 
-                {/* خط جداکننده */}
-                <div style={styles.divider}>
-                  <span style={styles.dividerText}>📖 دروس فصل</span>
+                <div style={{ textAlign: 'center', margin: '0.5rem 0', position: 'relative' }}>
+                  <span style={{ backgroundColor: '#e9ecef', padding: '0.2rem 1rem', borderRadius: '1rem', fontSize: '0.75rem', color: '#6c757d' }}>📖 دروس فصل</span>
                 </div>
 
-                {/* درس‌های فصل */}
                 {chapter.lessons.map((lesson) => (
                   <div
                     key={lesson.id}
-                    style={styles.lessonCard}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '1rem',
+                      backgroundColor: 'white',
+                      borderRadius: '0.75rem',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s',
+                      boxShadow: '0 2px 4px rgba(0,0,0,0.08)'
+                    }}
                     onClick={() => handleLessonClick(lesson.slug)}
                   >
-                    <div style={styles.lessonIcon}>📘</div>
-                    <div style={styles.lessonInfo}>
-                      <h3 style={styles.lessonName}>{lesson.name}</h3>
-                      <p style={styles.lessonDescription}>{lesson.description}</p>
-                      <div style={styles.lessonStats}>
-                        <span style={styles.questionCount}>📝 {lesson.questionCount} سوال</span>
+                    <div style={{ fontSize: '1.8rem', marginRight: '1rem' }}>📘</div>
+                    <div style={{ flex: 1 }}>
+                      <h3 style={{ margin: 0, fontSize: '1rem', fontWeight: 'bold', color: '#333' }}>{lesson.name}</h3>
+                      <p style={{ margin: '0.25rem 0', fontSize: '0.8rem', color: '#666' }}>{lesson.description}</p>
+                      <div style={{ marginTop: '0.25rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                        <span style={{ backgroundColor: '#f0f0f0', padding: '0.2rem 0.6rem', borderRadius: '1rem', fontSize: '0.7rem', color: '#555' }}>📝 {lesson.questionCount} سوال</span>
+                        <span style={{ backgroundColor: '#e3f2fd', padding: '0.2rem 0.6rem', borderRadius: '1rem', fontSize: '0.7rem', color: '#1565c0' }}>⏱️ {Math.floor(lesson.questionCount * 1.5)} دقیقه</span>
                       </div>
                     </div>
-                    <div style={styles.lessonButton}>
-                      شروع آزمون →
-                    </div>
+                    <div style={{ backgroundColor: '#9C27B0', color: 'white', padding: '0.4rem 1rem', borderRadius: '2rem', fontSize: '0.75rem', fontWeight: 'bold', whiteSpace: 'nowrap', transition: 'all 0.2s' }}>شروع آزمون →</div>
                   </div>
                 ))}
               </div>
@@ -353,31 +199,14 @@ export default function Fizik2ChaptersPage() {
         ))}
       </div>
 
-      {/* اطلاعات تکمیلی */}
-      <div style={styles.infoBox}>
+      <div style={{ backgroundColor: 'white', borderRadius: '1rem', padding: '1.5rem', marginTop: '2rem', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', color: '#555' }}>
         <p>💡 نکته: برای شروع آزمون هر درس یا آزمون جامع فصل، روی آن کلیک کنید.</p>
         <p>📊 پس از اتمام هر آزمون، درصد شما به همراه پاسخنامه تشریحی نمایش داده می‌شود.</p>
         <p>🏆 آزمون‌های جامع شامل سوالات ترکیبی از تمام دروس آن فصل می‌باشند.</p>
+        <p>⚛️ این آزمون‌ها مطابق با کتاب فیزیک (۲) پایه یازدهم رشته تجربی - نیم‌سال دوم - انتشارات ماز طراحی شده‌اند.</p>
       </div>
 
       <style>{`
-        .back-link {
-          display: inline-block;
-          background: #4a5568;
-          color: white;
-          padding: 0.6rem 1.5rem;
-          border-radius: 2rem;
-          text-decoration: none;
-          font-size: 0.95rem;
-          font-weight: 500;
-          transition: all 0.3s ease;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .back-link:hover {
-          background: #2d3748;
-          transform: translateX(-4px);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
         .lesson-card:hover {
           transform: translateX(5px);
           box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -399,193 +228,10 @@ export default function Fizik2ChaptersPage() {
         .lessons-container {
           animation: fadeIn 0.3s ease-out;
         }
+        button {
+          cursor: pointer;
+        }
       `}</style>
     </div>
   );
 }
-
-// استایل‌ها
-const styles: { [key: string]: React.CSSProperties } = {
-  container: {
-    minHeight: '100vh',
-    padding: '2rem',
-    background: 'linear-gradient(135deg, #f5f7fa, #c3cfe2)',
-    direction: 'rtl',
-    fontFamily: "'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-  },
-  header: {
-    textAlign: 'center',
-    marginBottom: '2rem',
-  },
-  backWrapper: {
-    marginTop: '1rem',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: '2rem',
-    color: '#1a202c',
-    margin: '0.5rem 0',
-  },
-  subtitle: {
-    color: '#4a5568',
-    fontSize: '1rem',
-  },
-  chaptersContainer: {
-    maxWidth: '900px',
-    margin: '0 auto',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1rem',
-  },
-  chapterWrapper: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
-    borderRadius: '1rem',
-    overflow: 'hidden',
-  },
-  chapterButton: {
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '1.2rem 1.5rem',
-    border: 'none',
-    color: 'white',
-    fontSize: '1.1rem',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-  },
-  chapterIcon: {
-    fontSize: '1.5rem',
-  },
-  chapterName: {
-    flex: 1,
-    textAlign: 'right',
-    marginRight: '1rem',
-  },
-  chapterArrow: {
-    fontSize: '0.9rem',
-  },
-  lessonsContainer: {
-    padding: '1rem',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '0.8rem',
-    backgroundColor: 'rgba(255,255,255,0.95)',
-  },
-  chapterExamCard: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '1rem',
-    backgroundColor: '#e8f5e9',
-    borderRadius: '0.75rem',
-    cursor: 'pointer',
-    transition: 'all 0.2s',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    border: '1px solid #81c784',
-  },
-  chapterExamIcon: {
-    fontSize: '2rem',
-    marginRight: '1rem',
-  },
-  chapterExamTitle: {
-    margin: 0,
-    fontSize: '1rem',
-    fontWeight: 'bold',
-    color: '#2e7d32',
-  },
-  divider: {
-    textAlign: 'center',
-    margin: '0.5rem 0',
-    position: 'relative',
-  },
-  dividerText: {
-    backgroundColor: '#f5f5f5',
-    padding: '0.2rem 1rem',
-    borderRadius: '1rem',
-    fontSize: '0.75rem',
-    color: '#888',
-  },
-  lessonCard: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '1rem',
-    backgroundColor: 'white',
-    borderRadius: '0.75rem',
-    cursor: 'pointer',
-    transition: 'all 0.2s',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-  },
-  lessonIcon: {
-    fontSize: '1.8rem',
-    marginRight: '1rem',
-  },
-  lessonInfo: {
-    flex: 1,
-  },
-  lessonName: {
-    margin: 0,
-    fontSize: '1rem',
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  lessonDescription: {
-    margin: '0.25rem 0',
-    fontSize: '0.75rem',
-    color: '#666',
-  },
-  lessonStats: {
-    marginTop: '0.25rem',
-    display: 'flex',
-    gap: '0.5rem',
-    flexWrap: 'wrap',
-  },
-  questionCount: {
-    backgroundColor: '#f0f0f0',
-    padding: '0.2rem 0.6rem',
-    borderRadius: '1rem',
-    fontSize: '0.7rem',
-    color: '#555',
-  },
-  durationBadge: {
-    backgroundColor: '#e3f2fd',
-    padding: '0.2rem 0.6rem',
-    borderRadius: '1rem',
-    fontSize: '0.7rem',
-    color: '#1565c0',
-  },
-  lessonButton: {
-    backgroundColor: '#9C27B0',
-    color: 'white',
-    padding: '0.4rem 0.8rem',
-    borderRadius: '2rem',
-    fontSize: '0.75rem',
-    fontWeight: 'bold',
-    whiteSpace: 'nowrap',
-    transition: 'all 0.2s',
-  },
-  examButton: {
-    backgroundColor: '#4caf50',
-    color: 'white',
-    padding: '0.4rem 0.8rem',
-    borderRadius: '2rem',
-    fontSize: '0.75rem',
-    fontWeight: 'bold',
-    whiteSpace: 'nowrap',
-    transition: 'all 0.2s',
-  },
-  infoBox: {
-    backgroundColor: 'rgba(255,255,255,0.8)',
-    borderRadius: '1rem',
-    padding: '1rem',
-    marginTop: '2rem',
-    maxWidth: '600px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    textAlign: 'center',
-    color: '#4a5568',
-  },
-};

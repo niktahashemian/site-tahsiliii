@@ -261,23 +261,23 @@ export default function RiyaziVaAmar2ChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/yazdahom/ensani/ghalamchi/first-half/riyazi-va-amar-2/lesson/${lessonSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/kheili%20sabz/second-half/riyazi-2-tajrobi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/yazdahom/ensani/ghalamchi/first-half/riyazi-va-amar-2/chapter-exam/${examSlug}`);
+    router.push(`/exam/yazdahom/tajrobi/kheili%20sabz/second-half/riyazi-2-tajrobi/chapter-exam/${examSlug}`);
   };
 
   return (
     <div style={styles.container}>
       {/* هدر */}
       <div style={styles.header}>
-        <h1 style={styles.title}>📚 ریاضی و آمار (2) - انتخاب فصل و درس</h1>
+        <h1 style={styles.title}>📚 ریاضی  (2) - انتخاب فصل و درس</h1>
         <p style={styles.subtitle}>برای شروع، روی هر فصل کلیک کنید و سپس درس یا آزمون جامع مورد نظر را انتخاب نمایید</p>
         
         {/* دکمه بازگشت - در وسط */}
         <div style={styles.backWrapper}>
-          <Link href="/exam/yazdahom/tajrobi/ghalamchi/second-half" className="back-link">
+          <Link href="/exam/yazdahom/tajrobi/kheili%20sabz/second-half" className="back-link">
             ← بازگشت به لیست دروس
           </Link>
         </div>

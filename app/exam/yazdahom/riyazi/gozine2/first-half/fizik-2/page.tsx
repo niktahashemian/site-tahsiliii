@@ -1,7 +1,5 @@
-
 'use client';
 import Link from 'next/link';
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -30,7 +28,7 @@ export default function Hesaban1ChaptersPage() {
   const router = useRouter();
   const [openChapter, setOpenChapter] = useState<number | null>(null);
 
-  // ======================== ساختار فصل‌ها و درس‌های کتاب حسابان (1) ========================
+  // ======================== ساختار فصل‌ها و درس‌های کتاب فیزیک (2) ========================
   const chapters: Chapter[] = [
     {
       id: 1,
@@ -114,8 +112,7 @@ export default function Hesaban1ChaptersPage() {
       examName: 'آزمون جامع کل کتاب فیزیک (2) ',
       examQuestionCount: 50,
       lessons: [
-        // تمام دروس کتاب (۲۱ درس) به صورت کامل
-        { id: 22, name: '📚 کل دروس کتاب  فیزیک (2) ', description: 'شامل تمام مباحث: جبر و معادله، تابع، نمایی و لگاریتمی، مثلثات، حد و پیوستگی', questionCount: 50, slug: 'final-exam' },
+        { id: 22, name: '📚 کل دروس کتاب  فیزیک (2) ', description: 'شامل تمام مباحث', questionCount: 50, slug: 'final-exam' },
       ]
     }
   ];
@@ -124,12 +121,13 @@ export default function Hesaban1ChaptersPage() {
     setOpenChapter(openChapter === chapterId ? null : chapterId);
   };
 
+  // *** اصلاح مسیرها با اضافه کردن yazdahom ***
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/riyazi/gozine2/first-half/fizik-2/lesson/${lessonSlug}`);
+    router.push(`/exam/yazdahom/riyazi/gozine2/first-half/fizik-2/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/riyazi/gozine2/second-half/fizik-2/chapter-exam/${examSlug}`);
+    router.push(`/exam/yazdahom/riyazi/gozine2/second-half/fizik-2/chapter-exam/${examSlug}`);
   };
 
   return (
@@ -167,7 +165,7 @@ export default function Hesaban1ChaptersPage() {
               <span style={styles.chapterArrow}>{openChapter === chapter.id ? '▲' : '▼'}</span>
             </button>
 
-            {/* درس‌ها و آزمون جامع فصل (فقط در صورت باز بودن نمایش داده می‌شود) */}
+            {/* درس‌ها و آزمون جامع فصل */}
             {openChapter === chapter.id && (
               <div style={styles.lessonsContainer}>
                 {/* آزمون جامع فصل */}
@@ -228,215 +226,45 @@ export default function Hesaban1ChaptersPage() {
       </div>
 
       <style>{`
-        .lesson-card:hover {
-          transform: translateX(5px);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        .lesson-card:hover .lesson-button {
-          background-color: #10b981;
-        }
-        .chapter-exam-card:hover {
-          transform: translateX(5px);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        .chapter-exam-card:hover .exam-button {
-          background-color: #10b981;
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .lessons-container {
-          animation: fadeIn 0.3s ease-out;
-        }
+        .lesson-card:hover { transform: translateX(5px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .lesson-card:hover .lesson-button { background-color: #10b981; }
+        .chapter-exam-card:hover { transform: translateX(5px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        .chapter-exam-card:hover .exam-button { background-color: #10b981; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .lessons-container { animation: fadeIn 0.3s ease-out; }
       `}</style>
     </div>
   );
 }
 
-// استایل‌ها
+// استایل‌ها (بدون تغییر)
 const styles: { [key: string]: React.CSSProperties } = {
-  container: {
-    minHeight: '100vh',
-    padding: '2rem',
-  },
-  header: {
-    textAlign: 'center',
-    marginBottom: '2rem',
-  },
-  backButton: {
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    color: 'white',
-    border: 'none',
-    padding: '0.5rem 1rem',
-    borderRadius: '0.5rem',
-    cursor: 'pointer',
-    fontSize: '0.9rem',
-    marginBottom: '1rem',
-  },
-  title: {
-    fontSize: '2rem',
-    color: 'black',
-    margin: '0.5rem 0',
-  },
-  subtitle: {
-    color: 'rgba(255,255,255,0.9)',
-    fontSize: '1rem',
-  },
-  chaptersContainer: {
-    maxWidth: '900px',
-    margin: '0 auto',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1rem',
-  },
-  chapterWrapper: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
-    borderRadius: '1rem',
-    overflow: 'hidden',
-  },
-  chapterButton: {
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '1.2rem 1.5rem',
-    border: 'none',
-    color: 'white',
-    fontSize: '1.1rem',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-  },
-  chapterIcon: {
-    fontSize: '1.5rem',
-  },
-  chapterName: {
-    flex: 1,
-    textAlign: 'right',
-    marginRight: '1rem',
-  },
-  chapterArrow: {
-    fontSize: '0.9rem',
-  },
-  lessonsContainer: {
-    padding: '1rem',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '0.8rem',
-    backgroundColor: 'rgba(255,255,255,0.95)',
-  },
-  chapterExamCard: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '1rem',
-    backgroundColor: '#e8f5e9',
-    borderRadius: '0.75rem',
-    cursor: 'pointer',
-    transition: 'all 0.2s',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    border: '1px solid #81c784',
-  },
-  chapterExamIcon: {
-    fontSize: '2rem',
-    marginRight: '1rem',
-  },
-  chapterExamTitle: {
-    margin: 0,
-    fontSize: '1rem',
-    fontWeight: 'bold',
-    color: '#2e7d32',
-  },
-  divider: {
-    textAlign: 'center',
-    margin: '0.5rem 0',
-    position: 'relative',
-  },
-  dividerText: {
-    backgroundColor: '#f5f5f5',
-    padding: '0.2rem 1rem',
-    borderRadius: '1rem',
-    fontSize: '0.75rem',
-    color: '#888',
-  },
-  lessonCard: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '1rem',
-    backgroundColor: 'white',
-    borderRadius: '0.75rem',
-    cursor: 'pointer',
-    transition: 'all 0.2s',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-  },
-  lessonIcon: {
-    fontSize: '1.8rem',
-    marginRight: '1rem',
-  },
-  lessonInfo: {
-    flex: 1,
-  },
-  lessonName: {
-    margin: 0,
-    fontSize: '1rem',
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  lessonDescription: {
-    margin: '0.25rem 0',
-    fontSize: '0.75rem',
-    color: '#666',
-  },
-  lessonStats: {
-    marginTop: '0.25rem',
-    display: 'flex',
-    gap: '0.5rem',
-    flexWrap: 'wrap',
-  },
-  questionCount: {
-    backgroundColor: '#f0f0f0',
-    padding: '0.2rem 0.6rem',
-    borderRadius: '1rem',
-    fontSize: '0.7rem',
-    color: '#555',
-  },
-  durationBadge: {
-    backgroundColor: '#e3f2fd',
-    padding: '0.2rem 0.6rem',
-    borderRadius: '1rem',
-    fontSize: '0.7rem',
-    color: '#1565c0',
-  },
-  lessonButton: {
-    backgroundColor: '#9C27B0',
-    color: 'white',
-    padding: '0.4rem 0.8rem',
-    borderRadius: '2rem',
-    fontSize: '0.75rem',
-    fontWeight: 'bold',
-    whiteSpace: 'nowrap',
-    transition: 'all 0.2s',
-  },
-  examButton: {
-    backgroundColor: '#4caf50',
-    color: 'white',
-    padding: '0.4rem 0.8rem',
-    borderRadius: '2rem',
-    fontSize: '0.75rem',
-    fontWeight: 'bold',
-    whiteSpace: 'nowrap',
-    transition: 'all 0.2s',
-  },
-  infoBox: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
-    borderRadius: '1rem',
-    padding: '1rem',
-    marginTop: '2rem',
-    maxWidth: '600px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    textAlign: 'center',
-  },
+  container: { minHeight: '100vh', padding: '2rem' },
+  header: { textAlign: 'center', marginBottom: '2rem' },
+  backButton: { backgroundColor: 'rgba(255,255,255,0.2)', color: 'white', border: 'none', padding: '0.5rem 1rem', borderRadius: '0.5rem', cursor: 'pointer', fontSize: '0.9rem', marginBottom: '1rem' },
+  title: { fontSize: '2rem', color: 'black', margin: '0.5rem 0' },
+  subtitle: { color: 'rgba(255,255,255,0.9)', fontSize: '1rem' },
+  chaptersContainer: { maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' },
+  chapterWrapper: { backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '1rem', overflow: 'hidden' },
+  chapterButton: { width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1.2rem 1.5rem', border: 'none', color: 'white', fontSize: '1.1rem', fontWeight: 'bold', cursor: 'pointer', transition: 'all 0.3s ease' },
+  chapterIcon: { fontSize: '1.5rem' },
+  chapterName: { flex: 1, textAlign: 'right', marginRight: '1rem' },
+  chapterArrow: { fontSize: '0.9rem' },
+  lessonsContainer: { padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.8rem', backgroundColor: 'rgba(255,255,255,0.95)' },
+  chapterExamCard: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem', backgroundColor: '#e8f5e9', borderRadius: '0.75rem', cursor: 'pointer', transition: 'all 0.2s', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', border: '1px solid #81c784' },
+  chapterExamIcon: { fontSize: '2rem', marginRight: '1rem' },
+  chapterExamTitle: { margin: 0, fontSize: '1rem', fontWeight: 'bold', color: '#2e7d32' },
+  divider: { textAlign: 'center', margin: '0.5rem 0', position: 'relative' },
+  dividerText: { backgroundColor: '#f5f5f5', padding: '0.2rem 1rem', borderRadius: '1rem', fontSize: '0.75rem', color: '#888' },
+  lessonCard: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem', backgroundColor: 'white', borderRadius: '0.75rem', cursor: 'pointer', transition: 'all 0.2s', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' },
+  lessonIcon: { fontSize: '1.8rem', marginRight: '1rem' },
+  lessonInfo: { flex: 1 },
+  lessonName: { margin: 0, fontSize: '1rem', fontWeight: 'bold', color: '#333' },
+  lessonDescription: { margin: '0.25rem 0', fontSize: '0.75rem', color: '#666' },
+  lessonStats: { marginTop: '0.25rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' },
+  questionCount: { backgroundColor: '#f0f0f0', padding: '0.2rem 0.6rem', borderRadius: '1rem', fontSize: '0.7rem', color: '#555' },
+  durationBadge: { backgroundColor: '#e3f2fd', padding: '0.2rem 0.6rem', borderRadius: '1rem', fontSize: '0.7rem', color: '#1565c0' },
+  lessonButton: { backgroundColor: '#9C27B0', color: 'white', padding: '0.4rem 0.8rem', borderRadius: '2rem', fontSize: '0.75rem', fontWeight: 'bold', whiteSpace: 'nowrap', transition: 'all 0.2s' },
+  examButton: { backgroundColor: '#4caf50', color: 'white', padding: '0.4rem 0.8rem', borderRadius: '2rem', fontSize: '0.75rem', fontWeight: 'bold', whiteSpace: 'nowrap', transition: 'all 0.2s' },
+  infoBox: { backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '1rem', padding: '1rem', marginTop: '2rem', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' },
 };

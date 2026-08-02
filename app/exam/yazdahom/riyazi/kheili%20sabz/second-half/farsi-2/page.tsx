@@ -1,11 +1,7 @@
-
 'use client';
-import Link from 'next/link';
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-// تعریف تایپ برای درس
 interface Lesson {
   id: number;
   name: string;
@@ -14,7 +10,6 @@ interface Lesson {
   slug: string;
 }
 
-// تعریف تایپ برای فصل
 interface Chapter {
   id: number;
   name: string;
@@ -26,165 +21,107 @@ interface Chapter {
   examQuestionCount: number;
 }
 
-export default function Hesaban1ChaptersPage() {
+export default function Farsi2ChaptersPage() {
   const router = useRouter();
   const [openChapter, setOpenChapter] = useState<number | null>(null);
 
-  // ======================== ساختار فصل‌ها و درس‌های کتاب حسابان (1) ========================
-   const chapters: Chapter[] = [
+  const chapters: Chapter[] = [
     {
       id: 1,
-      name: 'فصل اول: ادبیات تعلیمی',
-      icon: '📐',
-      color: '#9C27B0',
+      name: 'فصل اول: ادبیات و هنر',
+      icon: '📜',
+      color: '#8D6E63',
       examSlug: 'chapter1-exam',
-      examName: 'آزمون جامع فصل اول: ادبیات تعلیمی',
-      examQuestionCount: 30,
+      examName: 'آزمون جامع فصل اول: ادبیات و هنر',
+      examQuestionCount: 25,
       lessons: [
-        { id: 1, name: 'درس اول: نیکی', description: 'حل معادله درجه دوم، دلتا، ریشه‌ها', questionCount: 15, slug: 'lesson1' },
-        { id: 2, name: 'درس دوم: درس دوم: ', description: 'رسم سهمی، رأس، عرض از مبدأ', questionCount: 12, slug: 'lesson2' },
+        { id: 1, name: 'درس ۱-۱: قالب‌های شعری', description: 'شناخت قالب‌های شعری: قصیده، غزل، مثنوی، رباعی و قطعه', questionCount: 12, slug: 'lesson1' },
+        { id: 2, name: 'درس ۱-۲: آرایه‌های ادبی', description: 'تشخیص و کاربرد آرایه‌های ادبی: تشبیه، استعاره، کنایه، مجاز', questionCount: 15, slug: 'lesson2' },
+        { id: 3, name: 'درس ۱-۳: سبک‌های ادبی', description: 'آشنایی با سبک‌های ادبی: خراسانی، عراقی، هندی و بازگشت', questionCount: 10, slug: 'lesson3' },
       ]
     },
     {
       id: 2,
-      name: 'فصل دوم: ادبیات پایداری',
-      icon: '📊',
-      color: '#2196F3',
+      name: 'فصل دوم: دستور زبان فارسی',
+      icon: '📖',
+      color: '#4CAF50',
       examSlug: 'chapter2-exam',
-      examName: 'آزمون جامع فصل دوم: ادبیات پایداری',
+      examName: 'آزمون جامع فصل دوم: دستور زبان فارسی',
       examQuestionCount: 28,
       lessons: [
-        { id: 4, name: 'درس اول: آغازگری تنها', description: 'تعریف تابع، دامنه و برد', questionCount: 10, slug: 'lesson4' },
+        { id: 4, name: 'درس ۲-۱: گروه‌های اسمی و فعلی', description: 'شناخت گروه اسمی، گروه فعلی، هسته و وابسته‌ها', questionCount: 12, slug: 'lesson4' },
+        { id: 5, name: 'درس ۲-۲: نقش‌های دستوری', description: 'شناخت نهاد، مفعول، متمم، مسند و قید', questionCount: 10, slug: 'lesson5' },
+        { id: 6, name: 'درس ۲-۳: زمان‌های فعل', description: 'شناخت زمان‌های فعل: گذشته، حال، آینده و ساختار آن‌ها', questionCount: 10, slug: 'lesson6' },
+        { id: 7, name: 'درس ۲-۴: جمله و اجزای آن', description: 'شناخت جمله، انواع جمله از نظر معنی و ساختار', questionCount: 8, slug: 'lesson7' },
       ]
     },
     {
       id: 3,
-      name: 'فصل سوم: ادبیات غنایی',
-      icon: '📈',
+      name: 'فصل سوم: تاریخ ادبیات ایران',
+      icon: '🏛️',
       color: '#FF9800',
       examSlug: 'chapter3-exam',
-      examName: 'آزمون جامع فصل سوم: ادبیات غنایی',
-      examQuestionCount: 32,
+      examName: 'آزمون جامع فصل سوم: تاریخ ادبیات ایران',
+      examQuestionCount: 25,
       lessons: [
-        { id: 7, name: 'درس اول: پرورده عشق', description: 'ویژگی‌ها و نمودار تابع نمایی', questionCount: 12, slug: 'lesson7' },
-        { id: 8, name: 'درس دوم: باران محبت', description: 'تعریف لگاریتم، خواص لگاریتم', questionCount: 15, slug: 'lesson8' },
+        { id: 8, name: 'درس ۳-۱: ادبیات پیش از اسلام', description: 'ادبیات اوستایی، کتیبه‌ها و آثار دوران باستان', questionCount: 10, slug: 'lesson8' },
+        { id: 9, name: 'درس ۳-۲: ادبیات دوره اسلامی', description: 'ادبیات سده‌های اولیه، شعر و نثر فارسی', questionCount: 12, slug: 'lesson9' },
+        { id: 10, name: 'درس ۳-۳: شاعران و نویسندگان بزرگ', description: 'زندگی و آثار فردوسی، حافظ، سعدی، مولوی و خیام', questionCount: 15, slug: 'lesson10' },
       ]
     },
     {
       id: 4,
-      name: 'فصل چهارم: ادبیات سفر و زندگی',
-      icon: '🔺',
-      color: '#4CAF50',
+      name: 'فصل چهارم: نگارش و انشا',
+      icon: '✍️',
+      color: '#9C27B0',
       examSlug: 'chapter4-exam',
-      examName: 'آزمون جامع فصل چهارم: ادبیات سفر و زندگی',
-      examQuestionCount: 28,
+      examName: 'آزمون جامع فصل چهارم: نگارش و انشا',
+      examQuestionCount: 22,
       lessons: [
-        { id: 10, name: 'درس اول: در کوی عاشقان', description: 'نسبت‌های مثلثاتی، دایره واحد', questionCount: 12, slug: 'lesson10' },
-        { id: 11, name: 'درس دوم: ذوق لطیف', description: 'اتحادهای مثلثاتی', questionCount: 10, slug: 'lesson11' },
+        { id: 11, name: 'درس ۴-۱: اصول نگارش', description: 'رعایت اصول نگارش، پاراگراف‌بندی، ویرایش و علائم نگارشی', questionCount: 10, slug: 'lesson11' },
+        { id: 12, name: 'درس ۴-۲: انواع انشا', description: 'انشای توصیفی، روایی، استدلالی و توضیحی', questionCount: 12, slug: 'lesson12' },
+        { id: 13, name: 'درس ۴-۳: نگارش نامه و گزارش', description: 'آداب نگارش نامه، گزارش‌نویسی و صورت‌جلسه', questionCount: 8, slug: 'lesson13' },
       ]
     },
     {
       id: 5,
-      name: 'فصل پنجم:  ادبیات انقلاب اسلامی',
-      icon: '∫',
-      color: '#F44336',
-      examSlug: 'chapter5-exam',
-      examName: 'آزمون جامع فصل پنجم: ادبیات انقلاب اسلامی',
-      examQuestionCount: 35,
-      lessons: [
-        { id: 12, name: 'درس اول: یاران عاشق', description: 'حد توابع، حد یک طرفه', questionCount: 15, slug: 'lesson12' },
-      ]
-    },
-    {
-      id: 6,
-      name: 'فصل ششم:   ادبیات حماسی',
-      icon: '∫',
-      color: '#F44336',
-      examSlug: 'chapter5-exam',
-      examName: 'آزمون جامع فصل ششم:  ادبیات حماسی',
-      examQuestionCount: 35,
-      lessons: [
-        { id: 13, name: 'درس اول: کاوه دادخواه', description: 'حد توابع، حد یک طرفه', questionCount: 15, slug: 'lesson13' },
-        { id: 14, name: 'درس اول: حمله حیدری', description: 'حد توابع، حد یک طرفه', questionCount: 15, slug: 'lesson14' },
-      ]
-    },
-    {
-      id: 7,
-      name: 'فصل هفتم:   داستانی',
-      icon: '∫',
-      color: '#F44336',
-      examSlug: 'chapter5-exam',
-      examName: 'آزمون جامع فصل هفتم:  داستانی',
-      examQuestionCount: 35,
-      lessons: [
-        { id: 15, name: 'درس اول: کبوتر طوق‌دار', description: 'حد توابع، حد یک طرفه', questionCount: 15, slug: 'lesson13' },
-        { id: 16, name: 'درس اول: قصه عینکم', description: 'حد توابع، حد یک طرفه', questionCount: 15, slug: 'lesson14' },
-      ]
-    },
-    {
-      id: 8,
-      name: 'فصل هشتم:  ادبیات جهان',
-      icon: '∫',
-      color: '#F44336',
-      examSlug: 'chapter5-exam',
-      examName: 'آزمون جامع فصل پنجم: ادبیات انقلاب اسلامی',
-      examQuestionCount: 35,
-      lessons: [
-        { id: 17, name: 'درس اول: خاموشی دریا', description: 'حد توابع، حد یک طرفه', questionCount: 15, slug: 'lesson15' },
-        { id: 18, name: 'درس اول: خوان عدل', description: 'حد توابع، حد یک طرفه', questionCount: 15, slug: 'lesson16' },
-      ]
-    },
-    {
-      id: 9,
-      name: '🎯 آزمون جامع کل کتاب فارسی (2) ',
+      name: '🏆 آزمون جامع کل کتاب فارسی (2)',
       icon: '🏆',
       color: '#FF6B6B',
       examSlug: 'final-exam',
-      examName: 'آزمون جامع کل کتاب فارسی (2) ',
+      examName: 'آزمون جامع کل کتاب فارسی (2)',
       examQuestionCount: 50,
       lessons: [
-        // تمام دروس کتاب (۲۱ درس) به صورت کامل
-        { id: 22, name: '📚 کل دروس کتاب  فارسی (2) ', description: 'شامل تمام مباحث: جبر و معادله، تابع، نمایی و لگاریتمی، مثلثات، حد و پیوستگی', questionCount: 50, slug: 'final-exam' },
+        { id: 14, name: '📚 کل دروس کتاب فارسی (2)', description: 'شامل تمام مباحث: ادبیات و هنر، دستور زبان، تاریخ ادبیات و نگارش', questionCount: 50, slug: 'final-exam' },
       ]
     }
   ];
-
 
   const handleChapterClick = (chapterId: number) => {
     setOpenChapter(openChapter === chapterId ? null : chapterId);
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/riyazi/kheili%20sabz/first-half/fizik-2/lesson/${lessonSlug}`);
+    router.push(`/exam/yazdahom/riyazi/kheili%20sabz/second-half/farsi-2/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/riyazi/kheili%20sabz/second-half/fizik-2/chapter-exam/${examSlug}`);
+    router.push(`/exam/yazdahom/riyazi/kheili%20sabz/second-half/farsi-2/chapter-exam/${examSlug}`);
   };
 
   return (
     <div style={styles.container}>
-      {/* هدر */}
-      <div className="exam-header">
-        <Link href="http://localhost:3000/exam/yazdahom/riyazi/kheili%20sabz/second-half" className="back-to-home">
-          ← بازگشت به لیست دروس
-        </Link>
-       
-      </div>
       <div style={styles.header}>
-        <button onClick={() => router.back()} style={styles.backButton}>
+        <button onClick={() => router.push('/exam/yazdahom/riyazi/kheili%20sabz/second-half')} style={styles.backButton}>
           ← بازگشت به لیست دروس
         </button>
-        
-        <h1 style={styles.title}>📚 فارسی (2) - انتخاب فصل و درس</h1>
+        <h1 style={styles.title}>📜 فارسی (2) - پایه یازدهم ریاضی </h1>
         <p style={styles.subtitle}>برای شروع، روی هر فصل کلیک کنید و سپس درس یا آزمون جامع مورد نظر را انتخاب نمایید</p>
       </div>
 
-      {/* فصل‌ها */}
       <div style={styles.chaptersContainer}>
         {chapters.map((chapter) => (
           <div key={chapter.id} style={styles.chapterWrapper}>
-            {/* دکمه فصل */}
             <button
               onClick={() => handleChapterClick(chapter.id)}
               style={{
@@ -197,10 +134,8 @@ export default function Hesaban1ChaptersPage() {
               <span style={styles.chapterArrow}>{openChapter === chapter.id ? '▲' : '▼'}</span>
             </button>
 
-            {/* درس‌ها و آزمون جامع فصل (فقط در صورت باز بودن نمایش داده می‌شود) */}
             {openChapter === chapter.id && (
               <div style={styles.lessonsContainer}>
-                {/* آزمون جامع فصل */}
                 <div
                   style={styles.chapterExamCard}
                   onClick={() => handleChapterExamClick(chapter.examSlug)}
@@ -214,17 +149,13 @@ export default function Hesaban1ChaptersPage() {
                       <span style={styles.durationBadge}>⏱️ {Math.floor(chapter.examQuestionCount * 1.5)} دقیقه</span>
                     </div>
                   </div>
-                  <div style={styles.examButton}>
-                    شروع آزمون جامع →
-                  </div>
+                  <div style={styles.examButton}>شروع آزمون جامع →</div>
                 </div>
 
-                {/* خط جداکننده */}
                 <div style={styles.divider}>
                   <span style={styles.dividerText}>📖 دروس فصل</span>
                 </div>
 
-                {/* درس‌های فصل */}
                 {chapter.lessons.map((lesson) => (
                   <div
                     key={lesson.id}
@@ -237,11 +168,10 @@ export default function Hesaban1ChaptersPage() {
                       <p style={styles.lessonDescription}>{lesson.description}</p>
                       <div style={styles.lessonStats}>
                         <span style={styles.questionCount}>📝 {lesson.questionCount} سوال</span>
+                        <span style={styles.durationBadge}>⏱️ {Math.floor(lesson.questionCount * 1.5)} دقیقه</span>
                       </div>
                     </div>
-                    <div style={styles.lessonButton}>
-                      شروع آزمون →
-                    </div>
+                    <div style={styles.lessonButton}>شروع آزمون →</div>
                   </div>
                 ))}
               </div>
@@ -250,11 +180,11 @@ export default function Hesaban1ChaptersPage() {
         ))}
       </div>
 
-      {/* اطلاعات تکمیلی */}
       <div style={styles.infoBox}>
         <p>💡 نکته: برای شروع آزمون هر درس یا آزمون جامع فصل، روی آن کلیک کنید.</p>
         <p>📊 پس از اتمام هر آزمون، درصد شما به همراه پاسخنامه تشریحی نمایش داده می‌شود.</p>
         <p>🏆 آزمون‌های جامع شامل سوالات ترکیبی از تمام دروس آن فصل می‌باشند.</p>
+        <p>📜 این آزمون‌ها مطابق با کتاب فارسی (۲) پایه یازدهم رشته ریاضی طراحی شده‌اند.</p>
       </div>
 
       <style>{`
@@ -284,33 +214,36 @@ export default function Hesaban1ChaptersPage() {
   );
 }
 
-// استایل‌ها
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
     minHeight: '100vh',
     padding: '2rem',
+    backgroundColor: '#f0f4f8',
   },
   header: {
     textAlign: 'center',
     marginBottom: '2rem',
+    padding: '2rem',
+    borderRadius: '1rem',
   },
   backButton: {
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    color: 'white',
+    backgroundColor: 'rgba(0,0,0,0.1)',
+    color: '#333',
     border: 'none',
-    padding: '0.5rem 1rem',
+    padding: '0.5rem 1.5rem',
     borderRadius: '0.5rem',
     cursor: 'pointer',
     fontSize: '0.9rem',
     marginBottom: '1rem',
   },
   title: {
-    fontSize: '2rem',
-    color: 'black',
+    fontSize: '2.5rem',
+    color: '#1a237e',
     margin: '0.5rem 0',
+    fontWeight: 'bold',
   },
   subtitle: {
-    color: 'rgba(255,255,255,0.9)',
+    color: '#555',
     fontSize: '1rem',
   },
   chaptersContainer: {
@@ -321,9 +254,10 @@ const styles: { [key: string]: React.CSSProperties } = {
     gap: '1rem',
   },
   chapterWrapper: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: 'white',
     borderRadius: '1rem',
     overflow: 'hidden',
+    boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
   },
   chapterButton: {
     width: '100%',
@@ -354,7 +288,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: 'flex',
     flexDirection: 'column',
     gap: '0.8rem',
-    backgroundColor: 'rgba(255,255,255,0.95)',
+    backgroundColor: '#f8f9fa',
   },
   chapterExamCard: {
     display: 'flex',
@@ -366,7 +300,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     cursor: 'pointer',
     transition: 'all 0.2s',
     boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    border: '1px solid #81c784',
+    border: '2px solid #81c784',
   },
   chapterExamIcon: {
     fontSize: '2rem',
@@ -384,11 +318,11 @@ const styles: { [key: string]: React.CSSProperties } = {
     position: 'relative',
   },
   dividerText: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#e9ecef',
     padding: '0.2rem 1rem',
     borderRadius: '1rem',
     fontSize: '0.75rem',
-    color: '#888',
+    color: '#6c757d',
   },
   lessonCard: {
     display: 'flex',
@@ -399,7 +333,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: '0.75rem',
     cursor: 'pointer',
     transition: 'all 0.2s',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.08)',
   },
   lessonIcon: {
     fontSize: '1.8rem',
@@ -416,7 +350,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   lessonDescription: {
     margin: '0.25rem 0',
-    fontSize: '0.75rem',
+    fontSize: '0.8rem',
     color: '#666',
   },
   lessonStats: {
@@ -442,7 +376,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   lessonButton: {
     backgroundColor: '#9C27B0',
     color: 'white',
-    padding: '0.4rem 0.8rem',
+    padding: '0.4rem 1rem',
     borderRadius: '2rem',
     fontSize: '0.75rem',
     fontWeight: 'bold',
@@ -452,7 +386,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   examButton: {
     backgroundColor: '#4caf50',
     color: 'white',
-    padding: '0.4rem 0.8rem',
+    padding: '0.4rem 1rem',
     borderRadius: '2rem',
     fontSize: '0.75rem',
     fontWeight: 'bold',
@@ -460,13 +394,15 @@ const styles: { [key: string]: React.CSSProperties } = {
     transition: 'all 0.2s',
   },
   infoBox: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: 'white',
     borderRadius: '1rem',
-    padding: '1rem',
+    padding: '1.5rem',
     marginTop: '2rem',
     maxWidth: '600px',
     marginLeft: 'auto',
     marginRight: 'auto',
     textAlign: 'center',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    color: '#555',
   },
 };

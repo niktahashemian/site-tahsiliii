@@ -1,298 +1,509 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import QuestionCard from './QuestionCard'; // مسیر را بر اساس پروژه خود تنظیم کنید
 
-// تعریف تایپ سوال
-interface QuestionType {
-  id: number;
-  text: string;
-  options: {
-    A: string;
-    B: string;
-    C: string;
-    D: string;
-  };
-  correctAnswer: string;
-  explanation: string;
-}
-
-// دیتابیس سوالات درس اول (نمونه)
-const questionsData: QuestionType[] = [
-  {
-    id: 1,
-    text: 'مجموع جملات دنبالهٔ حسابی ۵، ۹، ۱۳، ... تا ۲۰ جمله اول کدام است؟',
-    options: {
-      A: '۸۰۰',
-      B: '۸۲۰',
-      C: '۸۴۰',
-      D: '۸۶۰',
-    },
-    correctAnswer: 'D',
-    explanation: 'فرمول مجموع جملات حسابی: Sn = n/2[2a1 + (n-1)d] = 10[10 + 19×4] = 10×86 = 860',
-  },
-  {
-    id: 2,
-    text: 'در یک دنبالهٔ هندسی، جملهٔ اول ۳ و نسبت مشترک ۲ است. مجموع ۸ جملهٔ اول برابر است با:',
-    options: {
-      A: '۷۶۵',
-      B: '۷۶۸',
-      C: '۷۷۰',
-      D: '۷۷۲',
-    },
-    correctAnswer: 'A',
-    explanation: 'فرمول مجموع دنباله هندسی: Sn = a1(r^n -1)/(r-1) = 3(256-1)/(2-1)=3×255=765',
-  },
-  {
-    id: 3,
-    text: 'حاصل عبارت ۲ + ۴ + ۶ + ... + ۱۰۰ کدام است؟',
-    options: {
-      A: '۲۵۵۰',
-      B: '۲۵۲۵',
-      C: '۲۵۷۵',
-      D: '۲۶۰۰',
-    },
-    correctAnswer: 'A',
-    explanation: 'این یک دنباله حسابی با a1=2, d=2, n=50 است. مجموع = 50/2 × (2+100) = 25×102=2550',
-  },
-];
-
-export default function Lesson1Page() {
+const PhysicsFinalExam = () => {
   const router = useRouter();
-  const [userAnswers, setUserAnswers] = useState<Record<number, string>>({});
-  const [submitted, setSubmitted] = useState(false);
 
-  const handleOptionSelect = (questionId: number, optionValue: string) => {
-    setUserAnswers((prev) => ({ ...prev, [questionId]: optionValue }));
-  };
+  // ================= سوالات جامع فیزیک ۲ (ترکیبی از ۴ فصل) =================
+  const questions = [
+    // --- فصل اول: الکتریسیته ساکن ---
+    {
+      id: 1,
+      text: "دو بار الکتریکی نقطه‌ای یکسان با بار q = +2 μC در فاصله ۱۰ سانتی‌متری از یکدیگر قرار دارند. اندازه نیروی الکتریکی بین این دو بار چند نیوتون است؟ (k = 9 × 10^9 N.m^2/C^2)",
+      options: ["3.6", "1.8", "0.9", "0.45"],
+      correctIndex: 0,
+      answer: "گزینه ۱ (3.6 N): طبق قانون کولن F = k(q1*q2)/r^2 = 9*10^9 * (2*10^-6 * 2*10^-6) / (0.1)^2 = 3.6 N"
+    },
+    {
+      id: 2,
+      text: "یک کره رسانای توپر با بار Q = +12 μC و شعاع ۵ سانتی‌متر داریم. میدان الکتریکی در فاصله ۱۰ سانتی‌متری از مرکز این کره چند نیوتون بر کولن است؟",
+      options: ["1.08 × 10^7", "2.16 × 10^7", "4.32 × 10^7", "صفر"],
+      correctIndex: 0,
+      answer: "گزینه ۱: میدان خارج از کره مانند بار نقطه‌ای است. r = 0.1 m → E = k*Q/r^2 = 9*10^9 * 12*10^-6 / (0.01) = 1.08 × 10^7 N/C"
+    },
+    {
+      id: 3,
+      text: "پتانسیل الکتریکی در فاصله r از یک بار نقطه‌ای Q برابر با V است. اگر فاصله را نصف کنیم و بار را دو برابر کنیم، پتانسیل جدید چند برابر V می‌شود؟",
+      options: ["2", "4", "6", "8"],
+      correctIndex: 1,
+      answer: "گزینه ۲ (4): رابطه پتانسیل V = kQ/r است. در حالت جدید: V' = k(2Q) / (r/2) = 4(kQ/r) = 4V."
+    },
+    {
+      id: 4,
+      text: "یک خازن تخت با صفحه‌های مساحت A و فاصله d در خلأ، ظرفیت C دارد. اگر فاصله صفحه‌ها را نصف کرده و ماده‌ای با ثابت دی‌الکتریک K=3 بین آنها قرار دهیم، ظرفیت جدید چند برابر C می‌شود؟",
+      options: ["1.5", "3", "6", "12"],
+      correctIndex: 2,
+      answer: "گزینه ۳ (6): C = ε₀A/d. فاصله نصف و K=3 می‌شود: C' = 3ε₀A / (d/2) = 6C."
+    },
+    // --- فصل دوم: جریان الکتریکی و مدارها ---
+    {
+      id: 5,
+      text: "در یک مدار الکتریکی، جریان I = 2 آمپر به مدت t = ۵ دقیقه از یک مقطع سیم می‌گذرد. تعداد الکترون‌هایی که در این مدت از مقطع عبور می‌کنند، کدام است؟ (بار الکترون e = 1.6 × 10^-19 C)",
+      options: ["3.75 × 10^21", "7.5 × 10^20", "3.75 × 10^20", "1.5 × 10^21"],
+      correctIndex: 0,
+      answer: "گزینه ۱: بار کل Q = I*t = 2 * (5*60) = 600 C. تعداد الکترون‌ها n = Q/e = 600 / 1.6×10^-19 = 3.75 × 10^21."
+    },
+    {
+      id: 6,
+      text: "یک سیم مسی به طول L و سطح مقطع A مقاومت R دارد. اگر طول آن را دو برابر کرده و سطح مقطع آن را نصف کنیم (دمای ثابت)، مقاومت جدید چند برابر R می‌شود؟",
+      options: ["2", "4", "8", "16"],
+      correctIndex: 1,
+      answer: "گزینه ۲ (4): R = ρL/A. L'=2L و A'=A/2 → R' = ρ(2L) / (A/2) = 4ρL/A = 4R."
+    },
+    {
+      id: 7,
+      text: "در یک مدار، دو مقاومت R1= 6Ω و R2= 12Ω به صورت موازی بسته شده‌اند. مقاومت معادل این دو چند اهم است؟",
+      options: ["2", "4", "6", "18"],
+      correctIndex: 1,
+      answer: "گزینه ۲ (4): در اتصال موازی: 1/Req = 1/R1 + 1/R2 → 1/Req = 1/6 + 1/12 = 3/12 → Req = 4Ω."
+    },
+    {
+      id: 8,
+      text: "اگر اختلاف پتانسیل دو سر یک مقاومت ۴ برابر شود، توان مصرفی چند برابر می‌شود؟",
+      options: ["2", "4", "8", "16"],
+      correctIndex: 3,
+      answer: "گزینه ۴ (16): فرمول توان P = V²/R. ولتاژ ۴ برابر → V'² = (4V)² = 16V² → توان ۱۶ برابر می‌شود."
+    },
+    // --- فصل سوم: مغناطیس ---
+    {
+      id: 9,
+      text: "یک پروتون با سرعت v = 2 × 10^6 m/s در راستای محور +x وارد میدان مغناطیسی یکنواخت B = 0.5 T در راستای محور +y می‌شود. اندازه نیروی مغناطیسی وارد بر پروتون چند نیوتون است؟ (بار پروتون q = 1.6 × 10^-19 C)",
+      options: ["0", "1.6 × 10^-13", "3.2 × 10^-13", "6.4 × 10^-13"],
+      correctIndex: 1,
+      answer: "گزینه ۲: F = qvB sinθ. زاویه بین بردار سرعت (x) و میدان (y) برابر ۹۰ درجه است. F = (1.6×10^-19) * (2×10^6) * 0.5 = 1.6×10^-13 N."
+    },
+    {
+      id: 10,
+      text: "یک سیم بلند حامل جریان I = 10 A در میدان مغناطیسی خارجی B = 0.2 T قرار دارد. اگر طول سیم درون میدان L = 0.5 m باشد و زاویه بین جریان و میدان ۳۰ درجه باشد، اندازه نیرو چقدر است؟",
+      options: ["0.5 N", "0.25 N", "1.0 N", "2.0 N"],
+      correctIndex: 0,
+      answer: "گزینه ۱: F = BIL sinθ = 0.2 * 10 * 0.5 * sin(30°) = 1 * 0.5 = 0.5 N."
+    },
+    // --- فصل چهارم: القای الکترومغناطیسی ---
+    {
+      id: 11,
+      text: "یک سیم‌لوله با ۲۰۰ دور و طول ۲۰ سانتی‌متر، حامل جریان ۲ آمپر است. میدان مغناطیسی داخل این سیم‌لوله چند تسلا است؟ (μ₀ = 4π × 10^-7 T.m/A)",
+      options: ["2.5 × 10^-4", "5 × 10^-4", "2.5 × 10^-3", "5 × 10^-3"],
+      correctIndex: 2,
+      answer: "گزینه ۳: B = μ₀ * (N/L) * I = 4π×10^-7 * (200/0.2) * 2 = 2.5 × 10^-3 T."
+    },
+    {
+      id: 12,
+      text: "شار مغناطیسی عبوری از یک پیچه در مدت 0.1 ثانیه به طور یکنواخت از 2 Wb به 8 Wb افزایش می‌یابد. اگر این پیچه ۵۰ دور داشته باشد، نیروی محرکه القایی متوسط چقدر است؟",
+      options: ["3000 V", "300 V", "60 V", "6 V"],
+      correctIndex: 0,
+      answer: "گزینه ۱: ε = N * (ΔΦ/Δt) = 50 * ((8-2)/0.1) = 50 * 60 = 3000 V."
+    }
+  ];
 
-  const handleSubmit = () => {
-    setSubmitted(true);
-  };
+  // State ها
+  const [selectedAnswers, setSelectedAnswers] = useState<{[key: number]: number}>({});
+  const [showAnswers, setShowAnswers] = useState(false);
+  const [score, setScore] = useState<number | null>(null);
+  const [hasCalculated, setHasCalculated] = useState(false);
+  
+  // =============== State مربوط به تایمر ===============
+  const [timeLeft, setTimeLeft] = useState(30 * 60); // 30 دقیقه به ثانیه
+  const [isTimeUp, setIsTimeUp] = useState(false);
 
-  const handleReset = () => {
-    setUserAnswers({});
-    setSubmitted(false);
-  };
+  // =============== useEffect تایمر ===============
+  useEffect(() => {
+    // اگر زمان تمام شده یا درصد محاسبه شده، تایمر را متوقف کن
+    if (isTimeUp || hasCalculated) return;
 
-  const calculateScore = () => {
-    let correct = 0;
-    questionsData.forEach((q) => {
-      if (userAnswers[q.id] === q.correctAnswer) correct++;
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          setIsTimeUp(true);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    // پاکسازی تایمر هنگام unmount شدن کامپوننت
+    return () => clearInterval(timer);
+  }, [isTimeUp, hasCalculated]);
+
+  // =============== تابع هندل کردن کلیک روی گزینه‌ها ===============
+  const handleOptionClick = (questionId: number, optionIndex: number) => {
+    if (isTimeUp) return; // اگر زمان تمام شده، اجازه تغییر پاسخ را نده
+
+    setSelectedAnswers({
+      ...selectedAnswers,
+      [questionId]: optionIndex
     });
-    return { correct, total: questionsData.length };
+    // وقتی کاربر پاسخ جدیدی می‌دهد، اگر قبلا محاسبه شده بود، آن را ریست می‌کنیم
+    if (hasCalculated) {
+      setHasCalculated(false);
+      setScore(null);
+    }
   };
 
-  const score = calculateScore();
+  // =============== تابع محاسبه درصد ===============
+  const calculateScore = () => {
+    let correctCount = 0;
+    questions.forEach(q => {
+      if (selectedAnswers[q.id] === q.correctIndex) {
+        correctCount++;
+      }
+    });
+    const percentage = (correctCount / questions.length) * 100;
+    setScore(percentage);
+    setHasCalculated(true);
+    
+    // تایمر را متوقف کن (چون محاسبه انجام شد)
+    setIsTimeUp(true); 
+  };
+
+  // =============== استفاده از useEffect برای محاسبه خودکار در پایان زمان ===============
+  useEffect(() => {
+    if (isTimeUp && !hasCalculated) {
+      calculateScore();
+    }
+  }, [isTimeUp]);
+
+  // بررسی اینکه آیا کاربر به همه سوالات پاسخ داده است
+  const isAllAnswered = questions.every(q => selectedAnswers[q.id] !== undefined);
+  // آیا می‌توان درصد را محاسبه کرد؟
+  const canCalculate = isAllAnswered && !hasCalculated && !isTimeUp;
+
+  // دریافت رنگ بر اساس درصد
+  const getScoreColor = (score: number) => {
+    if (score >= 80) return '#28a745';
+    if (score >= 50) return '#ffc107';
+    return '#dc3545';
+  };
+
+  // فرمت کردن زمان (دقیقه:ثانیه)
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.header}>
-        <button onClick={() => router.back()} style={styles.backButton}>
-          ← بازگشت به فصل‌های کتاب
+    <div style={{
+      fontFamily: 'Tahoma, Arial, sans-serif',
+      width: '100vw',
+      minHeight: '100vh',
+      padding: '15px 10px',
+      backgroundColor: '#f8f9fa',
+      direction: 'rtl',
+      textAlign: 'right',
+      boxSizing: 'border-box',
+      overflowX: 'hidden'
+    }}>
+      
+      {/* هدر آزمون جامع */}
+      <div style={{
+        backgroundColor: '#2c3e50',
+        color: 'white',
+        padding: '20px',
+        borderRadius: '8px',
+        marginBottom: '30px',
+        textAlign: 'center',
+        position: 'relative'
+      }}>
+        <button 
+          onClick={() => router.back()}
+          style={{
+            position: 'absolute',
+            left: '20px',
+            top: '20px',
+            padding: '8px 16px',
+            backgroundColor: 'rgba(255,255,255,0.2)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            cursor: 'pointer',
+            fontSize: '14px'
+          }}
+        >
+          ← بازگشت
         </button>
-        <h1 style={styles.title}>📘 درس اول: مجموع جملات دنباله‌های حسابی و هندسی</h1>
-        <p style={styles.subtitle}>به سوالات زیر پاسخ دهید</p>
-      </div>
-
-      {!submitted ? (
-        <>
-          <div style={styles.questionsList}>
-            {questionsData.map((q, idx) => (
-              <QuestionCard
-                key={q.id}
-                question={q}
-                index={idx + 1}
-                selectedOption={userAnswers[q.id]}
-                onOptionSelect={handleOptionSelect}
-              />
-            ))}
+        
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
+          <div>
+            <h1 style={{ margin: 0, fontSize: '28px' }}>🏆 آزمون جامع کل کتاب فیزیک (۲)</h1>
+            <p style={{ marginTop: '10px', fontSize: '16px', opacity: 0.9 }}>ویژه آزمون‌های قلمچی - شامل {questions.length} سوال ترکیبی از ۴ فصل</p>
           </div>
-          <div style={styles.submitContainer}>
-            <button onClick={handleSubmit} style={styles.submitButton}>
-              ثبت پاسخ‌ها و مشاهده نتیجه
-            </button>
-          </div>
-        </>
-      ) : (
-        <div style={styles.resultContainer}>
-          <div style={styles.resultCard}>
-            <h2>نتیجه آزمون</h2>
-            <div style={styles.scoreCircle}>
-              <span style={styles.scoreNumber}>{score.correct}</span>
-              <span style={styles.scoreTotal}>از {score.total}</span>
-            </div>
-            <p style={styles.scorePercentage}>
-              درصد: {((score.correct / score.total) * 100).toFixed(1)}%
-            </p>
-            <div style={styles.resultDetails}>
-              <p>✅ پاسخ‌های صحیح: {score.correct}</p>
-              <p>❌ پاسخ‌های غلط: {score.total - score.correct}</p>
-            </div>
-            <div style={styles.buttonGroup}>
-              <button onClick={handleReset} style={styles.retryButton}>
-                ↺ دوباره امتحان کن
-              </button>
-              <button onClick={() => router.back()} style={styles.chaptersButton}>
-                📚 بازگشت به فصل‌ها
-              </button>
-            </div>
-          </div>
-
-          {/* نمایش پاسخنامه تشریحی */}
-          <div style={styles.explanations}>
-            <h3>پاسخنامه تشریحی</h3>
-            {questionsData.map((q, idx) => (
-              <div key={q.id} style={styles.explanationItem}>
-                <p>
-                  <strong>سوال {idx + 1}:</strong> {q.text}
-                </p>
-                <p>
-                  <strong>پاسخ صحیح:</strong> گزینه {q.correctAnswer} –{' '}
-                  {q.options[q.correctAnswer as keyof typeof q.options]}
-                </p>
-                <p>
-                  <strong>توضیح:</strong> {q.explanation}
-                </p>
-                <p>
-                  <strong>پاسخ شما:</strong>{' '}
-                  {userAnswers[q.id] ? `گزینه ${userAnswers[q.id]}` : 'پاسخ نداده‌اید'}
-                </p>
-                <hr />
-              </div>
-            ))}
+          
+          {/* =============== نمایش تایمر =============== */}
+          <div style={{
+            backgroundColor: isTimeUp ? '#dc3545' : 'rgba(255,255,255,0.15)',
+            padding: '10px 25px',
+            borderRadius: '50px',
+            fontSize: '24px',
+            fontWeight: 'bold',
+            fontFamily: 'monospace',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            border: isTimeUp ? '2px solid #ffcccc' : '1px solid rgba(255,255,255,0.3)'
+          }}>
+            <span>⏱️</span>
+            <span>{isTimeUp ? 'زمان تمام شد!' : formatTime(timeLeft)}</span>
           </div>
         </div>
-      )}
+        {!isTimeUp && <p style={{ fontSize: '14px', opacity: 0.7, marginTop: '5px' }}>زمان باقی‌مانده</p>}
+      </div>
+
+      {/* بخش سوالات */}
+      <div style={{ width: '100%' }}>
+        {questions.map((q, index) => (
+          <div key={q.id} style={{
+            marginBottom: '25px',
+            backgroundColor: '#ffffff',
+            padding: '20px 25px',
+            borderRadius: '0px',
+            borderBottom: '2px solid #e9ecef',
+            boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+            width: '100%'
+          }}>
+            {/* شماره سوال و متن */}
+            <div style={{ 
+              fontSize: '17px', 
+              lineHeight: '1.9', 
+              marginBottom: '20px', 
+              fontWeight: '500',
+              display: 'flex',
+              alignItems: 'flex-start'
+            }}>
+              <span style={{
+                display: 'inline-block',
+                backgroundColor: '#2c3e50',
+                color: 'white',
+                width: '30px',
+                height: '30px',
+                textAlign: 'center',
+                lineHeight: '30px',
+                borderRadius: '50%',
+                fontSize: '14px',
+                marginLeft: '15px',
+                marginTop: '2px',
+                flexShrink: 0
+              }}>
+                {index + 1}
+              </span>
+              <span>{q.text}</span>
+            </div>
+            
+            {/* گزینه‌ها (دو ستونی) */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '12px 30px',
+              marginRight: '20px'
+            }}>
+              {q.options.map((opt, idx) => {
+                const isSelected = selectedAnswers[q.id] === idx;
+                // اگر زمان تمام شده، گزینه‌ها غیرفعال می‌شوند
+                const disabled = isTimeUp; 
+                
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => handleOptionClick(q.id, idx)}
+                    disabled={disabled}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      padding: '12px 18px',
+                      border: isSelected ? '3px solid #2c3e50' : '1px solid #dee2e6',
+                      borderRadius: '10px',
+                      backgroundColor: isSelected ? '#e9ecef' : '#fff',
+                      cursor: disabled ? 'not-allowed' : 'pointer',
+                      fontSize: '15px',
+                      textAlign: 'right',
+                      transition: 'all 0.2s',
+                      width: '100%',
+                      opacity: disabled && !isSelected ? 0.6 : 1
+                    }}
+                  >
+                    <span style={{
+                      display: 'inline-block',
+                      width: '28px',
+                      height: '28px',
+                      border: '1px solid #000',
+                      borderRadius: '50%',
+                      textAlign: 'center',
+                      lineHeight: '28px',
+                      fontSize: '14px',
+                      marginLeft: '15px',
+                      backgroundColor: isSelected ? '#2c3e50' : '#fff',
+                      color: isSelected ? '#fff' : '#000'
+                    }}>
+                      {String.fromCharCode(65 + idx)} {/* A, B, C, D */}
+                    </span>
+                    {opt}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+
+        {/* ===== بخش نمایش درصد ===== */}
+        {(isAllAnswered || hasCalculated || isTimeUp) && (
+          <div style={{
+            marginTop: '30px', 
+            marginBottom: '30px', 
+            padding: '20px', 
+            backgroundColor: '#ffffff', 
+            borderRadius: '12px', 
+            border: '1px solid #dee2e6',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
+              
+              {/* دکمه محاسبه درصد */}
+              <div>
+                {!hasCalculated ? (
+                  <button
+                    onClick={calculateScore}
+                    disabled={!canCalculate}
+                    style={{
+                      padding: '12px 30px',
+                      fontSize: '18px',
+                      backgroundColor: canCalculate ? '#007bff' : '#6c757d',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '50px',
+                      cursor: canCalculate ? 'pointer' : 'not-allowed',
+                      fontWeight: 'bold',
+                      opacity: canCalculate ? 1 : 0.6
+                    }}
+                  >
+                    {!isAllAnswered && !isTimeUp ? 'لطفاً به همه سوالات پاسخ دهید' : 'محاسبه درصد'}
+                  </button>
+                ) : (
+                  <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#2c3e50' }}>
+                    ✅ درصد شما: <span style={{ color: getScoreColor(score!), fontSize: '22px' }}>{Math.round(score!)}%</span>
+                    {isTimeUp && hasCalculated && <span style={{ fontSize: '14px', color: '#dc3545', marginRight: '15px' }}>(زمان پایان یافت)</span>}
+                  </div>
+                )}
+              </div>
+
+              {/* نوار پیشرفت (Progress Bar) درصد */}
+              {hasCalculated && (
+                <div style={{ flex: 1, minWidth: '200px' }}>
+                  <div style={{
+                    width: '100%',
+                    height: '15px',
+                    backgroundColor: '#e9ecef',
+                    borderRadius: '10px',
+                    overflow: 'hidden',
+                    marginTop: '5px'
+                  }}>
+                    <div style={{
+                      width: `${score}%`,
+                      height: '100%',
+                      backgroundColor: getScoreColor(score!),
+                      transition: 'width 0.5s ease-in-out'
+                    }} />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* دکمه نمایش پاسخنامه */}
+        <div style={{ textAlign: 'center', marginTop: '20px', marginBottom: '60px' }}>
+          <button
+            onClick={() => setShowAnswers(!showAnswers)}
+            style={{
+              padding: '18px 50px',
+              fontSize: '20px',
+              backgroundColor: showAnswers ? '#dc3545' : '#28a745',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '50px',
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
+              transition: 'all 0.2s'
+            }}
+          >
+            {showAnswers ? "❌ بستن پاسخنامه" : "📄 مشاهده پاسخنامه تشریحی"}
+          </button>
+        </div>
+
+        {/* بخش پاسخنامه */}
+        {showAnswers && (
+          <div style={{
+            marginTop: '30px',
+            borderTop: '4px solid #2c3e50',
+            paddingTop: '40px',
+            backgroundColor: '#ffffff',
+            padding: '40px',
+            borderRadius: '12px',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.08)',
+            width: '100%'
+          }}>
+            <h2 style={{ 
+              textAlign: 'center', 
+              borderBottom: '3px solid #2c3e50', 
+              paddingBottom: '20px', 
+              marginBottom: '40px',
+              fontSize: '26px',
+              color: '#2c3e50'
+            }}>
+              📝 پاسخنامه تشریحی آزمون جامع
+            </h2>
+            
+            {questions.map((q, index) => {
+              const userAnswer = selectedAnswers[q.id];
+              const isCorrect = userAnswer === q.correctIndex;
+              return (
+                <div key={q.id} style={{
+                  marginBottom: '35px',
+                  borderBottom: '1px dashed #ced4da',
+                  paddingBottom: '25px'
+                }}>
+                  <div style={{ fontSize: '18px', lineHeight: '2' }}>
+                    <span style={{ 
+                      fontWeight: 'bold', 
+                      color: '#2c3e50',
+                      backgroundColor: '#f8f9fa',
+                      padding: '5px 15px',
+                      borderRadius: '20px',
+                      display: 'inline-block',
+                      marginBottom: '10px'
+                    }}>
+                      سوال {index + 1}
+                    </span>
+                    <br />
+                    <span style={{ fontWeight: 'bold', color: '#28a745' }}>✅ پاسخ صحیح:</span> <span style={{ fontSize: '16px' }}>{q.options[q.correctIndex]}</span>
+                    <br />
+                    {/* نمایش پاسخ کاربر و درستی آن */}
+                    {userAnswer !== undefined && (
+                      <span>
+                        <span style={{ fontWeight: 'bold', color: isCorrect ? '#28a745' : '#dc3545' }}>
+                          {isCorrect ? '✔️ پاسخ شما صحیح است' : '❌ پاسخ شما نادرست است'}
+                        </span>
+                        <span style={{ fontSize: '16px', color: '#666', marginRight: '10px' }}>
+                          (شما گزینه {String.fromCharCode(65 + userAnswer)} را انتخاب کردید)
+                        </span>
+                        <br />
+                      </span>
+                    )}
+                    <span style={{ fontWeight: 'bold', color: '#007bff' }}>📖 توضیح کامل:</span> 
+                    <br />
+                    <span style={{ fontSize: '16px', lineHeight: '1.8' }}>{q.answer}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
-}
-
-const styles: { [key: string]: React.CSSProperties } = {
-  container: {
-    minHeight: '100vh',
-    padding: '2rem',
-    backgroundColor: '#f0f2f5',
-    fontFamily: 'inherit',
-  },
-  header: {
-    textAlign: 'center',
-    marginBottom: '2rem',
-  },
-  backButton: {
-    backgroundColor: '#4a5568',
-    color: 'white',
-    border: 'none',
-    padding: '0.5rem 1rem',
-    borderRadius: '0.5rem',
-    cursor: 'pointer',
-    fontSize: '0.9rem',
-    marginBottom: '1rem',
-  },
-  title: {
-    fontSize: '1.8rem',
-    color: '#1a202c',
-    margin: '0.5rem 0',
-  },
-  subtitle: {
-    color: '#4a5568',
-    fontSize: '1rem',
-  },
-  questionsList: {
-    maxWidth: '800px',
-    margin: '0 auto',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1rem',
-  },
-  submitContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '2rem',
-  },
-  submitButton: {
-    backgroundColor: '#48bb78',
-    color: 'white',
-    border: 'none',
-    padding: '0.75rem 1.5rem',
-    borderRadius: '2rem',
-    fontSize: '1rem',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    transition: 'background 0.2s',
-  },
-  resultContainer: {
-    maxWidth: '900px',
-    margin: '0 auto',
-  },
-  resultCard: {
-    backgroundColor: 'white',
-    borderRadius: '1rem',
-    padding: '2rem',
-    textAlign: 'center',
-    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-    marginBottom: '2rem',
-  },
-  scoreCircle: {
-    display: 'inline-block',
-    margin: '1rem auto',
-    padding: '1rem',
-    borderRadius: '50%',
-    backgroundColor: '#e2e8f0',
-    width: '100px',
-    height: '100px',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  scoreNumber: {
-    fontSize: '2.5rem',
-    fontWeight: 'bold',
-    color: '#2c5282',
-  },
-  scoreTotal: {
-    fontSize: '0.9rem',
-    color: '#4a5568',
-  },
-  scorePercentage: {
-    fontSize: '1.2rem',
-    fontWeight: 'bold',
-    margin: '0.5rem 0',
-  },
-  resultDetails: {
-    margin: '1rem 0',
-  },
-  buttonGroup: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '1rem',
-    marginTop: '1.5rem',
-  },
-  retryButton: {
-    backgroundColor: '#ed8936',
-    color: 'white',
-    border: 'none',
-    padding: '0.5rem 1rem',
-    borderRadius: '2rem',
-    cursor: 'pointer',
-  },
-  chaptersButton: {
-    backgroundColor: '#4299e1',
-    color: 'white',
-    border: 'none',
-    padding: '0.5rem 1rem',
-    borderRadius: '2rem',
-    cursor: 'pointer',
-  },
-  explanations: {
-    backgroundColor: 'white',
-    borderRadius: '1rem',
-    padding: '1.5rem',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-  },
-  explanationItem: {
-    marginBottom: '1.5rem',
-    textAlign: 'right',
-  },
 };
+
+export default PhysicsFinalExam;

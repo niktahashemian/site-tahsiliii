@@ -1,11 +1,7 @@
-
 'use client';
-import Link from 'next/link';
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-// تعریف تایپ برای درس
 interface Lesson {
   id: number;
   name: string;
@@ -14,7 +10,6 @@ interface Lesson {
   slug: string;
 }
 
-// تعریف تایپ برای فصل
 interface Chapter {
   id: number;
   name: string;
@@ -26,79 +21,78 @@ interface Chapter {
   examQuestionCount: number;
 }
 
-export default function Hesaban1ChaptersPage() {
+export default function DinVaZendegi2ChaptersPage() {
   const router = useRouter();
   const [openChapter, setOpenChapter] = useState<number | null>(null);
 
-  // ======================== ساختار فصل‌ها و درس‌های کتاب حسابان (1) ========================
   const chapters: Chapter[] = [
     {
       id: 1,
-      name: 'فصل اول: آستانه حضور',
-      icon: '📐',
-      color: '#9C27B0',
+      name: 'فصل اول: هستی و خداشناسی',
+      icon: '🕌',
+      color: '#1A237E',
       examSlug: 'chapter1-exam',
-      examName: 'آزمون جامع فصل اول: آستانه حضور',
-      examQuestionCount: 30,
+      examName: 'آزمون جامع فصل اول: هستی و خداشناسی',
+      examQuestionCount: 25,
       lessons: [
-        { id: 1, name: 'درس اول: آفرینش شگفت‌انگیز', description: 'حل معادله درجه دوم، دلتا، ریشه‌ها', questionCount: 15, slug: 'lesson1' },
-        { id: 2, name: 'درس دوم: شکوفایی استعدادها', description: 'رسم سهمی، رأس، عرض از مبدأ', questionCount: 12, slug: 'lesson2' },
-        { id: 3, name: 'درس سوم: تعیین علامت', description: 'تعیین علامت عبارات جبری، نامعادله', questionCount: 10, slug: 'lesson3' },
+        { id: 1, name: 'درس ۱-۱: شناخت خداوند', description: 'راه‌های خداشناسی، برهان نظم و برهان علّی', questionCount: 12, slug: 'lesson1' },
+        { id: 2, name: 'درس ۱-۲: صفات خداوند', description: 'صفات جمالی و جلالی، اسماء و صفات الهی', questionCount: 15, slug: 'lesson2' },
+        { id: 3, name: 'درس ۱-۳: توحید و شرک', description: 'انواع توحید، شرک و آثار آن در زندگی', questionCount: 10, slug: 'lesson3' },
       ]
     },
     {
       id: 2,
-      name: 'فصل دوم: آستان جانان',
-      icon: '📊',
-      color: '#2196F3',
+      name: 'فصل دوم: نبوت و امامت',
+      icon: '📿',
+      color: '#1565C0',
       examSlug: 'chapter2-exam',
-      examName: 'آزمون جامع فصل دوم: آستان جانان',
+      examName: 'آزمون جامع فصل دوم: نبوت و امامت',
       examQuestionCount: 28,
       lessons: [
-        { id: 4, name: 'درس چهارم: پاسداشت حقوق دیگران', description: 'تعریف تابع، دامنه و برد', questionCount: 10, slug: 'lesson4' },
-        { id: 5, name: 'درس پنجم: رمز ماندگاری', description: 'نمودار توابع خطی و درجه دوم', questionCount: 12, slug: 'lesson5' },
-        { id: 6, name: 'درس ششم: خورشید هدایت', description: 'نقاط بحرانی، اکسترمم', questionCount: 8, slug: 'lesson6' },
+        { id: 4, name: 'درس ۲-۱: ضرورت نبوت', description: 'حکمت و ضرورت بعثت پیامبران، ویژگی‌های پیامبران', questionCount: 12, slug: 'lesson4' },
+        { id: 5, name: 'درس ۲-۲: عصمت پیامبران', description: 'عصمت انبیا، دلایل عصمت و نقش آن در هدایت', questionCount: 10, slug: 'lesson5' },
+        { id: 6, name: 'درس ۲-۳: امامت و ولایت', description: 'ضرورت امامت، ویژگی‌های امام، امامت در قرآن', questionCount: 10, slug: 'lesson6' },
+        { id: 7, name: 'درس ۲-۴: جایگاه و منزلت اهل بیت', description: 'مقام و منزلت اهل بیت علیهم السلام در قرآن و روایات', questionCount: 8, slug: 'lesson7' },
       ]
     },
     {
       id: 3,
-      name: 'فصل سوم: اوج بندگی ',
-      icon: '📈',
-      color: '#FF9800',
+      name: 'فصل سوم: معاد و آخرت‌شناسی',
+      icon: '⭐',
+      color: '#E65100',
       examSlug: 'chapter3-exam',
-      examName: 'آزمون جامع فصل سوم: اوج بندگی',
-      examQuestionCount: 32,
+      examName: 'آزمون جامع فصل سوم: معاد و آخرت‌شناسی',
+      examQuestionCount: 30,
       lessons: [
-        { id: 7, name: 'درس هفتم: کرامت انسانی', description: 'ویژگی‌ها و نمودار تابع نمایی', questionCount: 12, slug: 'lesson7' },
-        { id: 8, name: 'درس هشتم: احیای ارزش‌ها', description: 'تعریف لگاریتم، خواص لگاریتم', questionCount: 15, slug: 'lesson8' },
-        { id: 9, name: 'درس نهم: بالندگی در پرواز', description: 'حل معادلات نمایی و لگاریتمی', questionCount: 10, slug: 'lesson9' },
+        { id: 8, name: 'درس ۳-۱: ضرورت و حقیقت معاد', description: 'دلایل عقلی و نقلی معاد، حقیقت مرگ و برزخ', questionCount: 15, slug: 'lesson8' },
+        { id: 9, name: 'درس ۳-۲: قیامت و رستاخیز', description: 'شرایط و وقایع قیامت، حساب و کتاب اعمال', questionCount: 12, slug: 'lesson9' },
+        { id: 10, name: 'درس ۳-۳: بهشت و جهنم', description: 'وصف بهشت و جهنم، نعمت‌های بهشتی و عذاب‌های جهنمی', questionCount: 10, slug: 'lesson10' },
       ]
     },
     {
       id: 4,
-      name: 'فصل چهارم: آغوش گشاده',
-      icon: '🔺',
+      name: 'فصل چهارم: اخلاق و سبک زندگی',
+      icon: '🌿',
       color: '#4CAF50',
       examSlug: 'chapter4-exam',
-      examName: 'آزمون جامع فصل چهارم: آغوش گشاده',
-      examQuestionCount: 28,
+      examName: 'آزمون جامع فصل چهارم: اخلاق و سبک زندگی',
+      examQuestionCount: 25,
       lessons: [
-        { id: 10, name: 'درس دهم: پیوند جاودان', description: 'نسبت‌های مثلثاتی، دایره واحد', questionCount: 12, slug: 'lesson10' },
-        { id: 11, name: 'درس یازدهم: آینده روشن', description: 'اتحادهای مثلثاتی', questionCount: 10, slug: 'lesson11' },
-        { id: 12, name: 'درس دوازدهم: عزت و سربلندی', description: 'حل معادلات مثلثاتی', questionCount: 8, slug: 'lesson12' },
+        { id: 11, name: 'درس ۴-۱: اخلاق فردی', description: 'تزکیه نفس، خودسازی، مبارزه با رذایل اخلاقی', questionCount: 10, slug: 'lesson11' },
+        { id: 12, name: 'درس ۴-۲: اخلاق اجتماعی', description: 'عدالت، احسان، نیکوکاری، حقوق دیگران و روابط اجتماعی', questionCount: 12, slug: 'lesson12' },
+        { id: 13, name: 'درس ۴-۳: سبک زندگی اسلامی', description: 'اسلام و سبک زندگی، خانواده، اقتصاد، بهداشت و تغذیه در اسلام', questionCount: 10, slug: 'lesson13' },
       ]
     },
     {
       id: 5,
-      name: '🎯 آزمون جامع کل کتاب دین و زندگی (2) ',
+      name: '🏆 آزمون جامع کل کتاب دین و زندگی (2)',
       icon: '🏆',
       color: '#FF6B6B',
       examSlug: 'final-exam',
-      examName: 'آزمون جامع کل کتاب دین و زندگی (2) ',
+      examName: 'آزمون جامع کل کتاب دین و زندگی (2)',
       examQuestionCount: 50,
       lessons: [
-        // تمام دروس کتاب (۲۱ درس) به صورت کامل
-        { id: 22, name: '📚 کل دروس کتاب  دین و زندگی (2) ', description: 'شامل تمام مباحث: جبر و معادله، تابع، نمایی و لگاریتمی، مثلثات، حد و پیوستگی', questionCount: 50, slug: 'final-exam' },
+        { id: 14, name: '📚 کل دروس کتاب دین و زندگی (2)', description: 'شامل تمام مباحث: خداشناسی، نبوت و امامت، معاد و آخرت‌شناسی، اخلاق و سبک زندگی', questionCount: 50, slug: 'final-exam' },
       ]
     }
   ];
@@ -108,36 +102,26 @@ export default function Hesaban1ChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/riyazi/galamchi/first-half/fizik-2/lesson/${lessonSlug}`);
+    router.push(`/exam/yazdahom/riyazi/gozine2/second-half/din-va-zendegi-2/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/riyazi/galamchi/second-half/fizik-2/chapter-exam/${examSlug}`);
+    router.push(`/exam/yazdahom/riyazi/gozine2/second-half/din-va-zendegi-2/chapter-exam/${examSlug}`);
   };
 
   return (
     <div style={styles.container}>
-      {/* هدر */}
-      <div className="exam-header">
-        <Link href="http://localhost:3000/exam/yazdahom/riyazi/gozine2/second-half" className="back-to-home">
-          ← بازگشت به لیست دروس
-        </Link>
-       
-      </div>
       <div style={styles.header}>
-        <button onClick={() => router.back()} style={styles.backButton}>
+        <button onClick={() => router.push('/exam/yazdahom/riyazi/gozine2/second-half')} style={styles.backButton}>
           ← بازگشت به لیست دروس
         </button>
-        
-        <h1 style={styles.title}>📚 دین و زندگی (2) - انتخاب فصل و درس</h1>
+        <h1 style={styles.title}>🕌 دین و زندگی (2) - پایه یازدهم ریاضی قلمچی</h1>
         <p style={styles.subtitle}>برای شروع، روی هر فصل کلیک کنید و سپس درس یا آزمون جامع مورد نظر را انتخاب نمایید</p>
       </div>
 
-      {/* فصل‌ها */}
       <div style={styles.chaptersContainer}>
         {chapters.map((chapter) => (
           <div key={chapter.id} style={styles.chapterWrapper}>
-            {/* دکمه فصل */}
             <button
               onClick={() => handleChapterClick(chapter.id)}
               style={{
@@ -150,10 +134,8 @@ export default function Hesaban1ChaptersPage() {
               <span style={styles.chapterArrow}>{openChapter === chapter.id ? '▲' : '▼'}</span>
             </button>
 
-            {/* درس‌ها و آزمون جامع فصل (فقط در صورت باز بودن نمایش داده می‌شود) */}
             {openChapter === chapter.id && (
               <div style={styles.lessonsContainer}>
-                {/* آزمون جامع فصل */}
                 <div
                   style={styles.chapterExamCard}
                   onClick={() => handleChapterExamClick(chapter.examSlug)}
@@ -167,17 +149,13 @@ export default function Hesaban1ChaptersPage() {
                       <span style={styles.durationBadge}>⏱️ {Math.floor(chapter.examQuestionCount * 1.5)} دقیقه</span>
                     </div>
                   </div>
-                  <div style={styles.examButton}>
-                    شروع آزمون جامع →
-                  </div>
+                  <div style={styles.examButton}>شروع آزمون جامع →</div>
                 </div>
 
-                {/* خط جداکننده */}
                 <div style={styles.divider}>
                   <span style={styles.dividerText}>📖 دروس فصل</span>
                 </div>
 
-                {/* درس‌های فصل */}
                 {chapter.lessons.map((lesson) => (
                   <div
                     key={lesson.id}
@@ -190,11 +168,10 @@ export default function Hesaban1ChaptersPage() {
                       <p style={styles.lessonDescription}>{lesson.description}</p>
                       <div style={styles.lessonStats}>
                         <span style={styles.questionCount}>📝 {lesson.questionCount} سوال</span>
+                        <span style={styles.durationBadge}>⏱️ {Math.floor(lesson.questionCount * 1.5)} دقیقه</span>
                       </div>
                     </div>
-                    <div style={styles.lessonButton}>
-                      شروع آزمون →
-                    </div>
+                    <div style={styles.lessonButton}>شروع آزمون →</div>
                   </div>
                 ))}
               </div>
@@ -203,11 +180,11 @@ export default function Hesaban1ChaptersPage() {
         ))}
       </div>
 
-      {/* اطلاعات تکمیلی */}
       <div style={styles.infoBox}>
         <p>💡 نکته: برای شروع آزمون هر درس یا آزمون جامع فصل، روی آن کلیک کنید.</p>
         <p>📊 پس از اتمام هر آزمون، درصد شما به همراه پاسخنامه تشریحی نمایش داده می‌شود.</p>
         <p>🏆 آزمون‌های جامع شامل سوالات ترکیبی از تمام دروس آن فصل می‌باشند.</p>
+        <p>🕌 این آزمون‌ها مطابق با کتاب دین و زندگی (۲) پایه یازدهم رشته ریاضی طراحی شده‌اند.</p>
       </div>
 
       <style>{`
@@ -237,33 +214,36 @@ export default function Hesaban1ChaptersPage() {
   );
 }
 
-// استایل‌ها
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
     minHeight: '100vh',
     padding: '2rem',
+    backgroundColor: '#f0f4f8',
   },
   header: {
     textAlign: 'center',
     marginBottom: '2rem',
+    padding: '2rem',
+    borderRadius: '1rem',
   },
   backButton: {
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    color: 'white',
+    backgroundColor: 'rgba(0,0,0,0.1)',
+    color: '#333',
     border: 'none',
-    padding: '0.5rem 1rem',
+    padding: '0.5rem 1.5rem',
     borderRadius: '0.5rem',
     cursor: 'pointer',
     fontSize: '0.9rem',
     marginBottom: '1rem',
   },
   title: {
-    fontSize: '2rem',
-    color: 'black',
+    fontSize: '2.5rem',
+    color: '#1a237e',
     margin: '0.5rem 0',
+    fontWeight: 'bold',
   },
   subtitle: {
-    color: 'rgba(255,255,255,0.9)',
+    color: '#555',
     fontSize: '1rem',
   },
   chaptersContainer: {
@@ -274,9 +254,10 @@ const styles: { [key: string]: React.CSSProperties } = {
     gap: '1rem',
   },
   chapterWrapper: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: 'white',
     borderRadius: '1rem',
     overflow: 'hidden',
+    boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
   },
   chapterButton: {
     width: '100%',
@@ -307,7 +288,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: 'flex',
     flexDirection: 'column',
     gap: '0.8rem',
-    backgroundColor: 'rgba(255,255,255,0.95)',
+    backgroundColor: '#f8f9fa',
   },
   chapterExamCard: {
     display: 'flex',
@@ -319,7 +300,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     cursor: 'pointer',
     transition: 'all 0.2s',
     boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    border: '1px solid #81c784',
+    border: '2px solid #81c784',
   },
   chapterExamIcon: {
     fontSize: '2rem',
@@ -337,11 +318,11 @@ const styles: { [key: string]: React.CSSProperties } = {
     position: 'relative',
   },
   dividerText: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#e9ecef',
     padding: '0.2rem 1rem',
     borderRadius: '1rem',
     fontSize: '0.75rem',
-    color: '#888',
+    color: '#6c757d',
   },
   lessonCard: {
     display: 'flex',
@@ -352,7 +333,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: '0.75rem',
     cursor: 'pointer',
     transition: 'all 0.2s',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.08)',
   },
   lessonIcon: {
     fontSize: '1.8rem',
@@ -369,7 +350,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   lessonDescription: {
     margin: '0.25rem 0',
-    fontSize: '0.75rem',
+    fontSize: '0.8rem',
     color: '#666',
   },
   lessonStats: {
@@ -395,7 +376,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   lessonButton: {
     backgroundColor: '#9C27B0',
     color: 'white',
-    padding: '0.4rem 0.8rem',
+    padding: '0.4rem 1rem',
     borderRadius: '2rem',
     fontSize: '0.75rem',
     fontWeight: 'bold',
@@ -405,7 +386,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   examButton: {
     backgroundColor: '#4caf50',
     color: 'white',
-    padding: '0.4rem 0.8rem',
+    padding: '0.4rem 1rem',
     borderRadius: '2rem',
     fontSize: '0.75rem',
     fontWeight: 'bold',
@@ -413,13 +394,15 @@ const styles: { [key: string]: React.CSSProperties } = {
     transition: 'all 0.2s',
   },
   infoBox: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: 'white',
     borderRadius: '1rem',
-    padding: '1rem',
+    padding: '1.5rem',
     marginTop: '2rem',
     maxWidth: '600px',
     marginLeft: 'auto',
     marginRight: 'auto',
     textAlign: 'center',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    color: '#555',
   },
 };
