@@ -357,7 +357,7 @@ const GosasteRiyaziFinalExam = () => {
         position: 'relative'
       }}>
         <button 
-          onClick={() => router.push('https://site-tahsili.vercel.app/exam/davazdahom/riyazi/ghalamchi/first-half/gosaste-riazi')}
+          onClick={() => router.push('/')}
           style={{
             position: 'absolute',
             left: '20px',
