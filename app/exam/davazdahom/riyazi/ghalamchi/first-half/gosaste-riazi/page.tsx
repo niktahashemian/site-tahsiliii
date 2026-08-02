@@ -103,17 +103,17 @@ export default function GosasteRiyaziChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`https://site-tahsili.vercel.app/exam/davazdahom/riyazi/ghalamchi/first-half/gosaste-riazi${lessonSlug}`);
+    router.push(`/exam/davazdahom/riyazi/gozine2/first-half/gosaste-riyazi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`https://site-tahsili.vercel.app/exam/davazdahom/riyazi/ghalamchi/first-half/gosaste-riazi${examSlug}`);
+    router.push(`/exam/davazdahom/riyazi/gozine2/first-half/gosaste-riyazi/chapter-exam/${examSlug}`);
   };
 
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        <button onClick={() => router.push('https://site-tahsili.vercel.app/exam/davazdahom/riyazi/ghalamchi/first-half')} style={styles.backButton}>
+        <button onClick={() => router.push('/exam/davazdahom/riyazi/gozine2/first-half')} style={styles.backButton}>
           ← بازگشت به لیست دروس
         </button>
         <h1 style={styles.title}>🧮 ریاضی گسسته - پایه دوازدهم ریاضی قلمچی</h1>
