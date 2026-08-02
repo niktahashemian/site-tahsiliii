@@ -113,7 +113,7 @@ export default function GosasteRiyaziChaptersPage() {
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        <button onClick={() => router.push('/exam/davazdahom/riyazi/ghalamchi/first-half')} style={styles.backButton}>
+        <button onClick={() => router.push('https://site-tahsili.vercel.app/exam/davazdahom/riyazi/ghalamchi/first-half')} style={styles.backButton}>
           ← بازگشت به لیست دروس
         </button>
         <h1 style={styles.title}>🧮 ریاضی گسسته - پایه دوازدهم ریاضی قلمچی</h1>
