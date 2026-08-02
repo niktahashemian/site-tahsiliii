@@ -103,17 +103,17 @@ export default function GosasteRiyaziChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/davazdahom/riyazi/gozine2/first-half/gosaste-riyazi/${lessonSlug}`);
+    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/gosaste-riazi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/davazdahom/riyazi/gozine2/first-half/gosaste-riyazi/chapter-exam/${examSlug}`);
+    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/gosaste-riazi/chapter-exam/${examSlug}`);
   };
 
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        <button onClick={() => router.push('/exam/davazdahom/riyazi/gozine2/first-half')} style={styles.backButton}>
+        <button onClick={() => router.push('/exam/davazdahom/riyazi/ghalamchi/first-half')} style={styles.backButton}>
           ← بازگشت به لیست دروس
         </button>
         <h1 style={styles.title}>🧮 ریاضی گسسته - پایه دوازدهم ریاضی قلمچی</h1>
@@ -406,4 +406,3 @@ const styles: { [key: string]: React.CSSProperties } = {
     boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
     color: '#555',
   },
-};
