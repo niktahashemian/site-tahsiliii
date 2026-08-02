@@ -103,11 +103,11 @@ export default function GosasteRiyaziChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/gosaste-riazi/${lessonSlug}`);
+    router.push(`https://site-tahsili.vercel.app/exam/davazdahom/riyazi/ghalamchi/first-half/gosaste-riazi${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/gosaste-riazi/chapter-exam/${examSlug}`);
+    router.push(`https://site-tahsili.vercel.app/exam/davazdahom/riyazi/ghalamchi/first-half/gosaste-riazi${examSlug}`);
   };
 
   return (
