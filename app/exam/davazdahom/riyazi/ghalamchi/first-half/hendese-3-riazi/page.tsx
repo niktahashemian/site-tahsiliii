@@ -21,7 +21,7 @@ interface Chapter {
   examQuestionCount: number;
 }
 
-export default function Hendese3ChaptersPage() {
+export default function Handese3ChaptersPage() {
   const router = useRouter();
   const [openChapter, setOpenChapter] = useState<number | null>(null);
 
@@ -86,14 +86,14 @@ export default function Hendese3ChaptersPage() {
     },
     {
       id: 5,
-      name: '🏆 آزمون جامع کل کتاب هندسه (3)',
+      name: '🏆 آزمون جامع کل کتاب هندسه (۳)',
       icon: '🏆',
       color: '#FF6B6B',
       examSlug: 'final-exam',
-      examName: 'آزمون جامع کل کتاب هندسه (3)',
+      examName: 'آزمون جامع کل کتاب هندسه (۳)',
       examQuestionCount: 60,
       lessons: [
-        { id: 15, name: '📚 کل دروس کتاب هندسه (3)', description: 'شامل تمام مباحث: ماتریس و دستگاه‌های خطی، بردارها و فضا، مقاطع مخروطی، تبدیلات هندسی', questionCount: 60, slug: 'final-exam' },
+        { id: 15, name: '📚 کل دروس کتاب هندسه (۳)', description: 'شامل تمام مباحث: ماتریس و دستگاه‌های خطی، بردارها و فضا، مقاطع مخروطی، تبدیلات هندسی', questionCount: 60, slug: 'final-exam' },
       ]
     }
   ];
@@ -103,11 +103,11 @@ export default function Hendese3ChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/hendese-3-riazi/${lessonSlug}`);
+    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/hendese-3-riyazi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/hendese-3-riazi/chapter-exam/${examSlug}`);
+    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/hendese-3-riyazi/chapter-exam/${examSlug}`);
   };
 
   return (
@@ -116,7 +116,7 @@ export default function Hendese3ChaptersPage() {
         <button onClick={() => router.push('/exam/davazdahom/riyazi/ghalamchi/first-half')} style={styles.backButton}>
           ← بازگشت به لیست دروس
         </button>
-        <h1 style={styles.title}>📐 هندسه (۳) - پایه دوازدهم ریاضی قلمچی</h1>
+        <h1 style={styles.title}>📐 هندسه (۳) - پایه دوازدهم ریاضی گزینه دو (نیم‌سال اول)</h1>
         <p style={styles.subtitle}>برای شروع، روی هر فصل کلیک کنید و سپس درس یا آزمون جامع مورد نظر را انتخاب نمایید</p>
       </div>
 

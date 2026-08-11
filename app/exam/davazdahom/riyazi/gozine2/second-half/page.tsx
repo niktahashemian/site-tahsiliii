@@ -135,15 +135,15 @@ export default function SecondHalfLessonsPage() {
   ];
 const getLessonSlug = (lessonName: string): string => {
   const slugMap: Record<string, string> = {
-    'ریاضیات گسسته':'gosaste-riazi',
-    'فیزیک (3)': 'fizik-3-riazi',
-    'شیمی (3)': 'shimi-3-riazi',
-    'هندسه (3)':'hendese-3-riazi',
-    'حسابان (2)': 'hesaban-2-riazi',
-    'فارسی (3)': 'farsi-3-riazi',
-    'عربی (3)': 'arabi-3-riazi',
-    'دین و زندگی (3)': 'din-va-zendegi-3-riazi',
-    'زبان انگلیسی (3)': 'english-3-riazi'
+    'ریاضیات گسسته':'gosaste-riyazi',
+    'فیزیک (3)': 'fizik-3-riyazi',
+    'شیمی (3)': 'shimi-3-riyazi',
+    'هندسه (3)':'hendese-3-riyazi',
+    'حسابان (2)': 'hesaban-2-riyazi',
+    'فارسی (3)': 'farsi-3-riyazi',
+    'عربی (3)': 'arabi-3-riyazi',
+    'دین و زندگی (3)': 'din-va-zendegi-3-riyazi',
+    'زبان انگلیسی (3)': 'english-3-riyazi'
   };
   return slugMap[lessonName] || lessonName.replace(/ /g, '-').toLowerCase();
 };

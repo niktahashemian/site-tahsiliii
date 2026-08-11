@@ -103,11 +103,11 @@ export default function Shimi3ChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/shimi-3-riazi/${lessonSlug}`);
+    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/shimi-3-riyazi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/shimi-3-riazi/chapter-exam/${examSlug}`);
+    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/shimi-3-riyazi/chapter-exam/${examSlug}`);
   };
 
   return (

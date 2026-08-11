@@ -357,7 +357,7 @@ const Hesaban2FinalExam = () => {
         position: 'relative'
       }}>
         <button 
-          onClick={() => router.push('/exam/davazdahom/riyazi/ghalamchi/first-half/hesaban-2-riazi')}
+          onClick={() => router.push('/exam/davazdahom/riyazi/ghalamchi/first-half/hesaban-2-riyazi')}
           style={{
             position: 'absolute',
             left: '20px',

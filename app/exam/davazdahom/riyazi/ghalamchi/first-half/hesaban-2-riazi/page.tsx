@@ -103,11 +103,11 @@ export default function Hesaban2ChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/hesaban-2-riazi/${lessonSlug}`);
+    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/hesaban-2-riyazi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/hesaban-2-riazi/chapter-exam/${examSlug}`);
+    router.push(`/exam/davazdahom/riyazi/ghalamchi/first-half/hesaban-2-riyazi/chapter-exam/${examSlug}`);
   };
 
   return (

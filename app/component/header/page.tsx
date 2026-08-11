@@ -29,7 +29,8 @@ const Header = () => {
                                     priority
                                 />
                             </Link>
-                            <p style={{ marginRight: '65px', whiteSpace: 'nowrap' }}>مرکز مشاوره پرتو امید</p>                            <Link href="/" className={`ras-menu-link ras-home-link ${pathname === '/' ? 'active' : ''}`}>
+                            <p style={{ marginRight: '65px', whiteSpace: 'nowrap' }}>مرکز مشاوره پرتو امید</p>
+                            <Link href="/" className={`ras-menu-link ras-home-link ${pathname === '/' ? 'active' : ''}`}>
                                 <Home size={18} />
                                 <span>خانه</span>
                             </Link>
