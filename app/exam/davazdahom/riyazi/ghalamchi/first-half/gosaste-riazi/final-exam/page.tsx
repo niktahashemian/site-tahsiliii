@@ -357,7 +357,11 @@ const GosasteRiyaziFinalExam = () => {
         position: 'relative'
       }}>
         <button 
+<<<<<<< HEAD
           onClick={() => router.push('/exam/davazdahom/riyazi/ghalamchi/first-half/gosaste-riazi/gosaste-3-riyazi')}
+=======
+          onClick={() => router.push('/exam/davazdahom/riyazi/ghalamchi/first-half/gosaste-riazi/')}
+>>>>>>> 3d6bbce39571346cdf616b02b05441851f12a53d
           style={{
             position: 'absolute',
             left: '20px',
