@@ -44,9 +44,11 @@ export default function FirstHalfLessonsPage() {
   // دریافت نام فارسی آزمون
   const getExamName = (examPath: string): string => {
     const examMap: Record<string, string> = {
-      'maz': 'قلمچی',
+      'ghalamchi': 'قلمچی',
+      'maz': 'ماز',
       'gozine2': 'گزینه دو',
-      'sanjesh': 'سنجش'
+      'sanjesh': 'سنجش',
+      'kheili-sabz': 'خیلی سبز'
     };
     return examMap[examPath] || examPath;
   };
@@ -60,11 +62,10 @@ export default function FirstHalfLessonsPage() {
     return semesterMap[semesterPath] || semesterPath;
   };
 
-  // ======================== لیست دروس نیم سال اول یازدهم ریاضی ========================
+  // ======================== لیست دروس ========================
   const lessons: Lesson[] = [
-    
     { 
-      id: 2, 
+      id: 1, 
       name: 'فیزیک (2)', 
       icon: '⚡', 
       color: '#FF9800', 
@@ -72,7 +73,7 @@ export default function FirstHalfLessonsPage() {
       questionCount: 10
     },
     { 
-      id: 3, 
+      id: 2, 
       name: 'شیمی (2)', 
       icon: '🧪', 
       color: '#00BCD4', 
@@ -80,7 +81,7 @@ export default function FirstHalfLessonsPage() {
       questionCount: 10
     },
     { 
-      id: 4, 
+      id: 3, 
       name: 'هندسه (2)', 
       icon: '🔺', 
       color: '#4CAF50', 
@@ -88,7 +89,7 @@ export default function FirstHalfLessonsPage() {
       questionCount: 8
     },
     { 
-      id: 5, 
+      id: 4, 
       name: 'حسابان (1)', 
       icon: '∫', 
       color: '#9C27B0', 
@@ -96,7 +97,7 @@ export default function FirstHalfLessonsPage() {
       questionCount: 10
     },
     { 
-      id: 6, 
+      id: 5, 
       name: 'آمار و احتمال', 
       icon: '📊', 
       color: '#2196F3', 
@@ -104,7 +105,7 @@ export default function FirstHalfLessonsPage() {
       questionCount: 8
     },
     { 
-      id: 7, 
+      id: 6, 
       name: 'فارسی (2)', 
       icon: '📖', 
       color: '#9C27B0', 
@@ -112,7 +113,7 @@ export default function FirstHalfLessonsPage() {
       questionCount: 8
     },
     { 
-      id: 8, 
+      id: 7, 
       name: 'عربی (2)', 
       icon: '🕌', 
       color: '#2196F3', 
@@ -120,7 +121,7 @@ export default function FirstHalfLessonsPage() {
       questionCount: 8
     },
     { 
-      id: 9, 
+      id: 8, 
       name: 'دین و زندگی (2)', 
       icon: '🕌', 
       color: '#FF9800', 
@@ -128,7 +129,7 @@ export default function FirstHalfLessonsPage() {
       questionCount: 8
     },
     { 
-      id: 10, 
+      id: 9, 
       name: 'زبان انگلیسی (2)', 
       icon: '🇬🇧', 
       color: '#F44336', 
@@ -136,34 +137,31 @@ export default function FirstHalfLessonsPage() {
       questionCount: 8
     }
   ];
-  // اضافه کردن این آبجکت در بالای کامپوننت (بعد از lesson ها)
-  // اضافه کردن این آبجکت در بالای کامپوننت (بعد از lesson ها)
-const getLessonSlug = (lessonName: string): string => {
-  const slugMap: Record<string, string> = {
-    'ریاضی (2)': 'riyazi-2',
-    'فیزیک (2)': 'fizik-2',
-    'شیمی (2)': 'shimi-2',
-    'هندسه (2)': 'hendese-2',
-    'حسابان (1)': 'hesaban-1',
-    'آمار و احتمال': 'amar-va-ehtemal',
-    'فارسی (2)': 'farsi-2',
-    'عربی (2)': 'arabi-2',
-    'دین و زندگی (2)': 'din-va-zendegi-2',
-    'زبان انگلیسی (2)': 'english-2'
-  };
-  return slugMap[lessonName] || lessonName.replace(/ /g, '-').toLowerCase();
-};
 
-// سپس تابع handleLessonClick را اصلاح کنید:
-const handleLessonClick = (lessonName: string) => {
-  const lessonSlug = getLessonSlug(lessonName);
-  // آدرس به این شکل می‌شود: /exam/kheili-sabz/hesaban-1
-  router.push(`/exam/yazdahom/riyazi/sanjesh/second-half/${lessonSlug}`);
-};
+  // نگاشت نام درس به slug
+  const getLessonSlug = (lessonName: string): string => {
+    const slugMap: Record<string, string> = {
+      'فیزیک (2)': 'fizik-2',
+      'شیمی (2)': 'shimi-2',
+      'هندسه (2)': 'hendese-2',
+      'حسابان (1)': 'hesaban-1',
+      'آمار و احتمال': 'amar-va-ehtemal',
+      'فارسی (2)': 'farsi-2',
+      'عربی (2)': 'arabi-2',
+      'دین و زندگی (2)': 'din-va-zendegi-2',
+      'زبان انگلیسی (2)': 'english-2'
+    };
+    return slugMap[lessonName] || lessonName.replace(/ /g, '-').toLowerCase();
+  };
+
+  const handleLessonClick = (lessonName: string) => {
+    const lessonSlug = getLessonSlug(lessonName);
+    router.push(`/exam/${grade}/${field}/${exam}/${semester}/${lessonSlug}`);
+  };
+
   return (
     <div className="exam-lessons-container">
       <div className="exam-header">
-        {/* لینک بازگشت به صفحه اصلی (localhost:3000) */}
         <Link href="/" className="back-to-home">
           ← بازگشت به صفحه اصلی
         </Link>
@@ -197,9 +195,183 @@ const handleLessonClick = (lessonName: string) => {
       </div>
 
       <div className="info-box">
-        <p>💡 هر آزمون شامل سوالات تخصصی نیم سال اول {getGradeName(grade)} {getFieldName(field)} می‌باشد.</p>
+        <p>💡 هر آزمون شامل سوالات تخصصی {getSemesterName(semester)} {getGradeName(grade)} {getFieldName(field)} می‌باشد.</p>
         <p>📊 پس از اتمام آزمون، درصد شما به همراه پاسخنامه تشریحی نمایش داده می‌شود.</p>
       </div>
+
+      <style jsx>{`
+        .exam-lessons-container {
+          min-height: 100vh;
+          padding: 2rem;
+          font-family: 'IranSans', Tahoma, sans-serif;
+          background: #f0f4f8;
+        }
+        .exam-header {
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+        .back-to-home {
+          display: inline-block;
+          background: #4a5568;
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 0.5rem;
+          text-decoration: none;
+          margin-bottom: 1rem;
+          font-size: 0.9rem;
+          transition: background 0.3s;
+        }
+        .back-to-home:hover {
+          background: #2d3748;
+        }
+        .exam-title {
+          font-size: 2rem;
+          color: #1a202c;
+          margin: 0.5rem 0;
+        }
+        .exam-subtitle {
+          color: #4a5568;
+          font-size: 1rem;
+        }
+        .lessons-grid {
+          max-width: 1400px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+        }
+        .lesson-card {
+          background: white;
+          border-radius: 1rem;
+          padding: 1.5rem;
+          cursor: pointer;
+          transition: transform 0.2s, box-shadow 0.2s;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .lesson-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .lesson-icon {
+          font-size: 2.5rem;
+          margin-bottom: 0.5rem;
+        }
+        .lesson-name {
+          font-size: 1.1rem;
+          font-weight: bold;
+          margin: 0.5rem 0;
+          color: #2d3748;
+        }
+        .lesson-description {
+          font-size: 0.8rem;
+          color: #718096;
+          margin: 0.5rem 0;
+          line-height: 1.4;
+          flex: 1;
+        }
+        .lesson-stats {
+          margin: 0.5rem 0;
+        }
+        .question-count {
+          background: #edf2f7;
+          padding: 0.2rem 0.6rem;
+          border-radius: 1rem;
+          font-size: 0.7rem;
+          color: #4a5568;
+        }
+        .lesson-button {
+          display: inline-block;
+          padding: 0.4rem 1rem;
+          border-radius: 2rem;
+          color: white;
+          font-size: 0.8rem;
+          font-weight: bold;
+          text-align: center;
+          transition: opacity 0.2s;
+          margin-top: 0.5rem;
+          width: 100%;
+        }
+        .lesson-button:hover {
+          opacity: 0.9;
+        }
+        .info-box {
+          background: white;
+          border-radius: 1rem;
+          padding: 1rem;
+          margin-top: 2rem;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+          color: #4a5568;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ======================================== */
+        /* ریسپانسیو: 3 ستون در لپ‌تاپ، 2 ستون در تبلت، 1 ستون در موبایل */
+        /* ======================================== */
+
+        /* لپ‌تاپ و دسکتاپ کوچک (کمتر از 1200px) */
+        @media (max-width: 1200px) {
+          .lessons-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
+        /* تبلت (کمتر از 992px) */
+        @media (max-width: 992px) {
+          .lessons-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        /* موبایل (کمتر از 576px) */
+        @media (max-width: 576px) {
+          .exam-lessons-container {
+            padding: 1rem;
+          }
+          .lessons-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+          .exam-title {
+            font-size: 1.3rem;
+          }
+          .lesson-card {
+            padding: 1rem;
+          }
+        }
+
+        /* موبایل خیلی کوچک (کمتر از 400px) */
+        @media (max-width: 400px) {
+          .exam-lessons-container {
+            padding: 0.5rem;
+          }
+          .lessons-grid {
+            gap: 0.8rem;
+          }
+          .lesson-card {
+            padding: 0.8rem;
+          }
+          .lesson-icon {
+            font-size: 2rem;
+          }
+          .lesson-name {
+            font-size: 0.95rem;
+          }
+          .lesson-description {
+            font-size: 0.7rem;
+          }
+          .lesson-button {
+            font-size: 0.7rem;
+            padding: 0.3rem 0.8rem;
+          }
+        }
+      `}</style>
     </div>
   );
 }
