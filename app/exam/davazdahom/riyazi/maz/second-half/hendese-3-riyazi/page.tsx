@@ -103,17 +103,17 @@ export default function HendesehRiyaziChaptersPage() {
   };
 
   const handleLessonClick = (lessonSlug: string) => {
-    router.push(`/exam/davazdahom/riyazi/maz/first-half/hendese-3-riyazi/${lessonSlug}`);
+    router.push(`/exam/davazdahom/riyazi/maz/second-half/hendese-3-riyazi/${lessonSlug}`);
   };
 
   const handleChapterExamClick = (examSlug: string) => {
-    router.push(`/exam/davazdahom/riyazi/maz/first-half/hendese-3-riyazi/chapter-exam/${examSlug}`);
+    router.push(`/exam/davazdahom/riyazi/maz/second-half/hendese-3-riyazi/chapter-exam/${examSlug}`);
   };
 
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        <button onClick={() => router.push('/exam/davazdahom/riyazi/maz/first-half')} style={styles.backButton}>
+        <button onClick={() => router.push('/exam/davazdahom/riyazi/maz/second-half')} style={styles.backButton}>
           ← بازگشت به لیست دروس
         </button>
         <h1 style={styles.title}>📐 هندسه ۳ - پایه دوازدهم ریاضی قلمچی</h1>

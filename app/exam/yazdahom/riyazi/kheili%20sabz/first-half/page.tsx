@@ -155,7 +155,7 @@ export default function FirstHalfLessonsPage() {
 
   const handleLessonClick = (lessonName: string) => {
     const lessonSlug = getLessonSlug(lessonName);
-    router.push(`/exam/${grade}/${field}/${exam}/${semester}/${lessonSlug}`);
+    router.push(`/exam/yazdahom/riyazi/kheili%20sabz/first-half/${lessonSlug}`);
   };
 
   return (

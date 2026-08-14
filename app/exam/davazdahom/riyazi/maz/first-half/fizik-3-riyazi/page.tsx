@@ -106,7 +106,7 @@ export default function FizikRiyaziChaptersPage() {
       examName: 'آزمون جامع کل کتاب فیزیک ۳',
       examQuestionCount: 60,
       lessons: [
-        { id: 17, name: '📚 کل دروس کتاب فیزیک ۳', description: 'شامل تمام مباحث: حرکت شناسی، دینامیک، کار و انرژی، تکانه و برخورد، فیزیک اتمی و هسته‌ای', questionCount: 60, slug: 'final-exam' },
+        { id: 17, name: '📚 کل دروس کتاب فیزیک ۳', description: 'شامل تمام مباحث: حرکت شناسی، دینامیک، کار و انرژی، تکانه و برخورد، فیزیک اتمی', questionCount: 60, slug: 'final-exam' },
       ]
     }
   ];

@@ -52,7 +52,7 @@ export default function ShimiRiyaziChaptersPage() {
         { id: 4, name: 'درس ۲-۱: مواد شیمیایی در زندگی روزمره', description: 'مواد شوینده، ضدعفونی‌کننده‌ها، ترکیب‌های مورد استفاده در خانه', questionCount: 12, slug: 'lesson4' },
         { id: 5, name: 'درس ۲-۲: پلیمرها و کاربردها', description: 'پلیمرهای طبیعی و مصنوعی، پلاستیک‌ها، الیاف و کاربردها', questionCount: 10, slug: 'lesson5' },
         { id: 6, name: 'درس ۲-۳: سرامیک‌ها و شیشه‌ها', description: 'سرامیک‌ها، شیشه‌ها، خواص و کاربردهای صنعتی', questionCount: 10, slug: 'lesson6' },
-        { id: 7, name: 'درس ۲-۴: مواد مرکب و نانومواد', description: 'مواد مرکب، نانومواد، کاربردهای فناوری نانو', questionCount: 8, slug: 'lesson7' },
+        { id: 7, name: 'درس ۲-۴: مواد مرکب و نانو مواد', description: 'مواد مرکب، نانومواد، کاربردهای فناوری نانو', questionCount: 8, slug: 'lesson7' },
       ]
     },
     {

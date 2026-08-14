@@ -86,14 +86,14 @@ export default function GosasteRiyaziChaptersPage() {
     },
     {
       id: 5,
-      name: '🏆 آزمون جامع کل کتاب ریاضیات گسسته',
+      name: '🏆 آزمون جامع کل کتاب ریاضی گسسته',
       icon: '🏆',
-      color: '#D32F2F',
+      color: '#FF6B6B',
       examSlug: 'final-exam',
-      examName: 'آزمون جامع کل کتاب ریاضیات گسسته',
+      examName: 'آزمون جامع کل کتاب ریاضی گسسته',
       examQuestionCount: 60,
       lessons: [
-        { id: 15, name: '📚 کل دروس کتاب ریاضیات گسسته', description: 'شامل تمام مباحث: منطق، نظریه اعداد، ترکیبیات، گراف و درخت', questionCount: 60, slug: 'final-exam' },
+        { id: 15, name: '📚 کل دروس کتاب ریاضی گسسته', description: 'شامل تمام مباحث: منطق، نظریه اعداد، ترکیبیات، گراف و درخت', questionCount: 60, slug: 'final-exam' },
       ]
     }
   ];
@@ -116,7 +116,7 @@ export default function GosasteRiyaziChaptersPage() {
         <button onClick={() => router.push('/exam/davazdahom/riyazi/maz/first-half')} style={styles.backButton}>
           ← بازگشت به لیست دروس
         </button>
-        <h1 style={styles.title}>🧮 ریاضیات گسسته - پایه دوازدهم ریاضی قلمچی</h1>
+        <h1 style={styles.title}>🧮 ریاضی گسسته - پایه دوازدهم ریاضی قلمچی</h1>
         <p style={styles.subtitle}>برای شروع، روی هر فصل کلیک کنید و سپس درس یا آزمون جامع مورد نظر را انتخاب نمایید</p>
       </div>
 
@@ -185,7 +185,7 @@ export default function GosasteRiyaziChaptersPage() {
         <p>💡 نکته: برای شروع آزمون هر درس یا آزمون جامع فصل، روی آن کلیک کنید.</p>
         <p>📊 پس از اتمام هر آزمون، درصد شما به همراه پاسخنامه تشریحی نمایش داده می‌شود.</p>
         <p>🏆 آزمون‌های جامع شامل سوالات ترکیبی از تمام دروس آن فصل می‌باشند.</p>
-        <p>🧮 این آزمون‌ها مطابق با کتاب ریاضیات گسسته پایه دوازدهم رشته ریاضی طراحی شده‌اند.</p>
+        <p>🧮 این آزمون‌ها مطابق با کتاب ریاضی گسسته پایه دوازدهم رشته ریاضی طراحی شده‌اند.</p>
       </div>
 
       <style>{`
@@ -239,7 +239,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   title: {
     fontSize: '2.5rem',
-    color: '#1A237E',
+    color: '#1a237e',
     margin: '0.5rem 0',
     fontWeight: 'bold',
   },

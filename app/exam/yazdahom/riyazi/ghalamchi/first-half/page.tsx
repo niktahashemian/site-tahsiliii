@@ -703,7 +703,7 @@ export default function FirstHalfLessonsPage() {
 
   const handleLessonClick = (lessonName: string) => {
     const lessonSlug = getLessonSlug(lessonName);
-    router.push(`/exam/${grade}/${field}/${exam}/${semester}/${lessonSlug}`);
+    router.push(`/exam/yazdahom/riyazi/ghalamchi/first-half/${lessonSlug}`);
   };
 
   return (

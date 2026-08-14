@@ -1,6 +1,6 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 interface Lesson {
@@ -13,55 +13,9 @@ interface Lesson {
 }
 
 export default function FirstHalfLessonsPage() {
-  const params = useParams();
   const router = useRouter();
-  const grade = params.grade as string;
-  const field = params.field as string;
-  const exam = params.exam as string;
-  const semester = params.semester as string;
 
-  // دریافت نام فارسی پایه
-  const getGradeName = (gradePath: string): string => {
-    const gradeMap: Record<string, string> = {
-      'dahom': 'دهم',
-      'yazdahom': 'یازدهم',
-      'davazdahom': 'دوازدهم'
-    };
-    return gradeMap[gradePath] || gradePath;
-  };
-
-  // دریافت نام فارسی رشته
-  const getFieldName = (fieldPath: string): string => {
-    const fieldMap: Record<string, string> = {
-      'ensani': 'انسانی',
-      'riyazi': 'ریاضی',
-      'tajrobi': 'تجربی'
-    };
-    return fieldMap[fieldPath] || fieldPath;
-  };
-
-  // دریافت نام فارسی آزمون
-  const getExamName = (examPath: string): string => {
-    const examMap: Record<string, string> = {
-      'ghalamchi': 'قلمچی',
-      'maz': 'ماز',
-      'gozine2': 'گزینه دو',
-      'sanjesh': 'سنجش',
-      'kheili-sabz': 'خیلی سبز'
-    };
-    return examMap[examPath] || examPath;
-  };
-
-  // دریافت نام فارسی نیم سال
-  const getSemesterName = (semesterPath: string): string => {
-    const semesterMap: Record<string, string> = {
-      'first-half': 'نیم سال اول',
-      'second-half': 'نیم سال دوم'
-    };
-    return semesterMap[semesterPath] || semesterPath;
-  };
-
-  // ======================== لیست دروس دوازدهم ریاضی ========================
+  // ======================== لیست دروس دوازدهم ریاضی - قلمچی - نیم سال دوم ========================
   const lessons: Lesson[] = [
     { 
       id: 1, 
@@ -140,22 +94,23 @@ export default function FirstHalfLessonsPage() {
   // نگاشت نام درس به slug
   const getLessonSlug = (lessonName: string): string => {
     const slugMap: Record<string, string> = {
-      'ریاضیات گسسته': 'gosaste',
-      'فیزیک (3)': 'fizik-3',
-      'شیمی (3)': 'shimi-3',
-      'هندسه (3)': 'hendese-3',
-      'حسابان (2)': 'hesaban-2',
-      'فارسی (3)': 'farsi-3',
-      'عربی (3)': 'arabi-3',
-      'دین و زندگی (3)': 'din-va-zendegi-3',
-      'زبان انگلیسی (3)': 'english-3'
+      'ریاضیات گسسته': 'gosaste-riyazi',
+      'فیزیک (3)': 'fizik-3-riyazi',
+      'شیمی (3)': 'shimi-3-riyazi',
+      'هندسه (3)': 'hendese-3-riyazi',
+      'حسابان (2)': 'hesaban-2-riyazi',
+      'فارسی (3)': 'farsi-3-riyazi',
+      'عربی (3)': 'arabi-3-riyazi',
+      'دین و زندگی (3)': 'din-va-zendegi-3-riyazi',
+      'زبان انگلیسی (3)': 'english-3-riyazi'
     };
     return slugMap[lessonName] || lessonName.replace(/ /g, '-').toLowerCase();
   };
 
+  // مسیر ثابت برای دوازدهم ریاضی - قلمچی - نیم سال دوم
   const handleLessonClick = (lessonName: string) => {
     const lessonSlug = getLessonSlug(lessonName);
-    router.push(`/exam/${grade}/${field}/${exam}/${semester}/${lessonSlug}`);
+    router.push(`/exam/davazdahom/riyazi/ghalamchi/second-half/${lessonSlug}`);
   };
 
   return (
@@ -165,10 +120,10 @@ export default function FirstHalfLessonsPage() {
           ← بازگشت به صفحه اصلی
         </Link>
         <h1 className="exam-title">
-          📚 {getExamName(exam)} - {getGradeName(grade)} {getFieldName(field)}
+          📚 قلمچی - دوازدهم ریاضی
         </h1>
         <p className="exam-subtitle">
-          {getSemesterName(semester)} - درس مورد نظر خود را انتخاب کنید:
+          نیم سال دوم - درس مورد نظر خود را انتخاب کنید:
         </p>
       </div>
 
@@ -194,7 +149,7 @@ export default function FirstHalfLessonsPage() {
       </div>
 
       <div className="info-box">
-        <p>💡 هر آزمون شامل سوالات تخصصی {getSemesterName(semester)} {getGradeName(grade)} {getFieldName(field)} می‌باشد.</p>
+        <p>💡 هر آزمون شامل سوالات تخصصی نیم سال دوم دوازدهم ریاضی می‌باشد.</p>
         <p>📊 پس از اتمام آزمون، درصد شما به همراه پاسخنامه تشریحی نمایش داده می‌شود.</p>
       </div>
 
@@ -309,10 +264,6 @@ export default function FirstHalfLessonsPage() {
           color: #4a5568;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-
-        /* ======================================== */
-        /* ریسپانسیو: 3 ستون در لپ‌تاپ، 2 ستون در تبلت، 1 ستون در موبایل */
-        /* ======================================== */
 
         @media (max-width: 1200px) {
           .lessons-grid {
