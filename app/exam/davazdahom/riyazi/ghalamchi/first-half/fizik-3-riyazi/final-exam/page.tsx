@@ -1,236 +1,238 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 
-const Fizik3FinalExam = () => {
+const Fizik3RiyaziFinalExam = () => {
   const router = useRouter();
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const isTimeUpRef = useRef(false);
   const isCalculatedRef = useRef(false);
 
-  // ================= سوالات فیزیک (۳) - جامع نیم‌سال اول =================
-  const questions = [
+  // ================= سوالات فیزیک ۳ - جامع نیم‌سال دوم =================
+  const questions = useMemo(() => [
     // ==================== فصل اول: حرکت شناسی ====================
     {
       id: 1,
-      text: "یک متحرک با شتاب ثابت ۲ m/s² از حال سکون شروع به حرکت می‌کند. مسافت طی شده در ۵ ثانیه چند متر است؟",
-      options: ["۲۵", "۵۰", "۱۲/۵", "۱۰"],
+      text: "اگر جسمی با سرعت ثابت ۱۰ متر بر ثانیه حرکت کند، در ۵ ثانیه چند متر مسافت طی می‌کند؟",
+      options: ["۵۰", "۴۰", "۳۰", "۲۰"],
       correctIndex: 0,
-      answer: "گزینه ۱: با استفاده از فرمول حرکت با شتاب ثابت: x = ½at² = ½ × ۲ × ۲۵ = ۲۵ متر"
+      answer: "گزینه ۱: مسافت = سرعت × زمان = ۱۰ × ۵ = ۵۰ متر"
     },
     {
       id: 2,
-      text: "سرعت یک متحرک در زمان t=0 برابر ۱۰ m/s و در t=5s برابر ۳۰ m/s است. شتاب متوسط آن چند m/s² است؟",
-      options: ["۲", "۴", "۵", "۸"],
-      correctIndex: 1,
-      answer: "گزینه ۲: a = (v₂ - v₁)/(t₂ - t₁) = (30-10)/5 = 4 m/s²"
+      text: "شتاب متوسط در حرکت با شتاب ثابت چه رابطه‌ای دارد؟",
+      options: ["a = Δv/Δt", "a = v/t", "a = Δx/Δt", "a = v²/r"],
+      correctIndex: 0,
+      answer: "گزینه ۱: شتاب متوسط برابر با تغییرات سرعت تقسیم بر تغییرات زمان است."
     },
     {
       id: 3,
-      text: "یک متحرک مسیر دایره‌ای به شعاع ۴ متر را با تندی ۸ m/s طی می‌کند. شتاب مرکزگرای آن چند m/s² است؟",
-      options: ["۸", "۱۶", "۳۲", "۴"],
-      correctIndex: 1,
-      answer: "گزینه ۲: a_c = v²/r = 64/4 = 16 m/s²"
+      text: "در سقوط آزاد، شتاب جسم برابر با چه مقدار است؟ (g = ۹.۸ m/s²)",
+      options: ["۹.۸ m/s²", "۴.۹ m/s²", "۱۹.۶ m/s²", "۰ m/s²"],
+      correctIndex: 0,
+      answer: "گزینه ۱: شتاب سقوط آزاد برابر با g = ۹.۸ m/s² است."
     },
     {
       id: 4,
-      text: "پرتابه‌ای با سرعت اولیه ۴۰ m/s و زاویه ۳۰ درجه نسبت به افق پرتاب می‌شود. مدت زمان پرواز آن چند ثانیه است؟ (g = 10 m/s²)",
-      options: ["۲", "۴", "۶", "۸"],
+      text: "حرکت دایره‌ای یکنواخت چه ویژگی دارد؟",
+      options: ["سرعت ثابت و شتاب صفر", "سرعت ثابت و شتاب مرکزگرا", "سرعت متغیر و شتاب ثابت", "سرعت صفر و شتاب ثابت"],
       correctIndex: 1,
-      answer: "گزینه ۲: T = 2v₀sinθ/g = 2×40×0.5/10 = 4 s"
+      answer: "گزینه ۲: در حرکت دایره‌ای یکنواخت، سرعت ثابت است و شتاب به سمت مرکز دارد."
     },
     {
       id: 5,
-      text: "متحرکی روی خط راست با معادله x = t² - 4t + 3 حرکت می‌کند. سرعت آن در t=2s چند m/s است؟",
-      options: ["۰", "۲", "۴", "۶"],
+      text: "فرمول سرعت زاویه‌ای در حرکت دایره‌ای چیست؟",
+      options: ["ω = v/r", "ω = r/v", "ω = v×r", "ω = r²/v"],
       correctIndex: 0,
-      answer: "گزینه ۱: v = dx/dt = 2t - 4. در t=2: v = 4-4 = 0 m/s"
+      answer: "گزینه ۱: سرعت زاویه‌ای برابر با سرعت خطی تقسیم بر شعاع است."
     },
     {
       id: 6,
-      text: "یک خودرو با سرعت ۲۰ m/s در جاده‌ای افقی حرکت می‌کند. اگر ضریب اصطکاک بین تایر و جاده ۰/۴ باشد، حداقل مسافت توقف چند متر است؟ (g = 10 m/s²)",
-      options: ["۵۰", "۴۰", "۶۰", "۸۰"],
+      text: "در حرکت پرتابی، چه کمیتی ثابت است؟",
+      options: ["سرعت افقی", "سرعت عمودی", "شتاب افقی", "شتاب عمودی"],
       correctIndex: 0,
-      answer: "گزینه ۱: d = v²/(2μg) = 400/(2×0.4×10) = 50 m"
+      answer: "گزینه ۱: در حرکت پرتابی، سرعت افقی ثابت است و شتاب افقی صفر است."
     },
 
     // ==================== فصل دوم: دینامیک ====================
     {
       id: 7,
-      text: "نیروی ۲۰ نیوتونی به جسمی به جرم ۵ کیلوگرم وارد می‌شود. شتاب جسم چند m/s² است؟",
-      options: ["۲", "۴", "۶", "۸"],
-      correctIndex: 1,
-      answer: "گزینه ۲: a = F/m = 20/5 = 4 m/s²"
+      text: "قانون دوم نیوتن چه رابطه‌ای را بیان می‌کند؟",
+      options: ["F = ma", "F = mv", "F = m/a", "F = a/m"],
+      correctIndex: 0,
+      answer: "گزینه ۱: قانون دوم نیوتن: نیروی وارد بر جسم برابر با جرم ضرب در شتاب است."
     },
     {
       id: 8,
-      text: "جسمی به جرم ۲ کیلوگرم روی سطح افقی بدون اصطکاک با نیروی ۱۰ نیوتون در جهت افقی کشیده می‌شود. شتاب آن چند m/s² است؟",
-      options: ["۲", "۳", "۴", "۵"],
-      correctIndex: 3,
-      answer: "گزینه ۴: a = F/m = 10/2 = 5 m/s²"
+      text: "نیروی اصطکاک ایستایی چه ویژگی دارد؟",
+      options: ["همیشه ثابت است", "تا حدی می‌تواند تغییر کند", "همیشه صفر است", "همیشه برابر با نیروی عمودی است"],
+      correctIndex: 1,
+      answer: "گزینه ۲: نیروی اصطکاک ایستایی می‌تواند تا حد بیشینه خود تغییر کند."
     },
     {
       id: 9,
-      text: "وزن یک جسم روی سطح زمین ۹۸۰ نیوتون است. جرم آن چند کیلوگرم است؟ (g = 9.8 m/s²)",
-      options: ["۱۰۰", "۹۸", "۸۰", "۱۲۰"],
+      text: "ضریب اصطکاک جنبشی به چه عواملی بستگی دارد؟",
+      options: ["به جنس سطوح", "به سرعت جسم", "به وزن جسم", "به سطح تماس"],
       correctIndex: 0,
-      answer: "گزینه ۱: m = W/g = 980/9.8 = 100 kg"
+      answer: "گزینه ۱: ضریب اصطکاک جنبشی به جنس سطوح در تماس بستگی دارد."
     },
     {
       id: 10,
-      text: "نیروی ۱۰۰ نیوتونی با زاویه ۶۰ درجه نسبت به افق به جسمی وارد می‌شود. مؤلفه افقی نیرو چند نیوتون است؟",
-      options: ["۵۰", "۸۶.۶", "۱۰۰", "۴۰"],
+      text: "نیروی مقاومت سیال با چه عاملی متناسب است؟",
+      options: ["سرعت", "شتاب", "جرم", "چگالی"],
       correctIndex: 0,
-      answer: "گزینه ۱: F_x = F cosθ = 100 × cos60° = 100 × 0.5 = 50 N"
+      answer: "گزینه ۱: نیروی مقاومت سیال معمولاً با سرعت یا مجذور سرعت متناسب است."
     },
     {
       id: 11,
-      text: "دو جسم با جرم‌های ۲ و ۳ کیلوگرم توسط ریسمانی به هم وصل شده و روی سطح بدون اصطکاک قرار دارند. اگر به جسم ۳ کیلوگرمی نیروی ۲۰ نیوتونی وارد شود، کشش ریسمان چند نیوتون است؟",
-      options: ["۶", "۸", "۱۰", "۱۲"],
-      correctIndex: 1,
-      answer: "گزینه ۲: a = F/(m₁+m₂) = 20/5 = 4 m/s². T = m₁a = 2×4 = 8 N"
+      text: "در دستگاه‌های غیرلخت، نیروی مجازی به چه نیرویی گفته می‌شود؟",
+      options: ["نیروی گریز از مرکز", "نیروی وزن", "نیروی اصطکاک", "نیروی عمودی"],
+      correctIndex: 0,
+      answer: "گزینه ۱: نیروی گریز از مرکز یک نیروی مجازی در دستگاه‌های غیرلخت است."
     },
     {
       id: 12,
-      text: "یک جسم روی سطح شیبدار با زاویه ۳۰ درجه و بدون اصطکاک رها می‌شود. شتاب آن چند m/s² است؟ (g = 10 m/s²)",
-      options: ["۳", "۴", "۵", "۶"],
-      correctIndex: 2,
-      answer: "گزینه ۳: a = g sinθ = 10 × sin30° = 10 × 0.5 = 5 m/s²"
+      text: "نیروی عکس‌العمل در قانون سوم نیوتن به چه جسمی وارد می‌شود؟",
+      options: ["جسم دیگر", "همان جسم", "زمین", "هیچکدام"],
+      correctIndex: 0,
+      answer: "گزینه ۱: نیروی عکس‌العمل به جسم دیگری وارد می‌شود."
+
     },
 
     // ==================== فصل سوم: کار و انرژی ====================
     {
       id: 13,
-      text: "نیروی ۵۰ نیوتونی جسمی را به اندازه ۲۰ متر جابه‌جا می‌کند. اگر نیرو با جابه‌جایی زاویه ۶۰ درجه بسازد، کار انجام شده چند ژول است؟",
-      options: ["۵۰۰", "۱۰۰۰", "۷۰۷", "۵۰۰√۳"],
+      text: "فرمول کار در فیزیک چیست؟",
+      options: ["W = Fd cosθ", "W = Fd sinθ", "W = F/d", "W = mgh"],
       correctIndex: 0,
-      answer: "گزینه ۱: W = Fd cosθ = 50 × 20 × cos60° = 1000 × 0.5 = 500 J"
+      answer: "گزینه ۱: کار برابر با نیرو ضرب در جابجایی ضرب در کسینوس زاویه بین آنها است."
     },
     {
       id: 14,
-      text: "جسمی به جرم ۲ کیلوگرم از ارتفاع ۱۰ متری رها می‌شود. انرژی پتانسیل آن در ارتفاع ۴ متری چند ژول است؟ (g = 10 m/s²)",
-      options: ["۸۰", "۱۲۰", "۱۶۰", "۲۰۰"],
+      text: "انرژی جنبشی یک جسم با جرم m و سرعت v برابر است با:",
+      options: ["½mv²", "mv²", "½mv", "mgh"],
       correctIndex: 0,
-      answer: "گزینه ۱: U = mgh = 2×10×4 = 80 J"
+      answer: "گزینه ۱: انرژی جنبشی = ½ × جرم × مجذور سرعت"
     },
     {
       id: 15,
-      text: "جسمی به جرم ۰.۵ کیلوگرم با سرعت ۲۰ m/s حرکت می‌کند. انرژی جنبشی آن چند ژول است؟",
-      options: ["۵۰", "۱۰۰", "۱۵۰", "۲۰۰"],
-      correctIndex: 1,
-      answer: "گزینه ۲: K = ½mv² = ½ × 0.5 × 400 = 100 J"
+      text: "انرژی پتانسیل گرانشی با چه فرمولی محاسبه می‌شود؟",
+      options: ["mgh", "½kx²", "½mv²", "mg"],
+      correctIndex: 0,
+      answer: "گزینه ۱: انرژی پتانسیل گرانشی = جرم × شتاب گرانش × ارتفاع"
     },
     {
       id: 16,
-      text: "جسمی از ارتفاع ۲۰ متری سقوط می‌کند. سرعت آن هنگام برخورد به زمین چند m/s است؟ (g = 10 m/s²)",
-      options: ["۱۰", "۲۰", "۳۰", "۴۰"],
-      correctIndex: 1,
-      answer: "گزینه ۲: v = √(2gh) = √(2×10×20) = √400 = 20 m/s"
+      text: "قانون پایستگی انرژی مکانیکی چه می‌گوید؟",
+      options: ["انرژی کل ثابت است", "انرژی جنبشی ثابت است", "انرژی پتانسیل ثابت است", "کار کل ثابت است"],
+      correctIndex: 0,
+      answer: "گزینه ۱: در سیستم‌های پایستار، مجموع انرژی جنبشی و پتانسیل ثابت است."
     },
     {
       id: 17,
-      text: "نیروی ۱۰۰ نیوتونی فنری را به اندازه ۰.۱ متر فشرده می‌کند. ثابت فنر چند N/m است؟",
-      options: ["۵۰۰", "۱۰۰۰", "۲۰۰۰", "۳۰۰۰"],
-      correctIndex: 1,
-      answer: "گزینه ۲: k = F/x = 100/0.1 = 1000 N/m"
+      text: "توان در فیزیک به چه معناست؟",
+      options: ["کار انجام شده در واحد زمان", "نیرو در واحد زمان", "انرژی در واحد زمان", "جابجایی در واحد زمان"],
+      correctIndex: 0,
+      answer: "گزینه ۱: توان برابر با کار انجام شده تقسیم بر زمان است."
     },
     {
       id: 18,
-      text: "جسمی به جرم ۰.۲ کیلوگرم با سرعت ۱۰ m/s به فنری برخورد می‌کند و آن را فشرده می‌کند. اگر ثابت فنر ۲۰۰ N/m باشد، بیشینه فشردگی فنر چند متر است؟",
-      options: ["۰.۱", "۰.۲", "۰.۳", "۰.۴"],
+      text: "راندمان یک ماشین چیست؟",
+      options: ["کار مفید / کار مصرفی", "کار مصرفی / کار مفید", "انرژی ورودی / انرژی خروجی", "توان مصرفی / توان مفید"],
       correctIndex: 0,
-      answer: "گزینه ۱: ½mv² = ½kx² → x = v√(m/k) = 10√(0.2/200) = 10√0.001 = 0.316 ≈ 0.1 m"
+      answer: "گزینه ۱: راندمان = کار مفید تقسیم بر کار مصرفی"
+
     },
 
-    // ==================== فصل چهارم: حرکت نوسانی ====================
+    // ==================== فصل چهارم: تکانه و برخورد ====================
     {
       id: 19,
-      text: "دوره تناوب یک آونگ ساده به طول ۱ متر چند ثانیه است؟ (g = 10 m/s², π² = 10)",
-      options: ["۱", "۲", "۳", "۴"],
-      correctIndex: 1,
-      answer: "گزینه ۲: T = 2π√(L/g) = 2π√(1/10) = 2π×0.316 = 2 s"
+      text: "تکانه خطی یک جسم با جرم m و سرعت v برابر است با:",
+      options: ["mv", "½mv²", "mgh", "FΔt"],
+      correctIndex: 0,
+      answer: "گزینه ۱: تکانه خطی = جرم × سرعت"
     },
     {
       id: 20,
-      text: "فرکانس یک نوسانگر با دوره تناوب ۰.۵ ثانیه چند هرتز است؟",
-      options: ["۱", "۲", "۳", "۴"],
-      correctIndex: 1,
-      answer: "گزینه ۲: f = 1/T = 1/0.5 = 2 Hz"
+      text: "ضربه در فیزیک به چه معناست؟",
+      options: ["FΔt", "mv", "½mv²", "mgh"],
+      correctIndex: 0,
+      answer: "گزینه ۱: ضربه = نیرو × زمان"
     },
     {
       id: 21,
-      text: "جرمی به فنری با ثابت ۱۰۰ N/m وصل شده و با دوره تناوب ۲ ثانیه نوسان می‌کند. جرم آن چند کیلوگرم است؟ (π² = 10)",
-      options: ["۵", "۱۰", "۲۰", "۴۰"],
-      correctIndex: 1,
-      answer: "گزینه ۲: T = 2π√(m/k) → 2 = 2π√(m/100) → 1 = π√(m/100) → 1 = √10√(m/100) → m = 10 kg"
+      text: "قانون پایستگی تکانه در چه شرایطی برقرار است؟",
+      options: ["نیروی خارجی صفر باشد", "نیروی خارجی ثابت باشد", "نیروی داخلی صفر باشد", "همیشه برقرار است"],
+      correctIndex: 0,
+      answer: "گزینه ۱: در صورت صفر بودن نیروی خارجی، تکانه کل سیستم پایسته است."
     },
     {
       id: 22,
-      text: "دوره تناوب یک آونگ ساده با افزایش طول آن چگونه تغییر می‌کند؟",
-      options: ["افزایش می‌یابد", "کاهش می‌یابد", "ثابت می‌ماند", "به جرم بستگی دارد"],
+      text: "در برخورد کشسان چه کمیتی پایسته است؟",
+      options: ["انرژی جنبشی", "انرژی پتانسیل", "نیرو", "شتاب"],
       correctIndex: 0,
-      answer: "گزینه ۱: T = 2π√(L/g)، با افزایش طول، دوره تناوب افزایش می‌یابد."
+      answer: "گزینه ۱: در برخورد کشسان، انرژی جنبشی و تکانه پایسته هستند."
     },
     {
       id: 23,
-      text: "یک نوسانگر با دامنه ۵ سانتی‌متر و فرکانس ۲ هرتز نوسان می‌کند. بیشینه سرعت آن چند cm/s است؟",
-      options: ["۱۰π", "۲۰π", "۳۰π", "۴۰π"],
-      correctIndex: 1,
-      answer: "گزینه ۲: v_max = Aω = A×2πf = 5×2π×2 = 20π cm/s"
+      text: "مرکز جرم یک سیستم چه ویژگی دارد؟",
+      options: ["نقطه‌ای که سیستم حول آن حرکت می‌کند", "نقطه‌ای که جرم در آن متمرکز است", "نقطه‌ای که نیروهای خارجی به آن وارد می‌شوند", "نقطه‌ای که انرژی در آن متمرکز است"],
+      correctIndex: 0,
+      answer: "گزینه ۱: مرکز جرم نقطه‌ای است که سیستم حول آن حرکت می‌کند."
     },
     {
       id: 24,
-      text: "در یک نوسانگر هماهنگ ساده، انرژی کل با افزایش دامنه به ۲ برابر، چند برابر می‌شود؟",
-      options: ["۲", "۴", "۸", "۱۶"],
-      correctIndex: 1,
-      answer: "گزینه ۲: E = ½kA² → با دو برابر شدن دامنه، انرژی ۴ برابر می‌شود."
+      text: "در برخورد ناکشسان چه اتفاقی می‌افتد؟",
+      options: ["انرژی جنبشی پایسته نیست", "انرژی جنبشی پایسته است", "تکانه پایسته نیست", "جسم‌ها از هم جدا می‌شوند"],
+      correctIndex: 0,
+      answer: "گزینه ۱: در برخورد ناکشسان، انرژی جنبشی پایسته نیست و بخشی از آن به صورت گرما تلف می‌شود."
     },
 
     // ==================== سوالات ترکیبی ====================
     {
       id: 25,
-      text: "سرعت زاویه‌ای یک چرخ با فرکانس ۱۰ هرتز چند rad/s است؟ (π = 3.14)",
-      options: ["۳۱.۴", "۶۲.۸", "۹۴.۲", "۱۲۵.۶"],
-      correctIndex: 1,
-      answer: "گزینه ۲: ω = 2πf = 2×3.14×10 = 62.8 rad/s"
+      text: "اگر جسمی از ارتفاع ۲۰ متری سقوط کند، سرعت آن هنگام برخورد با زمین چقدر است؟ (g=۱۰ m/s²)",
+      options: ["۲۰ m/s", "۱۰ m/s", "۴۰ m/s", "۳۰ m/s"],
+      correctIndex: 0,
+      answer: "گزینه ۱: v = √(۲gh) = √(۲×۱۰×۲۰) = √۴۰۰ = ۲۰ m/s"
     },
     {
       id: 26,
-      text: "یک متحرک با سرعت ۲۰ m/s وارد پیچی به شعاع ۴۰ متر می‌شود. شتاب مرکزگرای آن چند m/s² است؟",
-      options: ["۵", "۱۰", "۱۵", "۲۰"],
-      correctIndex: 1,
-      answer: "گزینه ۲: a_c = v²/r = 400/40 = 10 m/s²"
+      text: "نیروی گرانشی بین دو جسم با جرم m1 و m2 و فاصله r برابر است با:",
+      options: ["Gm1m2/r²", "Gm1m2/r", "Gm1m2/r³", "Gm1m2"],
+      correctIndex: 0,
+      answer: "گزینه ۱: نیروی گرانشی = G × m1 × m2 / r²"
     },
     {
       id: 27,
-      text: "جسمی به جرم ۵ کیلوگرم با سرعت ۱۰ m/s روی سطح افقی حرکت می‌کند. اگر ضریب اصطکاک جنبشی ۰.۲ باشد، تا توقف چند متر حرکت می‌کند؟ (g = 10 m/s²)",
-      options: ["۱۰", "۲۰", "۲۵", "۳۰"],
-      correctIndex: 2,
-      answer: "گزینه ۳: d = v²/(2μg) = 100/(2×0.2×10) = 25 m"
+      text: "شتاب مرکزگرا در حرکت دایره‌ای برابر است با:",
+      options: ["v²/r", "v/r", "v²r", "vr"],
+      correctIndex: 0,
+      answer: "گزینه ۱: شتاب مرکزگرا = سرعت خطی مجذور تقسیم بر شعاع"
     },
     {
       id: 28,
-      text: "توان یک موتور که در ۱۰ ثانیه ۲۰۰۰ ژول کار انجام می‌دهد، چند وات است؟",
-      options: ["۱۰۰", "۲۰۰", "۳۰۰", "۴۰۰"],
-      correctIndex: 1,
-      answer: "گزینه ۲: P = W/t = 2000/10 = 200 W"
+      text: "کار نیروی وزن در حرکت افقی چقدر است؟",
+      options: ["صفر", "mgh", "mgd", "½mv²"],
+      correctIndex: 0,
+      answer: "گزینه ۱: کار نیروی وزن در حرکت افقی صفر است چون زاویه بین نیرو و جابجایی ۹۰ درجه است."
     },
     {
       id: 29,
-      text: "یک جسم روی سطح شیبدار بدون اصطکاک با زاویه ۴۵ درجه رها می‌شود. شتاب آن چند m/s² است؟ (g = 10 m/s²)",
-      options: ["۵√۲", "۱۰√۲", "۵", "۱۰"],
+      text: "در حرکت پرتابی، برد یک پرتابه به چه عواملی بستگی دارد؟",
+      options: ["سرعت اولیه و زاویه پرتاب", "فقط سرعت اولیه", "فقط زاویه پرتاب", "جرم پرتابه"],
       correctIndex: 0,
-      answer: "گزینه ۱: a = g sin45° = 10 × √2/2 = 5√2 m/s²"
+      answer: "گزینه ۱: برد پرتابه به سرعت اولیه و زاویه پرتاب بستگی دارد."
     },
     {
       id: 30,
-      text: "در یک نوسانگر هماهنگ ساده، نسبت انرژی جنبشی به انرژی پتانسیل در لحظه‌ای که جابجایی نصف دامنه است، چند است؟",
-      options: ["۲", "۳", "۴", "۵"],
-      correctIndex: 1,
-      answer: "گزینه ۲: E_k = ½k(A²-x²) = ½k(A²-A²/4) = ⅜kA², E_p = ½kx² = ½k(A²/4) = ⅛kA². نسبت = 3"
+      text: "قانون گرانش جهانی نیوتن برای چه اجسامی کاربرد دارد؟",
+      options: ["همه اجسام با جرم", "فقط سیاره‌ها", "فقط ستاره‌ها", "فقط اجسام روی زمین"],
+      correctIndex: 0,
+      answer: "گزینه ۱: قانون گرانش جهانی برای همه اجسام با جرم کاربرد دارد."
     },
-  ];
+  ], []);
 
   // ==================== State ====================
   const [selectedAnswers, setSelectedAnswers] = useState<{[key: number]: number}>({});
@@ -254,10 +256,10 @@ const Fizik3FinalExam = () => {
     const percentage = (correctCount / questions.length) * 100;
     setScore(percentage);
     setIsScoreCalculated(true);
-  }, [selectedAnswers]);
+  }, [questions, selectedAnswers]);
 
   // ========== تابع انتخاب گزینه ==========
-  const handleOptionClick = (questionId: number, optionIndex: number) => {
+  const handleOptionClick = useCallback((questionId: number, optionIndex: number) => {
     if (isTimeUp || isScoreCalculated) return;
 
     setSelectedAnswers(prev => {
@@ -270,7 +272,19 @@ const Fizik3FinalExam = () => {
       setScore(null);
       isCalculatedRef.current = false;
     }
-  };
+  }, [isTimeUp, isScoreCalculated]);
+
+  // ========== تابع ریست ==========
+  const handleReset = useCallback(() => {
+    setIsScoreCalculated(false);
+    setScore(null);
+    isCalculatedRef.current = false;
+    isTimeUpRef.current = false;
+    setIsTimeUp(false);
+    setTimeLeft(60 * 60);
+    setSelectedAnswers({});
+    setShowAnswers(false);
+  }, []);
 
   // ========== تایمر ==========
   useEffect(() => {
@@ -333,6 +347,18 @@ const Fizik3FinalExam = () => {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
+  // ========== نمایش سوالات با صفحه‌بندی ==========
+  const [currentPage, setCurrentPage] = useState(0);
+  const questionsPerPage = 10;
+
+  const currentQuestions = useMemo(() => {
+    const start = currentPage * questionsPerPage;
+    const end = start + questionsPerPage;
+    return questions.slice(start, end);
+  }, [questions, currentPage]);
+
+  const totalPages = Math.ceil(questions.length / questionsPerPage);
+
   return (
     <div style={{
       fontFamily: 'Tahoma, Arial, sans-serif',
@@ -348,7 +374,7 @@ const Fizik3FinalExam = () => {
       
       {/* هدر */}
       <div style={{
-        backgroundColor: '#1565C0',
+        backgroundColor: '#FF6F00',
         color: 'white',
         padding: '20px',
         borderRadius: '8px',
@@ -357,7 +383,7 @@ const Fizik3FinalExam = () => {
         position: 'relative'
       }}>
         <button 
-          onClick={() => router.push('/exam/davazdahom/riyazi/gozine2/first-half/fizik-3-riyazi')}
+          onClick={() => router.push('/exam/davazdahom/riyazi/ghalamchi/first-half/fizik-3-riyazi')}
           style={{
             position: 'absolute',
             left: '20px',
@@ -371,12 +397,12 @@ const Fizik3FinalExam = () => {
             fontSize: '14px'
           }}
         >
-          ← بازگشت به لیست دروس
+          ← بازگشت به فصل‌ها
         </button>
         
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
           <div>
-            <h1 style={{ margin: 0, fontSize: '28px' }}>⚡ آزمون جامع فیزیک (۳)</h1>
+            <h1 style={{ margin: 0, fontSize: '28px' }}>⚡ آزمون جامع فیزیک ۳</h1>
             <p style={{ marginTop: '10px', fontSize: '16px', opacity: 0.9 }}>
               {questions.length} سوال - پاسخ داده شده: {answeredCount}/{questions.length}
             </p>
@@ -401,93 +427,149 @@ const Fizik3FinalExam = () => {
 
       {/* سوالات */}
       <div style={{ width: '100%' }}>
-        {questions.map((q, index) => (
-          <div key={q.id} style={{
-            marginBottom: '25px',
-            backgroundColor: '#ffffff',
-            padding: '20px 25px',
-            borderRadius: '8px',
-            border: '1px solid #e9ecef',
-            boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
-          }}>
-            <div style={{ 
-              fontSize: '17px', 
-              lineHeight: '1.9', 
-              marginBottom: '20px', 
-              fontWeight: '500',
-              display: 'flex',
-              alignItems: 'flex-start'
+        {currentQuestions.map((q, index) => {
+          const actualIndex = currentPage * questionsPerPage + index;
+          return (
+            <div key={q.id} style={{
+              marginBottom: '25px',
+              backgroundColor: '#ffffff',
+              padding: '20px 25px',
+              borderRadius: '8px',
+              border: '1px solid #e9ecef',
+              boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
             }}>
-              <span style={{
-                display: 'inline-block',
-                backgroundColor: '#1565C0',
-                color: 'white',
-                width: '30px',
-                height: '30px',
-                textAlign: 'center',
-                lineHeight: '30px',
-                borderRadius: '50%',
-                fontSize: '14px',
-                marginLeft: '15px',
-                flexShrink: 0
+              <div style={{ 
+                fontSize: '17px', 
+                lineHeight: '1.9', 
+                marginBottom: '20px', 
+                fontWeight: '500',
+                display: 'flex',
+                alignItems: 'flex-start'
               }}>
-                {index + 1}
-              </span>
-              <span>{q.text}</span>
+                <span style={{
+                  display: 'inline-block',
+                  backgroundColor: '#FF6F00',
+                  color: 'white',
+                  width: '30px',
+                  height: '30px',
+                  textAlign: 'center',
+                  lineHeight: '30px',
+                  borderRadius: '50%',
+                  fontSize: '14px',
+                  marginLeft: '15px',
+                  flexShrink: 0
+                }}>
+                  {actualIndex + 1}
+                </span>
+                <span>{q.text}</span>
+              </div>
+              
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '12px 30px',
+                marginRight: '20px'
+              }}>
+                {q.options.map((opt, idx) => {
+                  const isSelected = selectedAnswers[q.id] === idx;
+                  const isDisabled = isTimeUp || isScoreCalculated;
+                  
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => handleOptionClick(q.id, idx)}
+                      disabled={isDisabled}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '12px 18px',
+                        border: isSelected ? '3px solid #FF6F00' : '1px solid #dee2e6',
+                        borderRadius: '10px',
+                        backgroundColor: isSelected ? '#fff3e0' : '#fff',
+                        cursor: isDisabled ? 'not-allowed' : 'pointer',
+                        fontSize: '15px',
+                        textAlign: 'right',
+                        transition: 'all 0.2s',
+                        width: '100%',
+                        opacity: isDisabled && !isSelected ? 0.6 : 1
+                      }}
+                    >
+                      <span style={{
+                        display: 'inline-block',
+                        width: '28px',
+                        height: '28px',
+                        border: '1px solid #000',
+                        borderRadius: '50%',
+                        textAlign: 'center',
+                        lineHeight: '28px',
+                        fontSize: '14px',
+                        marginLeft: '15px',
+                        backgroundColor: isSelected ? '#FF6F00' : '#fff',
+                        color: isSelected ? '#fff' : '#000'
+                      }}>
+                        {String.fromCharCode(65 + idx)}
+                      </span>
+                      {opt}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
+          );
+        })}
+
+        {/* صفحه‌بندی */}
+        {!isTimeUp && !isScoreCalculated && questions.length > questionsPerPage && (
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '15px',
+            margin: '20px 0',
+            padding: '15px',
+            backgroundColor: '#fff',
+            borderRadius: '8px',
+            border: '1px solid #dee2e6'
+          }}>
+            <button
+              onClick={() => setCurrentPage(p => Math.max(0, p - 1))}
+              disabled={currentPage === 0}
+              style={{
+                padding: '8px 20px',
+                backgroundColor: currentPage === 0 ? '#e9ecef' : '#FF6F00',
+                color: currentPage === 0 ? '#6c757d' : '#fff',
+                border: 'none',
+                borderRadius: '6px',
+                cursor: currentPage === 0 ? 'not-allowed' : 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}
+            >
+              ← قبلی
+            </button>
             
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '12px 30px',
-              marginRight: '20px'
-            }}>
-              {q.options.map((opt, idx) => {
-                const isSelected = selectedAnswers[q.id] === idx;
-                const isDisabled = isTimeUp || isScoreCalculated;
-                
-                return (
-                  <button
-                    key={idx}
-                    onClick={() => handleOptionClick(q.id, idx)}
-                    disabled={isDisabled}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      padding: '12px 18px',
-                      border: isSelected ? '3px solid #1565C0' : '1px solid #dee2e6',
-                      borderRadius: '10px',
-                      backgroundColor: isSelected ? '#e3f2fd' : '#fff',
-                      cursor: isDisabled ? 'not-allowed' : 'pointer',
-                      fontSize: '15px',
-                      textAlign: 'right',
-                      transition: 'all 0.2s',
-                      width: '100%',
-                      opacity: isDisabled && !isSelected ? 0.6 : 1
-                    }}
-                  >
-                    <span style={{
-                      display: 'inline-block',
-                      width: '28px',
-                      height: '28px',
-                      border: '1px solid #000',
-                      borderRadius: '50%',
-                      textAlign: 'center',
-                      lineHeight: '28px',
-                      fontSize: '14px',
-                      marginLeft: '15px',
-                      backgroundColor: isSelected ? '#1565C0' : '#fff',
-                      color: isSelected ? '#fff' : '#000'
-                    }}>
-                      {String.fromCharCode(65 + idx)}
-                    </span>
-                    {opt}
-                  </button>
-                );
-              })}
-            </div>
+            <span style={{ fontSize: '16px', fontWeight: 'bold' }}>
+              صفحه {currentPage + 1} از {totalPages}
+            </span>
+            
+            <button
+              onClick={() => setCurrentPage(p => Math.min(totalPages - 1, p + 1))}
+              disabled={currentPage === totalPages - 1}
+              style={{
+                padding: '8px 20px',
+                backgroundColor: currentPage === totalPages - 1 ? '#e9ecef' : '#FF6F00',
+                color: currentPage === totalPages - 1 ? '#6c757d' : '#fff',
+                border: 'none',
+                borderRadius: '6px',
+                cursor: currentPage === totalPages - 1 ? 'not-allowed' : 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}
+            >
+              بعدی →
+            </button>
           </div>
-        ))}
+        )}
 
         {/* دکمه محاسبه */}
         <div style={{
@@ -513,7 +595,7 @@ const Fizik3FinalExam = () => {
                 style={{
                   padding: '15px 40px',
                   fontSize: '18px',
-                  backgroundColor: canCalculate ? '#1565C0' : '#6c757d',
+                  backgroundColor: canCalculate ? '#FF6F00' : '#6c757d',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '50px',
@@ -529,10 +611,15 @@ const Fizik3FinalExam = () => {
                   {questions.length - answeredCount} سوال دیگر باقی مانده است
                 </p>
               )}
+              {isTimeUp && !isScoreCalculated && (
+                <p style={{ marginTop: '10px', color: '#dc3545', fontSize: '14px', fontWeight: 'bold' }}>
+                  ⏰ زمان تمام شد! نتایج در حال محاسبه...
+                </p>
+              )}
             </div>
           ) : (
             <div>
-              <div style={{ fontSize: '22px', fontWeight: 'bold', color: '#1565C0' }}>
+              <div style={{ fontSize: '22px', fontWeight: 'bold', color: '#FF6F00' }}>
                 ✅ درصد شما: <span style={{ color: getScoreColor(score!), fontSize: '28px' }}>{Math.round(score!)}%</span>
                 {isTimeUp && <span style={{ fontSize: '14px', color: '#dc3545', marginRight: '15px' }}>(زمان پایان یافت)</span>}
               </div>
@@ -555,12 +642,7 @@ const Fizik3FinalExam = () => {
               </div>
 
               <button
-                onClick={() => {
-                  setIsScoreCalculated(false);
-                  setScore(null);
-                  isCalculatedRef.current = false;
-                  isTimeUpRef.current = false;
-                }}
+                onClick={handleReset}
                 style={{
                   padding: '10px 25px',
                   fontSize: '14px',
@@ -573,7 +655,7 @@ const Fizik3FinalExam = () => {
                   marginTop: '10px'
                 }}
               >
-                🔄 تغییر پاسخ‌ها
+                🔄 شروع مجدد آزمون
               </button>
             </div>
           )}
@@ -604,7 +686,7 @@ const Fizik3FinalExam = () => {
         {showAnswers && isScoreCalculated && (
           <div style={{
             marginTop: '30px',
-            borderTop: '4px solid #1565C0',
+            borderTop: '4px solid #FF6F00',
             paddingTop: '40px',
             backgroundColor: '#ffffff',
             padding: '40px',
@@ -614,13 +696,13 @@ const Fizik3FinalExam = () => {
           }}>
             <h2 style={{ 
               textAlign: 'center', 
-              borderBottom: '3px solid #1565C0', 
+              borderBottom: '3px solid #FF6F00', 
               paddingBottom: '20px', 
               marginBottom: '40px',
               fontSize: '26px',
-              color: '#1565C0'
+              color: '#FF6F00'
             }}>
-              📝 پاسخنامه تشریحی فیزیک (۳)
+              📝 پاسخنامه تشریحی فیزیک ۳
             </h2>
             
             {questions.map((q, index) => {
@@ -635,8 +717,8 @@ const Fizik3FinalExam = () => {
                   <div style={{ fontSize: '16px', lineHeight: '2' }}>
                     <span style={{ 
                       fontWeight: 'bold', 
-                      color: '#1565C0',
-                      backgroundColor: '#e3f2fd',
+                      color: '#FF6F00',
+                      backgroundColor: '#fff3e0',
                       padding: '5px 15px',
                       borderRadius: '20px',
                       display: 'inline-block',
@@ -659,7 +741,7 @@ const Fizik3FinalExam = () => {
                         <br />
                       </span>
                     )}
-                    <span style={{ fontWeight: 'bold', color: '#1565C0' }}>📖 توضیح:</span> 
+                    <span style={{ fontWeight: 'bold', color: '#FF6F00' }}>📖 توضیح:</span> 
                     <br />
                     <span style={{ fontSize: '15px', lineHeight: '1.8', color: '#333' }}>{q.answer}</span>
                   </div>
@@ -687,4 +769,4 @@ const Fizik3FinalExam = () => {
   );
 };
 
-export default Fizik3FinalExam;
+export default Fizik3RiyaziFinalExam;

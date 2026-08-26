@@ -28,17 +28,20 @@ export default function Shimi2ChaptersPage() {
   const chapters: Chapter[] = [
     {
       id: 1,
-      name: 'فصل اول: قدر هدایای زمینی را بدانیم',
+      name: 'فصل اول: منابع شیمیایی و نقش آن در زندگی',
       icon: '🧪',
       color: '#9C27B0',
       examSlug: 'chapter1-exam',
       examName: 'آزمون جامع فصل اول: قدر هدایای زمینی را بدانیم',
       examQuestionCount: 25,
       lessons: [
-        { id: 1, name: 'درس ۱-۱: آرایش الکترونی و جدول تناوبی', description: 'آرایش الکترونی، اوربیتال‌ها، اعداد کوانتومی و جایگاه عناصر در جدول تناوبی', questionCount: 15, slug: 'lesson1' },
-        { id: 2, name: 'درس ۱-۲: روندهای تناوبی ویژگی‌ها', description: 'انرژی یونش، الکترونگاتیوی، شعاع اتمی و یونی و روند تغییرات آن‌ها در جدول', questionCount: 12, slug: 'lesson2' },
-        { id: 3, name: 'درس ۱-۳: استوکیومتری', description: 'محاسبات استوکیومتری، شناسایی محدودکننده واکنش و محاسبه بازده درصدی', questionCount: 10, slug: 'lesson3' },
-        { id: 4, name: 'درس ۱-۴: هیدروکربن‌ها', description: 'آلکان‌ها، آلکن‌ها، آلکین‌ها، نام‌گذاری IUPAC و ویژگی‌های فیزیکی و شیمیایی', questionCount: 12, slug: 'lesson4' },
+        { id: 1, name: 'درس ۱-۱: الگوها و روندها در رفتار مواد و عناصر', description: 'آرایش الکترونی، اوربیتال‌ها، اعداد کوانتومی و جایگاه عناصر در جدول تناوبی', questionCount: 15, slug: 'lesson1' },
+        { id: 2, name: 'درس ۱-۲: رفتار عناصرها و شعاع اتم', description: 'انرژی یونش، الکترونگاتیوی، شعاع اتمی و یونی و روند تغییرات آن‌ها در جدول', questionCount: 12, slug: 'lesson2' },
+        { id: 3, name: 'درس ۱-۳: دنیای رنگی با عناصر دسته ی دی ', description: 'محاسبات استوکیومتری، شناسایی محدودکننده واکنش و محاسبه بازده درصدی', questionCount: 10, slug: 'lesson3' },
+        { id: 4, name: 'درس ۱-۴: عناصر به چه شکلی در طبیعت یافت میشوند؟', description: 'آلکان‌ها، آلکن‌ها، آلکین‌ها، نام‌گذاری IUPAC و ویژگی‌های فیزیکی و شیمیایی', questionCount: 12, slug: 'lesson4' },
+        { id: 5, name: 'درس ۱-۵: واكنش پذیری عناصر ها', description: 'آلکان‌ها، آلکن‌ها، آلکین‌ها، نام‌گذاری IUPAC و ویژگی‌های فیزیکی و شیمیایی', questionCount: 12, slug: 'lesson5' },
+        { id: 6, name: 'درس ۱-۶: شناسايی کاتیون های اهن در ترکیباات', description: 'آلکان‌ها، آلکن‌ها، آلکین‌ها، نام‌گذاری IUPAC و ویژگی‌های فیزیکی و شیمیایی', questionCount: 12, slug: 'lesson6' },
+        { id: 7, name: 'درس ۱-۷: جريان فلزبين محیط زیست و جامعه', description: 'آلکان‌ها، آلکن‌ها، آلکین‌ها، نام‌گذاری IUPAC و ویژگی‌های فیزیکی و شیمیایی', questionCount: 12, slug: 'lesson7' },
       ]
     },
     {
@@ -50,10 +53,10 @@ export default function Shimi2ChaptersPage() {
       examName: 'آزمون جامع فصل دوم: پیوندها و انرژی شیمیایی',
       examQuestionCount: 25,
       lessons: [
-        { id: 5, name: 'درس ۲-۱: آشنایی با آنتالپی و گرماگیر/گرمازا بودن واکنش‌ها', description: 'مفهوم آنتالپی، تشخیص واکنش‌های گرماگیر و گرمازا و محاسبات مربوطه', questionCount: 10, slug: 'lesson5' },
-        { id: 6, name: 'درس ۲-۲: قانون هس و آنتالپی استاندارد', description: 'قانون هس، آنتالپی استاندارد تشکیل، آنتالپی استاندارد سوختن و محاسبات', questionCount: 12, slug: 'lesson6' },
-        { id: 7, name: 'درس ۲-۳: سرعت واکنش', description: 'عوامل مؤثر بر سرعت واکنش، نظریه برخورد و انرژی فعال‌سازی', questionCount: 8, slug: 'lesson7' },
-        { id: 8, name: 'درس ۲-۴: عوامل مؤثر بر سرعت واکنش', description: 'تأثیر دما، غلظت، سطح تماس و کاتالیزور بر سرعت واکنش‌ها', questionCount: 8, slug: 'lesson8' },
+        { id: 5, name: 'درس ۲-۱: مفهوم دما ،گرما  ، انرژی', description: 'مفهوم آنتالپی، تشخیص واکنش‌های گرماگیر و گرمازا و محاسبات مربوطه', questionCount: 10, slug: 'lesson8' },
+        { id: 6, name: 'درس ۲-۲: ظرفیت گرمایی و گرمایی ویژه', description: 'قانون هس، آنتالپی استاندارد تشکیل، آنتالپی استاندارد سوختن و محاسبات', questionCount: 12, slug: 'lesson9' },
+        { id: 7, name: 'درس ۲-۳: جاری شدن انرژی گرمایی', description: 'عوامل مؤثر بر سرعت واکنش، نظریه برخورد و انرژی فعال‌سازی', questionCount: 8, slug: 'lesson10' },
+        { id: 8, name: 'درس ۲-۴: ترموشیمی', description: 'تأثیر دما، غلظت، سطح تماس و کاتالیزور بر سرعت واکنش‌ها', questionCount: 8, slug: 'lesson11' },
       ]
     },
     {

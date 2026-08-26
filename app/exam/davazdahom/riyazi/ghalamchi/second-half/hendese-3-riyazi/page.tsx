@@ -116,7 +116,7 @@ export default function Handese3ChaptersPage() {
         <button onClick={() => router.push('/exam/davazdahom/riyazi/ghalamchi/second-half')} style={styles.backButton}>
           ← بازگشت به لیست دروس
         </button>
-        <h1 style={styles.title}>📐 هندسه (۳) - پایه دوازدهم ریاضی قلمچی (نیم‌سال دوم)</h1>
+        <h1 style={styles.title}>📐 هندسه (۳) - پایه دوازدهم ریاضی قلمچی (نیم‌سال اول)</h1>
         <p style={styles.subtitle}>برای شروع، روی هر فصل کلیک کنید و سپس درس یا آزمون جامع مورد نظر را انتخاب نمایید</p>
       </div>
 

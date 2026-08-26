@@ -356,7 +356,7 @@ const HendesehRiyaziFinalExam = () => {
         position: 'relative'
       }}>
         <button
-          onClick={() => router.push('http://localhost:3000/exam/davazdahom/riyazi/gozine2/second-half/hendese-3-riyazi')}
+          onClick={() => router.push('http://localhost:3000/exam/davazdahom/riyazi/ghalamchi/second-half/hendese-3-riyazi')}
           style={{
             position: 'absolute',
             left: '20px',

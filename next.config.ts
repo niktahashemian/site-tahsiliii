@@ -1,10 +1,9 @@
-import type { NextConfig } from 'next';
-import path from 'path';
-
-const nextConfig: NextConfig = {
-  turbopack: {
-    root: path.join(__dirname),
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  compress: true,
+  images: {
+    formats: ['image/webp'],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

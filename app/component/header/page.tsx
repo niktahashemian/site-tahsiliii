@@ -294,7 +294,7 @@ const Header = () => {
                         <div className="col-12">
                             <ul className="ras-menu-list">
                                 <li className="ras-menu-item ras-home-item">
-                                    <Link href="/">
+                                    {/* <Link href="/">
                                         <Image
                                             src="/img/parto.PNG"
                                             className="ras-logo-image"
@@ -303,7 +303,7 @@ const Header = () => {
                                             height={20}
                                             priority
                                         />
-                                    </Link>
+                                    </Link> */}
                                     <p className="mb-0 ras-title-text">مرکز مشاوره پرتو امید</p>
                                     
                                     {/* دکمه همبرگر - فقط در موبایل و تبلت */}

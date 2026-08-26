@@ -152,7 +152,7 @@ export default function SecondHalfLessonsPage() {
 
   const handleLessonClick = (lessonName: string) => {
     const lessonSlug = getLessonSlug(lessonName);
-    router.push(`/exam/${grade}/${field}/${exam}/${semester}/${lessonSlug}`);
+    router.push(`/exam/davazdahom/tajrobi/ghalamchi/second-half/${lessonSlug}`);
   };
 
   return (

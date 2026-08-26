@@ -357,7 +357,7 @@ const GosasteRiyaziFinalExam = () => {
         position: 'relative'
       }}>
         <button 
-          onClick={() => router.push('/exam/davazdahom/riyazi/gozine2/first-half/gosaste-riyazi')}
+          onClick={() => router.push('/exam/davazdahom/riyazi/ghalamchi/first-half/gosaste-riyazi')}
           style={{
             position: 'absolute',
             left: '20px',

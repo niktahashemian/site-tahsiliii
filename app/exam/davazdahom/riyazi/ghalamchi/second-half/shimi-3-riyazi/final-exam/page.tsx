@@ -357,7 +357,7 @@ const ShimiRiyaziFinalExam = () => {
         position: 'relative'
       }}>
         <button 
-          onClick={() => router.push('/exam/davazdahom/riyazi/gozine2/second-half/shimi-3-riyazi')}
+          onClick={() => router.push('/exam/davazdahom/riyazi/ghalamchi/second-half/shimi-3-riyazi')}
           style={{
             position: 'absolute',
             left: '20px',

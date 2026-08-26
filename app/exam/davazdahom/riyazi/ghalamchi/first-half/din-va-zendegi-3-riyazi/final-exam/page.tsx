@@ -357,7 +357,7 @@ const DinVaZendegiFinalExam = () => {
         position: 'relative'
       }}>
         <button 
-          onClick={() => router.push('/exam/davazdahom/riyazi/gozine2/first-half/din-va-zendegi-3-riyazi')}
+          onClick={() => router.push('/exam/davazdahom/riyazi/ghalamchi/first-half/din-va-zendegi-3-riyazi')}
           style={{
             position: 'absolute',
             left: '20px',
