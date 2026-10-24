@@ -13,7 +13,7 @@ const Footer = () => {
             <ul className="footer-list">
               <li className="footer-list-item">
                 <a href="#" className="footer-link">
-                  درباره راست چین
+                  درباره پرتو امید
                 </a>
               </li>
               <li className="footer-list-item">
