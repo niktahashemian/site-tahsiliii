@@ -58,113 +58,41 @@ const Footer = () => {
   return (
     <footer className="footer-main" dir="rtl">
       <div className="footer-main-container">
-
-        {/* ============ ردیف اصلی: ۴ ستون لینک ============ */}
-        <div className="footer-row">
-
-          {/* ستون ۱: پایه دهم */}
-          <div className="footer-col">
-            <h4 className="footer-title">پایه دهم</h4>
-            <ul className="footer-list">
-              <li className="footer-list-item">
-                <Link href="/exam/dahom/tajrobi" className="footer-link">دهم تجربی</Link>
-              </li>
-              <li className="footer-list-item">
-                <Link href="/exam/dahom/riazi" className="footer-link">دهم ریاضی</Link>
-              </li>
-              <li className="footer-list-item">
-                <Link href="/exam/dahom/ensani" className="footer-link">دهم انسانی</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* ستون ۲: پایه یازدهم */}
-          <div className="footer-col">
-            <h4 className="footer-title">پایه یازدهم</h4>
-            <ul className="footer-list">
-              <li className="footer-list-item">
-                <Link href="/exam/yazdahom/tajrobi" className="footer-link">یازدهم تجربی</Link>
-              </li>
-              <li className="footer-list-item">
-                <Link href="/exam/yazdahom/riazi" className="footer-link">یازدهم ریاضی</Link>
-              </li>
-              <li className="footer-list-item">
-                <Link href="/exam/yazdahom/ensani" className="footer-link">یازدهم انسانی</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* ستون ۳: پایه دوازدهم */}
-          <div className="footer-col">
-            <h4 className="footer-title">پایه دوازدهم</h4>
-            <ul className="footer-list">
-              <li className="footer-list-item">
-                <Link href="/exam/12/tajrobi" className="footer-link">دوازدهم تجربی</Link>
-              </li>
-              <li className="footer-list-item">
-                <Link href="/exam/12/riazi" className="footer-link">دوازدهم ریاضی</Link>
-              </li>
-              <li className="footer-list-item">
-                <Link href="/exam/12/ensani" className="footer-link">دوازدهم انسانی</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* ستون ۴: ارتباط با ما */}
-          <div className="footer-col">
-            <h4 className="footer-title">ارتباط با ما</h4>
-            <ul className="footer-list">
-              <li className="footer-contact-item">
-                <MapPinIcon />
-                <span>تهران، خیابان آزادی، پلاک ۱۲۳</span>
-              </li>
-              <li className="footer-contact-item">
-                <PhoneIcon />
-                <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
-              </li>
-              <li className="footer-contact-item">
-                <MailIcon />
-                <span>info@parto-omid.ir</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
         {/* ============ ردیف دوم: آزمون‌ها (۶ آزمون) ============ */}
         <div className="footer-row footer-row-exams">
           <div className="footer-col">
             <h4 className="footer-title">گزینه دو</h4>
             <ul className="footer-list">
-              <li className="footer-list-item"><Link href="/gozine2/dahom" className="footer-link">دهم گزینه دو</Link></li>
-              <li className="footer-list-item"><Link href="/gozine2/yazdahom" className="footer-link">یازدهم گزینه دو</Link></li>
-              <li className="footer-list-item"><Link href="/gozine2/12" className="footer-link">دوازدهم گزینه دو</Link></li>
+              <li className="footer-list-item"><Link href="exam/dahom/tajrobi/gozine2" className="footer-link">دهم گزینه دو تجربی</Link></li>
+              <li className="footer-list-item"><Link href="exam/yazdahom/riyazi/gozine2" className="footer-link">یازدهم گزینه دو ریاضی</Link></li>
+              <li className="footer-list-item"><Link href="exam/davazdahom/ensani/gozine2" className="footer-link">دوازدهم گزینه دو انسانی</Link></li>
             </ul>
           </div>
 
           <div className="footer-col">
             <h4 className="footer-title">قلم‌چی</h4>
             <ul className="footer-list">
-              <li className="footer-list-item"><Link href="/ghalamchi/dahom" className="footer-link">دهم قلم‌چی</Link></li>
-              <li className="footer-list-item"><Link href="/ghalamchi/yazdahom" className="footer-link">یازدهم قلم‌چی</Link></li>
-              <li className="footer-list-item"><Link href="/ghalamchi/12" className="footer-link">دوازدهم قلم‌چی</Link></li>
+              <li className="footer-list-item"><Link href="exam/dahom/tajrobi/ghalamchi/first-half" className="footer-link">دهم قلم‌چی تجربی </Link></li>
+              <li className="footer-list-item"><Link href="exam/yazdahom/riyazi/ghalamchi/first-half" className="footer-link">یازدهم قلم‌چی ریاضی</Link></li>
+              <li className="footer-list-item"><Link href="exam/davazdahom/ensani/ghalamchi/first-half" className="footer-link">دوازدهم قلم‌چی انسانی</Link></li>
             </ul>
           </div>
 
           <div className="footer-col">
             <h4 className="footer-title">ماز</h4>
             <ul className="footer-list">
-              <li className="footer-list-item"><Link href="/maz/dahom" className="footer-link">دهم ماز</Link></li>
-              <li className="footer-list-item"><Link href="/maz/yazdahom" className="footer-link">یازدهم ماز</Link></li>
-              <li className="footer-list-item"><Link href="/maz/12" className="footer-link">دوازدهم ماز</Link></li>
+              <li className="footer-list-item"><Link href="exam/dahom/tajrobi/maz/first-half" className="footer-link">دهم ماز انسانی</Link></li>
+              <li className="footer-list-item"><Link href="exam/yazdahom/riyazi/maz/first-half" className="footer-link">یازدهم ماز اانسانی</Link></li>
+              <li className="footer-list-item"><Link href="exam/davazdahom/ensani/maz/first-half" className="footer-link">دوازدهم ماز انسانی</Link></li>
             </ul>
           </div>
 
           <div className="footer-col">
             <h4 className="footer-title">خیلی سبز</h4>
             <ul className="footer-list">
-              <li className="footer-list-item"><Link href="/kheilisabz/dahom" className="footer-link">دهم خیلی سبز</Link></li>
-              <li className="footer-list-item"><Link href="/kheilisabz/yazdahom" className="footer-link">یازدهم خیلی سبز</Link></li>
-              <li className="footer-list-item"><Link href="/kheilisabz/12" className="footer-link">دوازدهم خیلی سبز</Link></li>
+              <li className="footer-list-item"><Link href="exam/dahom/tajrobi/kheili%20sabz/first-half" className="footer-link">دهم خیلی سبز تجربی</Link></li>
+              <li className="footer-list-item"><Link href="exam/yazdahom/riyazi/kheili%20sabz/first-half" className="footer-link">یازدهم خیلی سبز تجربی</Link></li>
+              <li className="footer-list-item"><Link href="exam/davazdahom/ensani/kheili%20sabz/first-half" className="footer-link">دوازدهم خیلی سبز تجربی</Link></li>
             </ul>
           </div>
         </div>
@@ -174,9 +102,9 @@ const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-title">سنجش</h4>
             <ul className="footer-list">
-              <li className="footer-list-item"><Link href="/sanjesh/dahom" className="footer-link">دهم سنجش</Link></li>
-              <li className="footer-list-item"><Link href="/sanjesh/yazdahom" className="footer-link">یازدهم سنجش</Link></li>
-              <li className="footer-list-item"><Link href="/sanjesh/12" className="footer-link">دوازدهم سنجش</Link></li>
+              <li className="footer-list-item"><Link href="exam/sanjesh/dahom/tajrobi" className="footer-link">دهم سنجش تجربی</Link></li>
+              <li className="footer-list-item"><Link href="exam/sanjesh/yazdahom/riyazi" className="footer-link">یازدهم سنجش ریاضی</Link></li>
+              <li className="footer-list-item"><Link href="exam/sanjesh/davazdahom/ensani" className="footer-link">دوازدهم سنجش انسانی</Link></li>
             </ul>
           </div>
 
@@ -226,7 +154,23 @@ const Footer = () => {
               <span>←</span>
             </Link>
           </div>
-
+          <div className="footer-col">
+            <h4 className="footer-title">ارتباط با ما</h4>
+            <ul className="footer-list">
+              <li className="footer-contact-item">
+                <MapPinIcon />
+                <span>تهران، خیابان آزادی، پلاک ۱۲۳</span>
+              </li>
+              <li className="footer-contact-item">
+                <PhoneIcon />
+                <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
+              </li>
+              <li className="footer-contact-item">
+                <MailIcon />
+                <span>info@parto-omid.ir</span>
+              </li>
+            </ul>
+          </div>
           {/* باکس شبکه‌های اجتماعی */}
           <div className="footer-social-section">
             <h5 className="footer-social-title">با ما همراه باشید</h5>
@@ -249,9 +193,11 @@ const Footer = () => {
                 <PhoneIcon />
               </a>
             </div>
+            
           </div>
+          
         </div>
-
+        
         {/* ============ کپی‌رایت ============ */}
         <div className="footer-copyright">
           <p>© {currentYear} مرکز مشاوره پرتو امید. تمامی حقوق محفوظ است.</p>
